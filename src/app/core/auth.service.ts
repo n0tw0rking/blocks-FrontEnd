@@ -23,7 +23,8 @@ export class AuthService {
   }
 
   public login(userData: any): Observable<any> {
-    return this.http.post(`${this.urlLogin}`, userData).pipe(
+    return this.http.post(`${this.urlLogin}`, userData)
+    .pipe(
       map((res: any) => {
         console.log(res);
         this.user = res.admin;

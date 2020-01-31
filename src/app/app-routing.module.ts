@@ -20,7 +20,9 @@ const routes: Routes = [
     ] 
   },
   { path:'services', component: ServicesPageComponent },
-  { path:'blocks', component: BlocksPageComponent, canActivate:[AuthGuard]}
+  // { path:'blocks', component: BlocksPageComponent, canActivate:[AuthGuard]}
+  { path:'blocks', component: BlocksPageComponent }
+
 
 ];
 
