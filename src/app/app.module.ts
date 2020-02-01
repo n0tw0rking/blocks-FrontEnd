@@ -15,7 +15,8 @@ import { BlocksPageComponent } from './modules/blocks-page/blocks-page.component
 import { BlockComponent } from './modules/blocks-page/block/block.component';
 import { SideNavComponent } from './modules/blocks-page/side-nav/side-nav.component';
 import { TokenInterceptor } from './core/token.interceptor'
-import { HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { GraphQLModule } from './graphql.module'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http'
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    GraphQLModule
   ],
   providers: [
     {
