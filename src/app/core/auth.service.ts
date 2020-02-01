@@ -12,7 +12,7 @@ import { Router } from "@angular/router";
 })
 export class AuthService {
   private user;
-  private urlLogin = "http://localhost:8000/api/admin/login";
+  private urlLogin = "http://localhost:8000/api/items/";
   
   public isAuthed = !!localStorage.getItem("currentUser");
   @Output() getIsAuthed: EventEmitter<any> = new EventEmitter();

@@ -9,7 +9,8 @@ export class HttpService {
   constructor(private http: HttpClient) {}
 
   getUsers() {
-    return this.http.get("http://localhost:8000/api/user"
+    console.log('getuser triggerde')
+    return this.http.get("http://localhost:3000/api/"
     // ,
     //  {
     //   headers: new HttpHeaders({
@@ -19,5 +20,9 @@ export class HttpService {
     // }
     ).subscribe(data =>console.log(data));
   }
+  postBlock(Block) {
+    console.log('getuser triggerde',Block)
+    return this.http.post("http://localhost:3000/api/", Block)
+    .subscribe(data =>console.log(data))}
 
 }
