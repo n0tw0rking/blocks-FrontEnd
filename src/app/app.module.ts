@@ -16,7 +16,9 @@ import { BlockComponent } from './modules/blocks-page/block/block.component';
 import { SideNavComponent } from './modules/blocks-page/side-nav/side-nav.component';
 import { TokenInterceptor } from './core/token.interceptor'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { GraphQLModule } from './graphql.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    GraphQLModule,
     BrowserAnimationsModule
   ],
   providers: [
