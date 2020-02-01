@@ -15,12 +15,7 @@ export class LoginComponent implements OnInit {
   notifyMessage = "";
 
   constructor(
-    private fb: FormBuilder,
-    private auth: AuthService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private apollo: Apollo
-  ) {}
+    private formbuilder: FormBuilder,  private auth: AuthService,  private router: Router, private route: ActivatedRoute ) {}
 
   ngOnInit() {
     this.createForm();
@@ -33,9 +28,8 @@ export class LoginComponent implements OnInit {
   }
 
   createForm() {
-    this.loginForm = this.fb.group({
-      email: [
-        "",
+    this.loginForm = this.formbuilder.group({
+      email: [ "",
         [
           Validators.required,
           Validators.pattern(
