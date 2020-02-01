@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../core/auth.service";
 import { Router, ActivatedRoute } from "@angular/router";
-
+import { Apollo } from "apollo-angular";
+import gql from "graphql-tag";
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -63,6 +64,5 @@ export class LoginComponent implements OnInit {
         // this.errors = errorResponse.error.errors;
       }
     );
-
   }
 }
