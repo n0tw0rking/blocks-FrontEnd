@@ -2,9 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../core/auth.service";
 import { Router, ActivatedRoute } from "@angular/router";
-import { Apollo } from "apollo-angular";
-import gql from "graphql-tag";
-const $ = require("jquery");
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -66,18 +63,22 @@ export class LoginComponent implements OnInit {
       return;
     }
     console.log(this.loginForm.value);
-    await this.auth.login(this.loginForm.value).subscribe(result => {
-      if (result.errors) {
-        return (this.errors = result.errors[0]);
+    this.auth.login(this.loginForm.value).subscribe(
+      token => {
+        console.log(token.data);
+        console.log(token.errors);
+        console.log("login func in login component");
+        this.router.navigate(["/"]);
+      },
+      errorResponse => {
+        // NOTE:
+        // THE RESPONSE FORM THE SERVER DOES NOT HAVE AN ERROR ATTR
+        console.log(errorResponse);
+        // this.errors = errorResponse.error.errors;
+
+        console.log("login func in login component");
+        this.router.navigate(["/"]);
       }
-      console.log("login func in login component");
-      this.router.navigate(["/"]);
-      // },
-      // NOTE:
-      // THE RESPONSE FORM THE SERVER DOES NOT HAVE AN ERROR ATTR
-      // errorResponse => {
-      //   console.log(errorResponse);
-      //   this.errors = errorResponse.error.errors[0];
-    });
+    );
   }
 }
