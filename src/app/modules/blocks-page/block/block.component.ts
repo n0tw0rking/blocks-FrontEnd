@@ -32,6 +32,7 @@ export class BlockComponent implements OnInit {
         (params: Params) => {
           this.block.id = params['id'];
           this.block.name = params['name'];
+          console.log(this.block)
         }
       );
   }

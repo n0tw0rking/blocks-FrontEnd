@@ -24,28 +24,7 @@ export class BlocksPageComponent implements OnInit {
  constructor( private formbuilder: FormBuilder, private router: Router, private http:HttpService ) { }
 
   ngOnInit() {
-    // this.createForm()
+    // http get blocks list
   }
-
-  // onToggle(){
-  //   this.newBlock = !this.newBlock
-  //   this.btnStyle = "btn btn-primary btn-lg btn-block"
-  // }
-
-  // createForm() {
-  //   this.newblockForm = this.formbuilder.group({
-  //     name: [ "" ],
-  //     location: ["", Validators.required]
-  //   });
-  // }
-
-  // onNewForm(){
-  //   console.log(this.newblockForm.value.id)
-  //   this.http.postBlock(this.newblockForm.value)
-  //   let id = this.newblockForm.value.id
-
-  //   this.blocks.push(this.newblockForm.value)
-  //   // this.router.navigate(["/blocks/id"]);
-
-  // }
+  
 }
