@@ -6,14 +6,25 @@ import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
+const httpOptions = {
+  headers: new HttpHeaders({
+    "Content-Type": "application/json",
+    Authorization: `${
+      // TODO:
+      // Refactor this to be more effient and store the token in a safer place than localStorage.
+      // If there is no token send empty string!!
+      !localStorage.getItem("token") ? "" : localStorage.getItem("token")
+    }`
+  })
+};
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
   private user;
-  private urlLogin = "http://localhost:8000/api/items/";
-  
+  private urlLogin = "https://blocks-backend.herokuapp.com/graphql";
+
   public isAuthed = !!localStorage.getItem("currentUser");
   @Output() getIsAuthed: EventEmitter<any> = new EventEmitter();
 
@@ -22,13 +33,25 @@ export class AuthService {
     this.getIsAuthed.emit(this.isAuthed);
   }
 
-  public login(userData: any): Observable<any> {
-    return this.http.post(`${this.urlLogin}`, userData)
-    .pipe(
+  public login({ email, password }: any): Observable<any> {
+    const query = `
+    query{
+  login(userInput:{email:"${email}", password:"${password}"}){
+   token
+    userId
+    isAdmin
+    tokenExpriration
+    isSuperAdmin
+  }
+}`;
+    console.log(query);
+    return this.http.post(`${this.urlLogin}`, { query }).pipe(
       map((res: any) => {
         console.log(res);
-        this.user = res.admin;
-        return this.saveTokenAndCurrentUser(res.token);
+        if (!res.errors || res.data) {
+          this.user = res.data.admin;
+          return this.saveTokenAndCurrentUser(res.data.token);
+        }
       })
     );
   }
