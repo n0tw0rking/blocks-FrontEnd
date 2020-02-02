@@ -7,6 +7,7 @@ import { ServicesPageComponent } from './modules/services-page/services-page.com
 import { BlocksPageComponent } from './modules/blocks-page/blocks-page.component';
 import { AuthGuard } from './core/auth.guard';
 import { BlockComponent } from './modules/blocks-page/block/block.component';
+import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component';
 
 
 const routes: Routes = [
@@ -16,18 +17,17 @@ const routes: Routes = [
     children: [
       {path: '', component: UserComponent},
       {path: ':id', component: UserComponent}
-
-
     ] 
   },
   { path:'services', component: ServicesPageComponent },
   // { path:'blocks', component: BlocksPageComponent, canActivate:[AuthGuard]}
-  { path:'blocks', component: BlocksPageComponent , children: [
-    {path: '', component: BlockComponent},
-    {path: ':id', component: BlockComponent}
-  ] }
-
-
+  {path:'newBlock', component: AddBlockComponent},
+  { path:'blocks', component: BlocksPageComponent , 
+    children: [
+      {path: '', component: BlockComponent},
+      {path: ':id', component: BlockComponent}
+    ]
+  }
 ];
 
 @NgModule({
