@@ -1,6 +1,7 @@
 <app-nav-bar></app-nav-bar>
 <app-side-nav></app-side-nav>
-<div class="container">
+<div class="col s12">
+<div class="container" style="padding-top: 50px;">
     <h1>Add new Block</h1>
     
     <form [formGroup]="newblockForm" (ngSubmit)="onNewForm()" >
@@ -30,3 +31,4 @@
       <button type="submit" class="btn btn-success">Submit</button>
     </form>
   </div>
+</div>
