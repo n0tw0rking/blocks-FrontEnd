@@ -1,36 +1,59 @@
 import { EventEmitter, Injectable, Output } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-
 import { Observable } from "rxjs";
-
 import { environment } from "../../environments/environment";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
+import { Apollo } from "apollo-angular";
+import gql from "graphql-tag";
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
   private user;
-  private urlLogin = "http://localhost:8000/api/items/";
-  
+  // private urlLogin = "http://localhost:8000/api/items/";
+  private urlLogin = "http://localhost:4000/graphql";
+
   public isAuthed = !!localStorage.getItem("currentUser");
   @Output() getIsAuthed: EventEmitter<any> = new EventEmitter();
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private apollo: Apollo
+  ) {
     console.log(this.isAuthed);
     this.getIsAuthed.emit(this.isAuthed);
   }
 
   public login(userData: any): Observable<any> {
-    return this.http.post(`${this.urlLogin}`, userData)
-    .pipe(
-      map((res: any) => {
-        console.log(res);
-        this.user = res.admin;
-        return this.saveTokenAndCurrentUser(res.token);
+    return this.apollo
+      .watchQuery<any>({
+        query: gql`
+          query($email: String!, $password: String!) {
+            login(userInput: { email: $email, password: $password }) {
+              token
+              userId
+              isAdmin
+              isSuperAdmin
+            }
+          }
+        `,
+        variables: {
+          email: userData.email,
+          password: userData.password
+        },
+        errorPolicy: "all"
       })
-    );
+      .valueChanges.pipe(
+        map((res: any) => {
+          console.log(res);
+          // this.user = res.admin;
+          this.user = res.data.login.userId;
+          return this.saveTokenAndCurrentUser(res.data.login.token);
+        })
+      );
   }
 
   public logout() {
@@ -56,15 +79,20 @@ export class AuthService {
   }
 
   public isAuthenticated(): any {
-    return this.http
-      .get(`${this.urlLogin}`, {
-        headers: new HttpHeaders({ auth: localStorage.getItem("token") || "" })
+    return this.apollo
+      .watchQuery<any>({
+        query: gql`
+          query {
+            isAuth
+          }
+        `,
+        errorPolicy: "all"
       })
-      .pipe(
+      .valueChanges.pipe(
         map((user: any) => {
           this.isAuthed =
-            user._id === JSON.parse(localStorage.getItem("currentUser"))._id;
-          console.log("console from ");
+            user.data.isAuth === localStorage.getItem("currentUser");
+          console.log(user.data.isAuth);
           this.getIsAuthed.emit(this.isAuthed);
           return this.isAuthed;
         })
