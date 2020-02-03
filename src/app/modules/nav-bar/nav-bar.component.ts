@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from "@angular/core";
+import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { AuthService } from "../../core/auth.service";
 import { from } from "rxjs";
 import { Location } from "@angular/common";
@@ -8,6 +8,8 @@ import { Location } from "@angular/common";
   styleUrls: ["./nav-bar.component.css"]
 })
 export class NavBarComponent implements OnInit {
+  @ViewChild("toggleNavBar", { static: false })
+  toggleNavBar: ElementRef;
   private toggleButton: any;
   private sidebarVisible: boolean;
   constructor(
@@ -16,24 +18,25 @@ export class NavBarComponent implements OnInit {
     private element: ElementRef
   ) {}
 
-  ngOnInit() {
-    const navbar: HTMLElement = this.element.nativeElement;
-    this.toggleButton = navbar.getElementsByClassName("navbar-toggler")[0];
-  }
+  ngOnInit() {}
   sidebarToggle() {
-    const toggleButton = this.toggleButton;
-    const body = document.getElementsByTagName("body")[0];
+    // const toggleButton = this.toggleButton;
+    // const body = document.getElementsByTagName("body")[0];
     if (this.sidebarVisible === false) {
       this.sidebarOpen();
     } else {
       this.sidebarClose();
     }
   }
+  ngAfterViewInit() {
+    const navbar: HTMLElement = this.element.nativeElement;
+    this.toggleButton = navbar.getElementsByClassName("navbar-toggler")[0];
+  }
   sidebarOpen() {
     const toggleButton = this.toggleButton;
     const html = document.getElementsByTagName("html")[0];
-    // console.log(html);
-    // console.log(toggleButton, 'toggle');
+    console.log(html);
+    console.log(toggleButton, "toggle");
 
     setTimeout(function() {
       toggleButton.classList.add("toggled");
