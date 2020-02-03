@@ -54,15 +54,15 @@ export class LoginComponent implements OnInit {
 
   login() {
     console.log(this.loginForm.value);
-    this.auth.login(this.loginForm.value).subscribe(
-      token => {
+    // this.auth.login(this.loginForm.value).subscribe(
+      // token => {
         console.log("login func in login component");
         this.router.navigate(["/"]);
-      },
-      errorResponse => {
-        console.log(errorResponse);
-        // this.errors = errorResponse.error.errors;
-      }
-    );
+      // },
+      // errorResponse => {
+      //   console.log(errorResponse);
+      //   // this.errors = errorResponse.error.errors;
+      // }
+    // );
   }
 }

@@ -18,7 +18,8 @@ import { TokenInterceptor } from './core/token.interceptor'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GraphQLModule } from './graphql.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component'
+import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component';
+import { EditComponent } from './modules/blocks-page/edit/edit.component'
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.com
     BlocksPageComponent,
     BlockComponent,
     SideNavComponent,
-    AddBlockComponent
+    AddBlockComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

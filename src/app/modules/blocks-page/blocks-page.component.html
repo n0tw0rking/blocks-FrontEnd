@@ -52,8 +52,9 @@
         <div class="row">
         <app-block
            [routerLink]="['/blocks', block.id]"
-            *ngFor="let block of blocks"                   
-        ></app-block>
+            *ngFor="let block of blocks"   
+            ></app-block>
+            <!-- [block]="block"                 -->
         </div>
     </div>
   </div>

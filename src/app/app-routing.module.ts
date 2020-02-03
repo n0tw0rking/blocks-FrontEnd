@@ -8,6 +8,7 @@ import { BlocksPageComponent } from './modules/blocks-page/blocks-page.component
 import { AuthGuard } from './core/auth.guard';
 import { BlockComponent } from './modules/blocks-page/block/block.component';
 import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component';
+import { EditComponent } from './modules/blocks-page/edit/edit.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,9 @@ const routes: Routes = [
   { path:'blocks', component: BlocksPageComponent , 
     children: [
       {path: '', component: BlockComponent},
-      {path: ':id', component: BlockComponent}
+      {path: 'edit', component: EditComponent, children:[
+        {path: ':id', component: BlockComponent }
+      ]}
     ]
   }
 ];

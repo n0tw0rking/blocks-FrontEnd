@@ -14,7 +14,7 @@ export class AuthService {
   private user;
   private urlLogin = "http://localhost:8000/api/items/";
   
-  public isAuthed = !!localStorage.getItem("currentUser");
+  public isAuthed = true// !!localStorage.getItem("currentUser");
   @Output() getIsAuthed: EventEmitter<any> = new EventEmitter();
 
   constructor(private http: HttpClient, private router: Router) {
