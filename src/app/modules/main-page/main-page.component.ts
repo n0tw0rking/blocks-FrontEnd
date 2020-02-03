@@ -34,21 +34,15 @@ export class MainPageComponent implements OnInit {
       10000
     );
     this.camera.position.z = 1000;
-    this.mesh = new THREE.Mesh(this.geometry, this.material);
 
-    this.geometry = new THREE.BoxGeometry(1, 1, 1);
-    this.material = new THREE.MeshLambertMaterial({ color: 0xff0000 });
-    // new THREE.MeshBasicMaterial({
-    //   color: 0xff0000,
-    //   wireframe: true
-    // });
-    for (let i = 0; i < 9; i++) {
-      this.mesh[i] = new THREE.Mesh(this.geometry, this.material);
-      this.mesh[i].position.x = (Math.random() - 0.5) * 10;
-      this.mesh[i].position.y = (Math.random() - 0.5) * 10;
-      this.mesh[i].position.z = (Math.random() - 0.5) * 10;
-      this.scene.add(this.mesh[i]);
-    }
+    const geometry = new THREE.BoxGeometry(200, 200, 200);
+    const material = new THREE.MeshBasicMaterial({
+      color: 0xff0000,
+      wireframe: true
+    });
+    this.mesh = new THREE.Mesh(geometry, material);
+
+    this.scene.add(this.mesh);
   }
 
   ngAfterViewInit() {
