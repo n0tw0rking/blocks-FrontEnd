@@ -21,38 +21,13 @@ export class HttpService {
         // }
       )
       .subscribe(data => console.log(data));
-    // return this.apollo
-    //   .watchQuery<any>({
-    //     query: gql`
-    //       query($email: String!, $password: String!) {
-    //         login(userInput: { email: $email, password: $password }) {
-    //           token
-    //           userId
-    //           isAdmin
-    //           isSuperAdmin
-    //         }
-    //       }
-    //     `,
-    //     variables: {
-    //       email: "faredmohamed",
-    //       password: "123456"
-    //     },
-    //     errorPolicy: "all"
-
-    //   })
-    //   .valueChanges.subscribe(
-    //     result => {
-    //       console.log(result.data);
-    //       console.log(result.errors);
-    //     },
-    //     err => {
-    //       console.log(err.graphQLErrors);
-    //     }
-    //   );
   }
 
+
   postNewBlock(Block) {
-    console.log('getuser triggerde',Block)
-    return this.http.post("http://localhost:3000/api/", Block)
-    .subscribe(data =>console.log(data))}
+    console.log("getuser triggerde", Block);
+    return this.http
+      .post("http://localhost:3000/api/", Block)
+      .subscribe(data => console.log(data));
+  }
 }

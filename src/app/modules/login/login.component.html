@@ -9,11 +9,11 @@
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <div class="form-group">
         <label for="email">Email</label>
+        <!-- type="email" -->
+        <!-- aria-describedby="email" -->
         <input
-          type="email"
           class="form-control"
           id="email"
-          aria-describedby="email"
           placeholder="email@local.com"
           formControlName="email"
         />

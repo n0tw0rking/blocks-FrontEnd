@@ -2,8 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../core/auth.service";
 import { Router, ActivatedRoute } from "@angular/router";
-import { Apollo } from "apollo-angular";
-import gql from "graphql-tag";
+
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -15,7 +14,11 @@ export class LoginComponent implements OnInit {
   notifyMessage = "";
 
   constructor(
-    private formbuilder: FormBuilder,  private auth: AuthService,  private router: Router, private route: ActivatedRoute ) {}
+    private formbuilder: FormBuilder,
+    private auth: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.createForm();
@@ -29,7 +32,8 @@ export class LoginComponent implements OnInit {
 
   createForm() {
     this.loginForm = this.formbuilder.group({
-      email: [ "",
+      email: [
+        "",
         [
           Validators.required,
           Validators.pattern(
@@ -56,8 +60,21 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.value);
     this.auth.login(this.loginForm.value).subscribe(
       token => {
-        console.log("login func in login component");
-        this.router.navigate(["/"]);
+        if (token.errors) {
+          console.log(token.errors[0].message);
+        } else {
+          if (token.data.login.isSuperAdmin) {
+            console.log(" this is the superAdmin");
+            this.router.navigate(["/"]);
+          } else if (token.data.login.Admin) {
+            console.log(token);
+            console.log("this is the Admin");
+            this.router.navigate(["/"]);
+          } else {
+            console.log("this is the user");
+            this.router.navigate(["/login"]);
+          }
+        }
       },
       errorResponse => {
         console.log(errorResponse);
