@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
 
   private handleAuthState(): boolean {
     if (this.isLoginOrRegister()) {
-      this.router.navigate(["/"]);
+      this.router.navigate(["/user"]);
       return false;
     }
     return true;

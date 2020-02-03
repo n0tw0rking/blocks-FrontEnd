@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
         // this.errors = errorResponse.error.errors;
 
         console.log("login func in login component");
-        this.router.navigate(["/"]);
+        this.router.navigate(["/login"]);
       }
     );
   }
