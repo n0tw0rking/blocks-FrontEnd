@@ -1,70 +1,79 @@
- <div class="wrapper">
-   <div class="page-header" style="background-image: url('../../assets/img/login-image.jpg');">
-     <div class="filter"></div>
-     <div class="container">
-       <div class="alert alert-success" *ngIf="notifyMessage">
-         {{ notifyMessage }}
-       </div>
-       <div class="row">
-         <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
-           <div class="card card-register">
-             <h3 class="title" id="welcome">Welcome</h3>
-             <div class="social-line text-center">
-             </div>
-             <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="login()">
-               <label>Email</label>
-               <div class="input-group form-group-no-border" [ngClass]="{ 'input-group-focus': focus === true }">
-                 <div class="input-group-prepend">
-                   <span class="input-group-text">
-                     <i class="nc-icon nc-email-85"></i>
-                   </span>
-                 </div>
+<div class="wrapper">
+  <div class="page-header" style="background-image: url('../../assets/img/login-image.jpg');">
+    <div class="filter"></div>
+    <div class="container">
+      <div class="alert alert-success" *ngIf="notifyMessage">
+        {{ notifyMessage }}
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+          <div class="card card-register">
+            <h3 class="title" id="welcome">Welcome</h3>
+            <div class="social-line text-center">
+              <a href="#pablo" class="btn btn-neutral btn-facebook btn-just-icon">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+              <a href="#pablo" class="btn btn-neutral btn-google btn-just-icon">
+                <i class="fa fa-google-plus"></i>
+              </a>
+              <a href="#pablo" class="btn btn-neutral btn-twitter btn-just-icon">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </div>
+            <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="login()">
+              <label>Email</label>
+              <div class="input-group form-group-no-border" [ngClass]="{ 'input-group-focus': focus === true }">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="nc-icon nc-email-85"></i>
+                  </span>
+                </div>
 
-                 <input type="text" class="form-control" placeholder="Email" (focus)="focusEmail = true"
-                   (blur)="focus = false" formControlName="email" required />
-               </div>
-               <div *ngIf="isInvalidForm('email')" class="alert alert-danger">
-                 <div *ngIf="isRequired('email')">
-                   Email is required.
-                 </div>
-                 <div *ngIf="loginForm.controls['email'].errors.pattern">
-                   Please provide a valid Email
-                 </div>
-               </div>
-               <label>Password</label>
-               <div class="input-group form-group-no-border" [ngClass]="{ 'input-group-focus': focus1 === true }">
-                 <div class="input-group-prepend">
-                   <span class="input-group-text">
-                     <i class="nc-icon nc-key-25"></i>
-                   </span>
-                 </div>
-                 <input type="password" class="form-control" placeholder="Password" (focus)="focusPass = true"
-                   (blur)="focus1 = false" formControlName="password" minlength="6" required />
-                 <div *ngIf="errors.length > 0" class="alert alert-danger">
-                   <p *ngFor="let error of errors">
-                     {{ error.detail }}
-                   </p>
-                 </div>
-               </div>
-               <button class="btn btn-danger btn-block btn-round" type="submit">
-                 SIGN IN
-               </button>
-             </form>
-             <div class="forgot">
-               <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
-             </div>
-           </div>
-         </div>
-       </div>
-       <div class="footer register-footer text-center">
-         <h6>
-           &copy;{{ test | date: "yyyy" }}, made with
-           <i class="fa fa-heart heart"></i> by
-           <hr />
-           <span class="social-line"> !WORKING</span>
-           TEAM
-         </h6>
-       </div>
-     </div>
-   </div>
- </div>
+                <input type="text" class="form-control" placeholder="Email" (focus)="focusEmail = true"
+                  (blur)="focus = false" formControlName="email" required />
+              </div>
+              <div *ngIf="isInvalidForm('email')" class="alert alert-danger">
+                <div *ngIf="isRequired('email')">
+                  Email is required.
+                </div>
+                <div *ngIf="loginForm.controls['email'].errors.pattern">
+                  Please provide a valid Email
+                </div>
+              </div>
+              <label>Password</label>
+              <div class="input-group form-group-no-border" [ngClass]="{ 'input-group-focus': focus1 === true }">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="nc-icon nc-key-25"></i>
+                  </span>
+                </div>
+                <input type="password" class="form-control" placeholder="Password" (focus)="focusPass = true"
+                  (blur)="focus1 = false" formControlName="password" minlength="6" required />
+                <div *ngIf="errors.length > 0" class="alert alert-danger">
+                  <p *ngFor="let error of errors">
+                    {{ error.detail }}
+                  </p>
+                </div>
+              </div>
+              <button class="btn btn-danger btn-block btn-round" type="submit">
+                SIGN IN
+              </button>
+            </form>
+            <div class="forgot">
+              <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer register-footer text-center">
+        <h6>
+          &copy;{{ test | date: "yyyy" }}, made with
+          <i class="fa fa-heart heart"></i> by
+          <hr />
+          <span class="social-line"> !WORKING</span>
+          TEAM
+        </h6>
+      </div>
+    </div>
+  </div>
+</div>
