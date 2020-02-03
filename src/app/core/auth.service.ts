@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
+// import { ApolloService } from "./apollo.service";
 import { Apollo } from "apollo-angular";
 import gql from "graphql-tag";
 
@@ -12,16 +13,19 @@ import gql from "graphql-tag";
 })
 export class AuthService {
   private user;
-  // private urlLogin = "http://localhost:8000/api/items/";
+
   private urlLogin = "http://localhost:4000/graphql";
 
   public isAuthed = !!localStorage.getItem("currentUser");
+  public isSuperAdmin = false;
+  public isAdmin = false;
+
   @Output() getIsAuthed: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private apollo: Apollo
+    private apollo: Apollo // private apollo: ApolloService
   ) {
     console.log(this.isAuthed);
     this.getIsAuthed.emit(this.isAuthed);
@@ -50,8 +54,17 @@ export class AuthService {
         map((res: any) => {
           console.log(res);
           // this.user = res.admin;
-          this.user = res.data.login.userId;
-          return this.saveTokenAndCurrentUser(res.data.login.token);
+          if (res.data.login) {
+            this.user = res.data.login.userId;
+            this.isSuperAdmin = res.data.login.isSuperAdmin;
+            this.isAdmin = res.data.login.isAdmin;
+            if (this.isSuperAdmin || this.isAdmin) {
+              this.saveTokenAndCurrentUser(res.data.login.token);
+            }
+          }
+
+          return res;
+          // return this.saveTokenAndCurrentUser(res.data.login.token);
         })
       );
   }
@@ -67,7 +80,7 @@ export class AuthService {
   private saveTokenAndCurrentUser(token: string): string {
     localStorage.setItem("token", token);
     console.log(this.user);
-    localStorage.setItem("currentUser", JSON.stringify(this.user));
+    localStorage.setItem("currentUser", this.user);
     this.isAuthenticated().subscribe(res => {
       console.log(res);
     });
