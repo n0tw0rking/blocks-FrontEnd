@@ -22,8 +22,8 @@ import { AuthService } from "./core/auth.service";
 import { AuthGuard } from "./core/auth.guard";
 import { ApolloService } from "./core/apollo.service";
 import { SuperAdminComponent } from './modules/super-admin/super-admin.component';
-import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component';
 import { EditComponent } from './modules/blocks-page/edit/edit.component';
+import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,8 +35,8 @@ import { EditComponent } from './modules/blocks-page/edit/edit.component';
     ServiceComponent,
     BlocksPageComponent,
     BlockComponent,
-    SideNavComponent,
     AddBlockComponent,
+    SideNavComponent,
     EditComponent,
     SuperAdminComponent
   ],

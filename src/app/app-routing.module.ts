@@ -8,8 +8,8 @@ import { BlocksPageComponent } from "./modules/blocks-page/blocks-page.component
 import { AuthGuard } from "./core/auth.guard";
 import { BlockComponent } from "./modules/blocks-page/block/block.component";
 import { SuperAdminComponent } from "./modules/super-admin/super-admin.component";
-import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component';
 import { EditComponent } from './modules/blocks-page/edit/edit.component';
+import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component';
 
 const routes: Routes = [
   { path: "super", component: SuperAdminComponent, canActivate: [AuthGuard] },
@@ -31,17 +31,15 @@ const routes: Routes = [
     component: ServicesPageComponent,
     canActivate: [AuthGuard]
   },
-  { path: "blocks", component: BlocksPageComponent, canActivate: [AuthGuard] },
   // { path: "blocks", component: BlocksPageComponent },
   {
     path: "blocks",
     component: BlocksPageComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       {path: '', component: BlockComponent},
-      {path: 'edit', component: EditComponent, children:[
-        {path: ':id', component: BlockComponent }
-      ]}
+      {path: 'add', component: AddBlockComponent},
+      {path: 'edit/:id', component: EditComponent}
     ]
   }
 ];
