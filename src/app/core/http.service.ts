@@ -51,7 +51,7 @@ export class HttpService {
     //   );
   }
 
-  postBlock(Block) {
+  postNewBlock(Block) {
     console.log('getuser triggerde',Block)
     return this.http.post("http://localhost:3000/api/", Block)
     .subscribe(data =>console.log(data))}

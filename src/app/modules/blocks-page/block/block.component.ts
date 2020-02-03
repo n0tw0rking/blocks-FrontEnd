@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Subscription } from 'rxjs/Subscription';
+import { ActivatedRoute, Params } from '@angular/router';
+
+
 
 
 @Component({
@@ -8,11 +12,29 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   styleUrls: ['./block.component.css']
 })
 export class BlockComponent implements OnInit {
-@Input() block:any;
+  block:{id:number, name:string, location:string, status:string, dateOfSubscreption:string}
+  paramsSubscription: Subscription;
 
-  constructor() { }
+// @Input() block;
+
+  constructor( private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.block = {
+      id: this.route.snapshot.params['id'],
+      name: this.route.snapshot.params['name'],
+      location:'',
+      status: '',
+      dateOfSubscreption:''
+    };
+    this.paramsSubscription = this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.block.id = params['id'];
+          this.block.name = params['name'];
+          console.log(this.block)
+        }
+      );
   }
 
 }
