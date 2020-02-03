@@ -58,18 +58,6 @@ export class LoginComponent implements OnInit {
 
   login() {
     console.log(this.loginForm.value);
-<<<<<<< HEAD
-    // this.auth.login(this.loginForm.value).subscribe(
-      // token => {
-        console.log("login func in login component");
-        this.router.navigate(["/"]);
-      // },
-      // errorResponse => {
-      //   console.log(errorResponse);
-      //   // this.errors = errorResponse.error.errors;
-      // }
-    // );
-=======
     this.auth.login(this.loginForm.value).subscribe(
       token => {
         if (token.errors) {
@@ -93,6 +81,5 @@ export class LoginComponent implements OnInit {
         // this.errors = errorResponse.error.errors;
       }
     );
->>>>>>> 620ff1c5a07cfd6616eaeac1a939a4c5ce4837dd
   }
 }
