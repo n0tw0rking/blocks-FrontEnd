@@ -17,7 +17,8 @@ import { SideNavComponent } from './modules/blocks-page/side-nav/side-nav.compon
 import { TokenInterceptor } from './core/token.interceptor'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GraphQLModule } from './graphql.module'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component'
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     ServiceComponent,
     BlocksPageComponent,
     BlockComponent,
-    SideNavComponent
+    SideNavComponent,
+    AddBlockComponent
   ],
   imports: [
     BrowserModule,
