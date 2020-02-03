@@ -10,15 +10,15 @@ export class MainPageComponent implements OnInit {
   @ViewChild("rendererContainer", { static: false })
   rendererContainer: ElementRef;
   renderer = new THREE.WebGLRenderer({ antialias: true });
+  mouse = new THREE.Vector2(0, 0);
+  raycaster = new THREE.Raycaster();
   scene = null;
   camera = null;
   mesh = [];
   light = null;
   light1 = null;
-  raycaster;
-  mouse;
-  intersects;
-  tl;
+  intersects = null;
+  tl = null;
 
   constructor() {
     this.scene = new THREE.Scene();
@@ -33,15 +33,13 @@ export class MainPageComponent implements OnInit {
     this.renderer.setClearColor("#e5e5e5");
     this.camera.position.z = 5;
 
-    this.mouse = new THREE.Vector2();
-    this.raycaster = new THREE.Raycaster();
     const geometry = new THREE.BoxGeometry(1, 1, 1);
     const material = new THREE.MeshLambertMaterial({ color: 0xff0000 });
     // new THREE.MeshBasicMaterial({
     //   color: 0xff0000,
     //   wireframe: true
     // });
-    for (var i = 0; i < 9; i++) {
+    for (let i = 0; i < 9; i++) {
       this.mesh[i] = new THREE.Mesh(geometry, material);
       this.mesh[i].position.x = (Math.random() - 0.5) * 10;
       this.mesh[i].position.y = (Math.random() - 0.5) * 10;
@@ -77,16 +75,16 @@ export class MainPageComponent implements OnInit {
       this.camera.aspect(window.innerWidth / window.innerHeight);
       this.camera.updateProjectMatrix();
     });
-    // function that I will do make the books shake
+    // function that I will do make the boxes shake
     window.addEventListener("mouseover", this.mouseover);
   }
   mouseover(event) {
-    event.preventDefault();
     this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     this.intersects = this.raycaster.setFromCamera(this.mouse, this.camera);
-    for (var i = 0; i < this.intersects.length; i++) {
+    for (let i = 0; i < this.intersects.length; i++) {
       this.tl = new GSAP.TimelineMax();
+      console.log("here");
       this.tl.to(this.intersects[i].object.scale, 1, {
         x: 2,
         ease: Expo.easeOut
