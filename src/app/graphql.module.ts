@@ -21,7 +21,7 @@ export function provideApollo(httpLink: HttpLink, apollo: Apollo) {
 
   const auth = setContext((operation, context) => ({
     headers: {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}` || ""
     }
   }));
 
