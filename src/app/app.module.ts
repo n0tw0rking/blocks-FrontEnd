@@ -1,6 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { MainPageComponent } from "./modules/main-page/main-page.component";
@@ -35,7 +34,9 @@ import { SuperAdminComponent } from './modules/super-admin/super-admin.component
     BlocksPageComponent,
     BlockComponent,
     SideNavComponent,
-    SuperAdminComponent
+    SuperAdminComponent,
+    AddBlockComponent
+
   ],
   imports: [
     BrowserModule,

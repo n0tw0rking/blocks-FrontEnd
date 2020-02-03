@@ -38,6 +38,7 @@ const routes: Routes = [
     children: [
       { path: "", component: BlockComponent },
       { path: ":id", component: BlockComponent }
+
     ]
   }
 ];

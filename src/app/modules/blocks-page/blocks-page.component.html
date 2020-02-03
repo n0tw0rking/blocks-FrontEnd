@@ -3,13 +3,13 @@
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-<button type="button" style="margin-top: 60px" (click)="onToggle()"
+<!-- <button type="button" style="margin-top: 60px" (click)="onToggle()"
 [ngClass]="[btnStyle]"
 >add New Block</button>
 <br>
-<br>
+<br> -->
 
-<div *ngIf="newBlock" class="container">
+<!-- <div *ngIf="newBlock" class="container">
     <h1>Add new Block</h1>
     
     <form [formGroup]="newblockForm" (ngSubmit)="onNewForm()" >
@@ -38,21 +38,26 @@
   
       <button type="submit" class="btn btn-success">Submit</button>
     </form>
-  </div>
+  </div> -->
+  <!-- <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div> -->
 
-
-<div *ngIf="!newBlock" class="container">
+<div class="container" style="width: 60%;">
   <h1>Block List</h1>
   <div class="container">
     <div class="row" id="whole">
         <div class="row">
         <app-block
            [routerLink]="['/blocks', block.id]"
-            *ngFor="let block of blocks"
-            [block]="block"        
+            *ngFor="let block of blocks"                   
         ></app-block>
         </div>
     </div>
   </div>
 </div>
 </div>
+
+<!-- <router-outlet></router-outlet> -->
