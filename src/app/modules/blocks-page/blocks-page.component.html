@@ -11,14 +11,15 @@
 
 <div *ngIf="newBlock" class="container">
     <h1>Add new Block</h1>
-    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    
+    <form [formGroup]="newblockForm" (ngSubmit)="onNewForm()" >
       <div class="form-group">
         <label for="name">Block Name</label>
         <input
           type="text"
           class="form-control"
           id="name"
-          name="name"
+          formControlName="name"
           required
           ngModel
         />
@@ -30,7 +31,7 @@
           type="text"
           class="form-control"
           id="alterEgo"
-          name="url"
+          formControlName="location"
           ngModel
         />
       </div>
@@ -46,6 +47,7 @@
     <div class="row" id="whole">
         <div class="row">
         <app-block
+           [routerLink]="['/blocks', block.id]"
             *ngFor="let block of blocks"
             [block]="block"        
         ></app-block>

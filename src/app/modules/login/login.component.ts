@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../core/auth.service";
 import { Router, ActivatedRoute } from "@angular/router";
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
+  test: Date = new Date();
+  focusEmail;
+  focusPass;
   loginForm: FormGroup;
   errors: any = [];
   notifyMessage = "";
 
   constructor(
-    private fb: FormBuilder,
+    private formbuilder: FormBuilder,
     private auth: AuthService,
     private router: Router,
     private route: ActivatedRoute
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   createForm() {
-    this.loginForm = this.fb.group({
+    this.loginForm = this.formbuilder.group({
       email: [
         "",
         [
@@ -56,18 +58,27 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls[fieldName].errors.required;
   }
 
-  login() {
+  async login() {
+    if (this.isInvalidForm("email") || this.isInvalidForm("password")) {
+      return;
+    }
     console.log(this.loginForm.value);
     this.auth.login(this.loginForm.value).subscribe(
       token => {
+        console.log(token.data);
+        console.log(token.errors);
         console.log("login func in login component");
         this.router.navigate(["/"]);
       },
       errorResponse => {
+        // NOTE:
+        // THE RESPONSE FORM THE SERVER DOES NOT HAVE AN ERROR ATTR
         console.log(errorResponse);
         // this.errors = errorResponse.error.errors;
+
+        console.log("login func in login component");
+        this.router.navigate(["/"]);
       }
     );
-
   }
 }
