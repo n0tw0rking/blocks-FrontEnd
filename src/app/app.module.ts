@@ -1,6 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { MainPageComponent } from "./modules/main-page/main-page.component";
@@ -13,8 +12,8 @@ import { ServicesPageComponent } from "./modules/services-page/services-page.com
 import { ServiceComponent } from "./modules/services-page/service/service.component";
 import { BlocksPageComponent } from "./modules/blocks-page/blocks-page.component";
 import { BlockComponent } from "./modules/blocks-page/block/block.component";
-import { SideNavComponent } from "./modules/blocks-page/side-nav/side-nav.component";
-import { TokenInterceptor } from "./core/token.interceptor";
+import { SideNavComponent } from "./modules/side-nav/side-nav.component";
+// import { TokenInterceptor } from "./core/token.interceptor";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { GraphQLModule } from "./graphql.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -45,11 +44,11 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     NgbModule
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    }
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })
