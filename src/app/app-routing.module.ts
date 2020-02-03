@@ -12,7 +12,7 @@ import { SuperAdminComponent } from "./modules/super-admin/super-admin.component
 const routes: Routes = [
   { path: "super", component: SuperAdminComponent, canActivate: [AuthGuard] },
   { path: "login", component: LoginComponent },
-  { path: "", component: MainPageComponent, canActivate: [AuthGuard] },
+  { path: "", component: MainPageComponent },
   // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
   {
     path: "user",

@@ -17,8 +17,8 @@ export class AuthService {
   private urlLogin = "http://localhost:4000/graphql";
 
   public isAuthed = !!localStorage.getItem("currentUser");
-  public isSuperAdmin = false;
-  public isAdmin = false;
+  public isSuperAdmin: boolean;
+  public isAdmin: boolean;
 
   @Output() getIsAuthed: EventEmitter<any> = new EventEmitter();
 
@@ -114,5 +114,19 @@ export class AuthService {
 
   public getCurrentUserName(): string {
     return JSON.parse(localStorage.getItem("currentUser")).name;
+  }
+
+  public isAuthSuperAndAdmin(): any {
+    return this.apollo.watchQuery<any>({
+      query: gql`
+          query {
+            isSuperIsAdmin(id: "${localStorage.getItem("currentUser")}") {
+              isAdmin
+              isSuperAdmin
+            }
+          }
+        `,
+      errorPolicy: "all"
+    }).valueChanges;
   }
 }
