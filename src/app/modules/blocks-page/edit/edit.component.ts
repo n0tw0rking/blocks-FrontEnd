@@ -13,6 +13,9 @@ export class EditComponent implements OnInit {
   constructor( private route: ActivatedRoute ) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params =>{
+      console.log(params)
+    })
     console.log(this.route.snapshot.queryParams);
     console.log(this.route.snapshot.fragment);
     this.route.queryParams

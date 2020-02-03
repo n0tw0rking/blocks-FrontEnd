@@ -1,28 +1,3 @@
-<<<<<<< HEAD
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { MainPageComponent } from './modules/main-page/main-page.component';
-import { NavBarComponent } from './modules/main-page/nav-bar/nav-bar.component';
-import { UserComponent } from './modules/main-page/user/user.component';
-import { LoginComponent } from './modules/login/login.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { ServicesPageComponent } from './modules/services-page/services-page.component';
-import { ServiceComponent } from './modules/services-page/service/service.component';
-import { BlocksPageComponent } from './modules/blocks-page/blocks-page.component';
-import { BlockComponent } from './modules/blocks-page/block/block.component';
-import { SideNavComponent } from './modules/blocks-page/side-nav/side-nav.component';
-import { TokenInterceptor } from './core/token.interceptor'
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { GraphQLModule } from './graphql.module'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component';
-import { EditComponent } from './modules/blocks-page/edit/edit.component'
-
-=======
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
@@ -42,12 +17,13 @@ import { TokenInterceptor } from "./core/token.interceptor";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { GraphQLModule } from "./graphql.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
->>>>>>> 620ff1c5a07cfd6616eaeac1a939a4c5ce4837dd
 
 import { AuthService } from "./core/auth.service";
 import { AuthGuard } from "./core/auth.guard";
 import { ApolloService } from "./core/apollo.service";
 import { SuperAdminComponent } from './modules/super-admin/super-admin.component';
+import { EditComponent } from './modules/blocks-page/edit/edit.component';
+import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,15 +35,10 @@ import { SuperAdminComponent } from './modules/super-admin/super-admin.component
     ServiceComponent,
     BlocksPageComponent,
     BlockComponent,
-    SideNavComponent,
-<<<<<<< HEAD
     AddBlockComponent,
-    EditComponent
-=======
-    SuperAdminComponent,
-    AddBlockComponent
-
->>>>>>> 620ff1c5a07cfd6616eaeac1a939a4c5ce4837dd
+    SideNavComponent,
+    EditComponent,
+    SuperAdminComponent
   ],
   imports: [
     BrowserModule,
