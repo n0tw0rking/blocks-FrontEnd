@@ -13,7 +13,7 @@ import gql from "graphql-tag";
 export class AuthService {
   private user;
   private urlLogin = "https://blocks-backend.herokuapp.com/graphql" //"http://localhost:4000/graphql";
-  public isAuthed = !!localStorage.getItem("currentUser");
+  public isAuthed = true //!!localStorage.getItem("currentUser");
   public isSuperAdmin: boolean;
   public isAdmin: boolean;
   @Output() getIsAuthed: EventEmitter<any> = new EventEmitter();

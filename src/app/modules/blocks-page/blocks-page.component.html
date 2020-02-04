@@ -53,9 +53,9 @@
         <app-block
            [routerLink]="['/blocks','edit', block.id]"
             *ngFor="let block of blocks"   
+            [block]="block"
             ></app-block>
-            <!-- [block]="block"                 -->
-            <router-outlet></router-outlet>
+            <!-- <router-outlet></router-outlet> -->
         </div>
     </div>
   </div>
