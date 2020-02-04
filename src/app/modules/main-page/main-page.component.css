@@ -1,21 +1,40 @@
-body {
+/* body {
   margin: 0;
   height: 100vh;
-}
+} */
 
 canvas {
   display: block;
 }
 
-h1 {
-  position: absolute;
-  top: 2em;
-  left: 2em;
-  font-family: 'Montserrat';
+.main {
+  position: fixed;
+  top: 25%;
+  left: 0.3em;
+  font-family: "Montserrat";
   font-size: 7em;
   text-transform: uppercase;
   width: auto;
-  line-height: .8em;
+  line-height: 0.9em;
   border: 5px solid black;
-  padding: .2em;
+  padding: 0.2em;
 }
+
+.main>#Blocks {
+  color: red;
+}
+
+/* 
+h1>#Blocks {
+  position: absolute;
+  top: 4em;
+  left: 0.3em;
+  font-family: "Montserrat";
+  font-size: 7em;
+  text-transform: uppercase;
+  width: auto;
+  line-height: 0.8em;
+  border: 5px solid black;
+  padding: 0.2em;
+  background-color: red;
+} */

@@ -27,6 +27,8 @@ export class MainPageComponent implements OnInit {
   light1 = null;
   intersects = null;
   tl = null;
+  pointLightHelper;
+  pointLight;
   constructor() {
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(
@@ -43,13 +45,13 @@ export class MainPageComponent implements OnInit {
     });
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.mouse = new THREE.Vector2();
-    this.light = new THREE.PointLight(0xff0000, 1, 100);
-    this.light.position.set(0, 0, 100);
-    this.scene.add(this.light);
-    this.light1 = new THREE.PointLight(0xff0000, 25, 100);
-    this.light1.position.set(0, 0, 100);
-    this.scene.add(this.light1);
-    this.scene.add(this.mesh);
+
+    this.pointLight = new THREE.PointLight(0xff0000, 1, 100);
+    this.pointLight.position.set(10, 10, 10);
+    this.scene.add(this.pointLight);
+
+    this.pointLightHelper = new THREE.PointLightHelper(this.pointLight, 1);
+    this.scene.add(this.pointLightHelper);
   }
   ngAfterViewInit() {
     for (let i = 0; i < 9; i++) {
@@ -57,28 +59,27 @@ export class MainPageComponent implements OnInit {
       this.mesh[i].position.x = (Math.random() - 0.5) * 10;
       this.mesh[i].position.y = (Math.random() - 0.5) * 10;
       this.mesh[i].position.z = (Math.random() - 0.5) * 10;
-      this.light = new THREE.PointLight(0xff0000, 1, 100);
-      this.light.position.set(0, 0, 100);
-      this.scene.add(this.light);
+      this.scene.add(this.pointLight);
+      this.scene.add(this.pointLightHelper);
+
       this.scene.add(this.mesh[i]);
     }
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
     this.renderer.setClearColor("#e5e5e5");
+    this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
     this.animate();
   }
 
   animate() {
     this.raycaster.setFromCamera(this.mouse, this.camera);
     this.intersects = this.raycaster.intersectObjects(this.scene.children);
-    console.log(this.intersects);
     for (let i = 0; i < this.intersects.length; i++) {
       this.intersects[i].object.material.color.set(0xff0000);
     }
     for (let i = 0; i < 9; i++) {
       this.mesh[i].rotation.x += 0.001;
-      this.mesh[i].rotation.y += 0.001;
-      this.mesh[i].rotation.z += 0.001;
+      this.mesh[i].rotation.y += 0.02;
+      this.mesh[i].rotation.z += 0.01;
     }
 
     this.renderer.render(this.scene, this.camera);
@@ -88,6 +89,9 @@ export class MainPageComponent implements OnInit {
   @HostListener("window:resize", ["$event"])
   onWindowResize(event) {
     this.renderer.setSize(event.target.innerWidth, event.target.innerHeight);
+    this.camera.aspect = window.innerWidth / window.innerHeight;
+
+    this.camera.updateProjectionMatrix();
   }
   click(event) {
     // this.tl = GSAP.timeline();
