@@ -25,6 +25,7 @@ import { SuperAdminComponent } from './modules/super-admin/super-admin.component
 import { EditComponent } from './modules/blocks-page/edit/edit.component';
 import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component';
 import { AddUserComponent } from './modules/main-page/user/add-user/add-user.component';
+import { BalanceEditComponent } from './modules/main-page/user/balance-edit/balance-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { AddUserComponent } from './modules/main-page/user/add-user/add-user.com
     SideNavComponent,
     EditComponent,
     SuperAdminComponent,
-    AddUserComponent
+    AddUserComponent,
+    BalanceEditComponent
   ],
   imports: [
     BrowserModule,
