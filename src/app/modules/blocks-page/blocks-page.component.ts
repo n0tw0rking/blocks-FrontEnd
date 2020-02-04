@@ -17,14 +17,19 @@ export class BlocksPageComponent implements OnInit {
 
 
 
-  blocks =[ {id:1, name:'alzaytona', location:"al naser ,123 st", status:'active', dateOfSubscreption:'1-1-2019'},
-  {id:2, name:'zahra', location:"aven al ewina , 120 st", status:'active', dateOfSubscreption:'2-2-2019'}
+  blocks =[ {id:0, name:'alzaytona', location:"al naser ,123 st", status:'active', dateOfSubscreption:'1-1-2019'},
+  {id:1, name:'zahra', location:"aven al ewina , 120 st", status:'active', dateOfSubscreption:'2-2-2019'}
  ] 
  
  constructor( private formbuilder: FormBuilder, private router: Router, private http:HttpService ) { }
 
   ngOnInit() {
-    // http get blocks list
+    // http get blocks list 
+    //getBlocks()
+  }
+
+  getBlocks(){
+    this.http.getBlocks()
   }
   
 }

@@ -11,18 +11,24 @@ import { Observable } from 'rxjs/Observable';
 })
 export class EditComponent implements OnInit {             
   constructor( private route: ActivatedRoute ) { }
+  id = 0;
 
   ngOnInit() {
     this.route.params.subscribe(params =>{
-      console.log(params)
+      this.id = params.id;
+     this.getBlock(this.id)
     })
-    console.log(this.route.snapshot.queryParams);
-    console.log(this.route.snapshot.fragment);
-    this.route.queryParams
-      .subscribe(data => console.log(data))
+
+    // console.log(this.route.snapshot.queryParams, 'queryparam');
+    // console.log(this.route.snapshot.fragment, 'fragmants');
+    // this.route.queryParams
+    //   .subscribe(data => console.log(data.id, 'data.id'))
         // (queryParams: Params) => {
         //   this.allowEdit = queryParams['allowEdit'] === '1' ? true : false;
         // }
   }
-
+  
+  getBlock(id){
+    console.log(id, 'getById')
+  }
 }

@@ -23,6 +23,24 @@ export class HttpService {
       .subscribe(data => console.log(data));
   }
 
+  getUser(id){
+
+  }
+
+  getBlock(id){ //get all info of block by id 
+
+  }
+
+  getBlocks(){ //get all blocks id s and name s
+
+  }
+
+  getUsersOfBlock(id) { //get all user s inside this block(id)
+
+  }
+
+
+
 
   postNewBlock(Block) {
     console.log("getuser triggerde", Block);
