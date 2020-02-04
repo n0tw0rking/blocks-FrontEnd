@@ -10,22 +10,27 @@ import { BlockComponent } from "./modules/blocks-page/block/block.component";
 import { SuperAdminComponent } from "./modules/super-admin/super-admin.component";
 import { EditComponent } from './modules/blocks-page/edit/edit.component';
 import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component';
+import { AddUserComponent } from './modules/main-page/user/add-user/add-user.component';
+import { BalanceEditComponent } from './modules/main-page/user/balance-edit/balance-edit.component';
 
 const routes: Routes = [
   { path: "super", component: SuperAdminComponent, canActivate: [AuthGuard] },
   { path: "login", component: LoginComponent },
   { path: "", component: MainPageComponent, canActivate: [AuthGuard] },
   // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
+  {path: 'user/add', component: AddUserComponent},
+  {path: 'user/balance', component: BalanceEditComponent},
+
   {
     path: "user",
     component: UsersComponent,
     canActivate: [AuthGuard],
-
     children: [
       { path: "", component: UsersComponent },
       { path: ":id", component: UsersComponent }
     ]
   },
+
   {
     path: "services",
     component: ServicesPageComponent,
