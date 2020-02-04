@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { UserComponent } from "./modules/main-page/user/user.component";
+import { UsersComponent } from "./modules/main-page/user/users.component";
 import { LoginComponent } from "./modules/login/login.component";
 import { MainPageComponent } from "./modules/main-page/main-page.component";
 import { ServicesPageComponent } from "./modules/services-page/services-page.component";
@@ -18,12 +18,12 @@ const routes: Routes = [
   // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
   {
     path: "user",
-    component: UserComponent,
+    component: UsersComponent,
     canActivate: [AuthGuard],
 
     children: [
-      { path: "", component: UserComponent },
-      { path: ":id", component: UserComponent }
+      { path: "", component: UsersComponent },
+      { path: ":id", component: UsersComponent }
     ]
   },
   {
@@ -38,10 +38,12 @@ const routes: Routes = [
     // canActivate: [AuthGuard],
     children: [
       {path: '', component: BlockComponent},
-      {path: 'add', component: AddBlockComponent},
-      {path: 'edit/:id', component: EditComponent}
+      // {path: 'edit/:id', component: EditComponent}
     ]
-  }
+  },
+      {path: 'blocks/add', component: AddBlockComponent},
+      {path: 'blocks/edit/:id', component: EditComponent}
+  
 ];
 
 @NgModule({
