@@ -10,6 +10,7 @@ import { Location } from "@angular/common";
 export class NavBarComponent implements OnInit {
   private toggleButton: any;
   private sidebarVisible: boolean;
+  titlee;
   constructor(
     public auth: AuthService,
     public location: Location,
@@ -50,16 +51,16 @@ export class NavBarComponent implements OnInit {
     html.classList.remove("nav-open");
   }
   isHome() {
-    var titlee = this.location.prepareExternalUrl(this.location.path());
-    if (titlee === "/home") {
+    this.titlee = this.location.prepareExternalUrl(this.location.path());
+    if (this.titlee === "/home") {
       return true;
     } else {
       return false;
     }
   }
   isLogin() {
-    var titlee = this.location.prepareExternalUrl(this.location.path());
-    if (titlee === "/login") {
+    this.titlee = this.location.prepareExternalUrl(this.location.path());
+    if (this.titlee === "/login") {
       return true;
     } else {
       return false;
