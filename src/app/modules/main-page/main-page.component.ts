@@ -5,7 +5,7 @@ import {
   ElementRef,
   HostListener
 } from "@angular/core";
-import * as THREE from "three";
+import * as THREE from "three-full";
 import { TimelineMax } from "gsap";
 @Component({
   selector: "app-main-page",
