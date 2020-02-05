@@ -1,4 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
+import * as $ from "jquery";
+
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -12,12 +14,29 @@ import { ServicesPageComponent } from "./modules/services-page/services-page.com
 import { ServiceComponent } from "./modules/services-page/service/service.component";
 import { BlocksPageComponent } from "./modules/blocks-page/blocks-page.component";
 import { BlockComponent } from "./modules/blocks-page/block/block.component";
-import { SideNavComponent } from "./modules/side-nav/side-nav.component";
+import { SidebarComponent } from "./modules/sidebar/sidebar.component";
 import { TokenInterceptor } from "./core/token.interceptor";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { GraphQLModule } from "./graphql.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import {
+  CommonModule,
+  LocationStrategy,
+  PathLocationStrategy
+} from "@angular/common";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+
+// import { SpinnerComponent } from "./modules/side-nav/spinner.component";
+import {
+  PerfectScrollbarModule,
+  PERFECT_SCROLLBAR_CONFIG,
+  PerfectScrollbarConfigInterface
+} from "ngx-perfect-scrollbar";
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true,
+  wheelSpeed: 2,
+  wheelPropagation: true
+};
 
 @NgModule({
   declarations: [
@@ -30,7 +49,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     ServiceComponent,
     BlocksPageComponent,
     BlockComponent,
-    SideNavComponent
+    SidebarComponent
+    // SpinnerComponent0
   ],
   imports: [
     BrowserModule,
@@ -40,14 +60,22 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     HttpClientModule,
     GraphQLModule,
     BrowserAnimationsModule,
-    // deleted forRoot() from ngbmodule
-    NgbModule
+    NgbModule,
+    PerfectScrollbarModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
+    },
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    },
+    {
+      provide: LocationStrategy,
+      useClass: PathLocationStrategy
     }
   ],
   bootstrap: [AppComponent]

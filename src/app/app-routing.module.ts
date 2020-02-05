@@ -9,8 +9,8 @@ import { BlocksPageComponent } from "./modules/blocks-page/blocks-page.component
 import { BlockComponent } from "./modules/blocks-page/block/block.component";
 
 const routes: Routes = [
-  { path: "login", component: LoginComponent },
-  { path: "home", component: MainPageComponent }
+  { path: "login", component: LoginComponent }
+  // { path: "home", component: MainPageComponent }
   // {
   //   path: "user",
   //   component: UserComponent, //canActivate:[AuthGuard],
