@@ -36,7 +36,6 @@ import { TokenInterceptor } from "./core/token.interceptor";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { GraphQLModule } from "./graphql.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { AuthService } from "./core/auth.service";
 import { AuthGuard } from "./core/auth.guard";
 import { ApolloService } from "./core/apollo.service";
@@ -57,12 +56,12 @@ import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/bala
     BlockComponent,
     SidebarComponent,
     NavigationComponent,
-    BreadcrumbComponent
-    // AddBlockComponent,
-    // EditComponent,
-    // SuperAdminComponent,
-    // AddUserComponent,
-    // BalanceEditComponent
+    BreadcrumbComponent,
+    AddBlockComponent,
+    EditComponent,
+    SuperAdminComponent,
+    AddUserComponent,
+    BalanceEditComponent
   ],
   imports: [
     BrowserModule,

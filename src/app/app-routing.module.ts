@@ -15,12 +15,14 @@ import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/bala
 
 const routes: Routes = [
   { path: "super", component: SuperAdminComponent, canActivate: [AuthGuard] },
+  { path: "blocks", component: BlocksPageComponent, canActivate: [AuthGuard] },
+  { path: "services", component: ServicesPageComponent },
+
   { path: "login", component: LoginComponent },
   { path: "", component: MainPageComponent },
   // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
   { path: "user/add", component: AddUserComponent },
   { path: "user/balance", component: BalanceEditComponent },
-
   {
     path: "user",
     component: UsersComponent,
