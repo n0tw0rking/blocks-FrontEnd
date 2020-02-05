@@ -41,39 +41,3 @@ export class AuthGuard implements CanActivate {
     }
   }
 }
-//   private handleAuthState(): boolean {
-//     if (this.isLoginOrRegister()) {
-//       this.router.navigate(["/"]);
-//       return false;
-//     }
-//     return true;
-//   }
-//   private handleNotAuthState(): boolean {
-//     if (this.isLoginOrRegister()) {
-//       return true;
-//     }
-//     this.router.navigate(["/login"]);
-//     return false;
-//   }
-
-//   private isLoginOrRegister(): boolean {
-//     // if (this.url.includes("login") || this.url.includes("register")) {
-//     if (this.url.includes("login")) {
-//       return true;
-//     }
-//     return false;
-//   }
-//   canActivate(
-//     next: ActivatedRouteSnapshot,
-//     state: RouterStateSnapshot
-//   ): boolean {
-//     this.url = state.url;
-//     console.log(this.url, state.url);
-//     console.log(this.auth.isAuthed);
-//     if (this.auth.isAuthed) {
-//       console.log("im here");
-//       return this.handleAuthState();
-//     }
-//     return this.handleNotAuthState();
-//   }
-// }
