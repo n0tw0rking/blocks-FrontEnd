@@ -7,8 +7,11 @@
 <!-- ============================================================== -->
 <!-- Main wrapper - style you can find in pages.scss -->
 <!-- ============================================================== -->
-<div id="main-wrapper" class="fixed-sidebar fixed-header skin-default-dark"
-  [ngClass]="{'show-sidebar': showMobileMenu, 'mini-sidebar': addMiniSidebar, 'lock-nav': lockSidebar}">
+<div id="main-wrapper" class="fixed-sidebar fixed-header skin-default-dark" [ngClass]="{
+    'show-sidebar': showMobileMenu,
+    'mini-sidebar': addMiniSidebar,
+    'lock-nav': lockSidebar
+  }">
   <!-- ============================================================== -->
   <!-- Topbar header - style you can find in topbar.scss -->
   <!-- ============================================================== -->
@@ -21,22 +24,23 @@
       <!-- Logo -->
       <!-- ============================================================== -->
       <div class="navbar-header">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href [routerLink]="['/home']">
           <!-- Logo icon -->
           <b>
             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
             <!-- Dark Logo icon -->
-            <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+            <i class="wi wi-sunset"></i>
+            <!-- <i alt="homepage" class="dark-logo"></i> -->
+
             <!-- Light Logo icon -->
-            <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
           </b>
           <!--End Logo icon -->
           <!-- Logo text -->
-          <span [ngClass]="{'d-none': hideLogoText}">
+          <span [ngClass]="{ 'd-none': hideLogoText }">
             <!-- dark Logo text -->
-            <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+            <a alt="homepage" style="color: #000; text-align: center;">Blocks</a>
             <!-- Light Logo text -->
-            <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+            <a alt="homepage" class="dark-logo">Blocks</a>
           </span>
         </a>
       </div>
@@ -53,12 +57,11 @@
   <!-- ============================================================== -->
   <aside class="left-sidebar">
     <div class="d-flex no-block nav-text-box align-items-center">
-      <span>
-        <img src="assets/images/logo-icon.png" alt="elegant admin template">
-      </span>
       <a (click)="lockSidebar = !lockSidebar" class="nav-lock waves-effect waves-dark ml-auto hidden-md-down"
         href="javascript:void(0)">
-        <i class="mdi" [ngClass]="(lockSidebar)?'mdi-toggle-switch-off':'mdi-toggle-switch'"></i>
+        <i class="mdi" [ngClass]="
+            lockSidebar ? 'mdi-toggle-switch-off' : 'mdi-toggle-switch'
+          "></i>
       </a>
       <a (click)="showMobileMenu = false" class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up"
         href="javascript:void(0)">
@@ -77,7 +80,7 @@
   <!-- ============================================================== -->
   <!-- Page wrapper  -->
   <!-- ============================================================== -->
-  <div class="page-wrapper" [ngStyle]="{'min-height': height}">
+  <div class="page-wrapper" [ngStyle]="{ 'min-height': height }">
     <!-- ============================================================== -->
     <!-- Container fluid  -->
     <!-- ============================================================== -->
@@ -102,8 +105,6 @@
   <!-- footer -->
   <!-- ============================================================== -->
   <footer class="footer">
-    All Rights Reserved by Elegant Angular Admin. Designed and Developed by
-    <a href="https://wrappixel.com">WrapPixel</a>.
   </footer>
   <!-- ============================================================== -->
   <!-- End footer -->
