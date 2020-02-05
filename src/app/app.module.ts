@@ -32,20 +32,19 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelSpeed: 2,
   wheelPropagation: true
 };
-import { SideNavComponent } from "./modules/blocks-page/side-nav/side-nav.component";
 import { TokenInterceptor } from "./core/token.interceptor";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { GraphQLModule } from "./graphql.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { AuthService } from "./core/auth.service";
 import { AuthGuard } from "./core/auth.guard";
 import { ApolloService } from "./core/apollo.service";
-import { SuperAdminComponent } from './modules/super-admin/super-admin.component';
-import { EditComponent } from './modules/blocks-page/edit/edit.component';
-import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component';
-import { AddUserComponent } from './modules/main-page/user/add-user/add-user.component';
-import { BalanceEditComponent } from './modules/main-page/user/balance-edit/balance-edit.component';
+import { SuperAdminComponent } from "./modules/super-admin/super-admin.component";
+import { EditComponent } from "./modules/blocks-page/edit/edit.component";
+import { AddBlockComponent } from "./modules/blocks-page/add-block/add-block.component";
+import { AddUserComponent } from "./modules/main-page/user/add-user/add-user.component";
+import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,11 +59,10 @@ import { BalanceEditComponent } from './modules/main-page/user/balance-edit/bala
     NavigationComponent,
     BreadcrumbComponent
     // AddBlockComponent,
-    SideNavComponent,
-    EditComponent,
-    SuperAdminComponent,
-    AddUserComponent,
-    BalanceEditComponent
+    // EditComponent,
+    // SuperAdminComponent,
+    // AddUserComponent,
+    // BalanceEditComponent
   ],
   imports: [
     BrowserModule,
