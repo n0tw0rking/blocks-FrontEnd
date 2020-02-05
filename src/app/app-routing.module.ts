@@ -8,18 +8,18 @@ import { BlocksPageComponent } from "./modules/blocks-page/blocks-page.component
 import { AuthGuard } from "./core/auth.guard";
 import { BlockComponent } from "./modules/blocks-page/block/block.component";
 import { SuperAdminComponent } from "./modules/super-admin/super-admin.component";
-import { EditComponent } from './modules/blocks-page/edit/edit.component';
-import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component';
-import { AddUserComponent } from './modules/main-page/user/add-user/add-user.component';
-import { BalanceEditComponent } from './modules/main-page/user/balance-edit/balance-edit.component';
+import { EditComponent } from "./modules/blocks-page/edit/edit.component";
+import { AddBlockComponent } from "./modules/blocks-page/add-block/add-block.component";
+import { AddUserComponent } from "./modules/main-page/user/add-user/add-user.component";
+import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
 
 const routes: Routes = [
   { path: "super", component: SuperAdminComponent, canActivate: [AuthGuard] },
   { path: "login", component: LoginComponent },
   { path: "", component: MainPageComponent },
   // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
-  {path: 'user/add', component: AddUserComponent},
-  {path: 'user/balance', component: BalanceEditComponent},
+  { path: "user/add", component: AddUserComponent },
+  { path: "user/balance", component: BalanceEditComponent },
 
   {
     path: "user",
@@ -42,13 +42,12 @@ const routes: Routes = [
     component: BlocksPageComponent,
     // canActivate: [AuthGuard],
     children: [
-      {path: '', component: BlockComponent},
+      { path: "", component: BlockComponent }
       // {path: 'edit/:id', component: EditComponent}
     ]
   },
-      {path: 'blocks/add', component: AddBlockComponent},
-      {path: 'blocks/edit/:id', component: EditComponent}
-  
+  { path: "blocks/add", component: AddBlockComponent },
+  { path: "blocks/edit/:id", component: EditComponent }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
