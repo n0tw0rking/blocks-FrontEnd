@@ -22,8 +22,26 @@ export class HttpService {
       .subscribe(data => console.log(data));
   }
 
+  getUser(id){
 
-  postBlock(Block) {
+  }
+
+  getBlock(id){ //get all info of block by id 
+
+  }
+
+  getBlocks(){ //get all blocks id s and name s
+
+  }
+
+  getUsersOfBlock(id) { //get all user s inside this block(id)
+
+  }
+
+
+
+
+  postNewBlock(Block) {
     console.log("getuser triggerde", Block);
     return this.http
       .post("http://localhost:3000/api/", Block)

@@ -4,7 +4,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { MainPageComponent } from "./modules/main-page/main-page.component";
 import { NavBarComponent } from "./modules/main-page/nav-bar/nav-bar.component";
-import { UserComponent } from "./modules/main-page/user/user.component";
+import { UsersComponent } from "./modules/main-page/user/users.component";
 import { LoginComponent } from "./modules/login/login.component";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
@@ -22,21 +22,27 @@ import { AuthService } from "./core/auth.service";
 import { AuthGuard } from "./core/auth.guard";
 import { ApolloService } from "./core/apollo.service";
 import { SuperAdminComponent } from './modules/super-admin/super-admin.component';
+import { EditComponent } from './modules/blocks-page/edit/edit.component';
+import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component';
+import { AddUserComponent } from './modules/main-page/user/add-user/add-user.component';
+import { BalanceEditComponent } from './modules/main-page/user/balance-edit/balance-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     NavBarComponent,
-    UserComponent,
+    UsersComponent,
     LoginComponent,
     ServicesPageComponent,
     ServiceComponent,
     BlocksPageComponent,
     BlockComponent,
+    AddBlockComponent,
     SideNavComponent,
+    EditComponent,
     SuperAdminComponent,
-    AddBlockComponent
-
+    AddUserComponent,
+    BalanceEditComponent
   ],
   imports: [
     BrowserModule,

@@ -14,18 +14,18 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
+      <li class="nav-item "  routerLinkActive="active">
         <a class="nav-link" routerLink="/user"
           >User <span class="sr-only">(current)</span></a
         >
       </li>
-      <li class="nav-item" active>
+      <li class="nav-item"  routerLinkActive="active">
         <a class="nav-link" routerLink="/services"> Services</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item"  routerLinkActive="active">
         <a class="nav-link " routerLink="/blocks">Blocks</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item"  routerLinkActive="active">
         <a class="nav-link " routerLink="/super">super</a>
       </li>
       <form class="form-inline my-2 my-lg-0">
@@ -40,7 +40,7 @@
         </button>
       </form>
       <li class="nav-item navbar-right">
-        <a class="nav-link " routerLink="/login" (click)="onLogout()">Logout</a>
+        <a class="nav-link" routerLink="/login" (click)="onLogout()">Logout</a>
       </li>
     </ul>
   </div>

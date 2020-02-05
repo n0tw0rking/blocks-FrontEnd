@@ -31,7 +31,7 @@ export class AddBlockComponent implements OnInit {
     
     // this.blocks.push(this.newblockForm.value)
 
-    // this.router.navigate(["/blocks"]);
+    this.router.navigate(["/blocks"]);
 
   }
 }

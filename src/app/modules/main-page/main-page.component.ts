@@ -12,8 +12,8 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
     this.apollo
-      .watchQuery<any>({
-        query: gql`
+     .watchQuery<any>({
+         query: gql`
           query {
             oneUser {
               _id

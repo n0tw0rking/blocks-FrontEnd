@@ -12,29 +12,32 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./block.component.css']
 })
 export class BlockComponent implements OnInit {
-  block:{id:number, name:string, location:string, status:string, dateOfSubscreption:string}
+  @Input() block:{id:number, name:string, location:string, status:string, dateOfSubscreption:string}
   paramsSubscription: Subscription;
 
 // @Input() block;
 
   constructor( private route: ActivatedRoute) { }
-
+// id = 0
+// name = ''
   ngOnInit() {
-    this.block = {
-      id: this.route.snapshot.params['id'],
-      name: this.route.snapshot.params['name'],
-      location:'',
-      status: '',
-      dateOfSubscreption:''
-    };
-    this.paramsSubscription = this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.block.id = params['id'];
-          this.block.name = params['name'];
-          console.log(this.block)
-        }
-      );
+    // this.block = {
+    //   id: this.route.snapshot.params['id'],
+    //   name: this.route.snapshot.params['name'],
+    //   location:'',
+    //   status: '',
+    //   dateOfSubscreption:''
+    // };
+    // console.log( this.route.snapshot.params['id'], 'snapshot')
+    // this.paramsSubscription = this.route.params
+    // this.route.params
+    //   .subscribe(
+    //     (params: Params) => {
+    //       // this.block.id = params['id'];
+          // this.block.name = params['name'];
+          // console.log(this.block)
+      //   }
+      // );
   }
 
 }
