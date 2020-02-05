@@ -14,10 +14,11 @@ import { ServicesPageComponent } from "./modules/services-page/services-page.com
 import { ServiceComponent } from "./modules/services-page/service/service.component";
 import { BlocksPageComponent } from "./modules/blocks-page/blocks-page.component";
 import { BlockComponent } from "./modules/blocks-page/block/block.component";
-import { SidebarComponent } from "./modules/sidebar/sidebar.component";
+import { SidebarComponent } from "./modules/shared/sidebar/sidebar.component";
 import { TokenInterceptor } from "./core/token.interceptor";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { GraphQLModule } from "./graphql.module";
+
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   CommonModule,
@@ -25,8 +26,8 @@ import {
   PathLocationStrategy
 } from "@angular/common";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-
-// import { SpinnerComponent } from "./modules/side-nav/spinner.component";
+import { NavigationComponent } from "./modules/shared/header-navigation/navigation.component";
+import { BreadcrumbComponent } from "./modules/shared/breadcrumb/breadcrumb.component";
 import {
   PerfectScrollbarModule,
   PERFECT_SCROLLBAR_CONFIG,
@@ -49,8 +50,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ServiceComponent,
     BlocksPageComponent,
     BlockComponent,
-    SidebarComponent
-    // SpinnerComponent0
+    SidebarComponent,
+    NavigationComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HttpClientModule,
     GraphQLModule,
     BrowserAnimationsModule,
-    NgbModule,
+    NgbModule.forRoot(),
     PerfectScrollbarModule
   ],
   providers: [
