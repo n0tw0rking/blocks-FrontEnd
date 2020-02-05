@@ -5,7 +5,7 @@ import { LoginComponent } from "./modules/login/login.component";
 import { MainPageComponent } from "./modules/main-page/main-page.component";
 import { ServicesPageComponent } from "./modules/services-page/services-page.component";
 import { BlocksPageComponent } from "./modules/blocks-page/blocks-page.component";
-// import { AuthGuard } from "./core/auth.guard";
+import { AuthGuard } from "./core/auth.guard";
 import { BlockComponent } from "./modules/blocks-page/block/block.component";
 
 const routes: Routes = [
@@ -19,16 +19,16 @@ const routes: Routes = [
   //     { path: ":id", component: UserComponent }
   //   ]
   // },
-  { path: "services", component: ServicesPageComponent }
-  // // { path:'blocks', component: BlocksPageComponent, canActivate:[AuthGuard]}
-  // {
-  //   path: "blocks",
-  //   component: BlocksPageComponent,
-  //   children: [
-  //     { path: "", component: BlockComponent },
-  //     { path: ":id", component: BlockComponent }
-  //   ]
-  // }
+  { path: "services", component: ServicesPageComponent },
+  { path: "blocks", component: BlocksPageComponent, canActivate: [AuthGuard] },
+  {
+    path: "blocks",
+    component: BlocksPageComponent,
+    children: [
+      { path: "", component: BlockComponent },
+      { path: ":id", component: BlockComponent }
+    ]
+  }
   // // { path: "", pathMatch: "full", redirectTo: "home" }
 ];
 @NgModule({

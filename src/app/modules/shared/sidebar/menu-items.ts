@@ -2,7 +2,7 @@ import { RouteInfo } from "./sidebar.metadata";
 
 export const ROUTES: RouteInfo[] = [
   {
-    path: "/service",
+    path: "/services",
     title: "Services",
     icon: "mdi mdi-image-filter-vintage",
     class: "",
@@ -18,7 +18,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: "/component/rating",
+    path: "/blocks",
     title: "Blocks",
     icon: "mdi mdi-bandcamp",
     class: "",
