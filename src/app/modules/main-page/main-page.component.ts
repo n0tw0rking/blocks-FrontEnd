@@ -92,7 +92,7 @@ export class MainPageComponent implements OnInit {
   ngOnInit() {
     // this.animate();
   }
-  @HostListener("window:mousemove", ["$event"])
+  @HostListener("window:click", ["$event"])
   onMouseOver(event) {
     this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
