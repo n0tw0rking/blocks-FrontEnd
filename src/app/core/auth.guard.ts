@@ -7,6 +7,7 @@ import {
 } from "@angular/router";
 
 import { AuthService } from "./auth.service";
+import { async } from "@angular/core/testing";
 
 @Injectable({
   providedIn: "root"
@@ -20,11 +21,14 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): boolean {
     console.log(state.url);
-
+    // this.auth.isAuthenticated().subscribe(result => {
+    //   this.auth.isAuthed = result;
+    //   console.log(this.auth.isAuthed, "%%%%%%%%");
+    // });
     if (state.url === "/super") {
       // console.log(this.auth.isAuthed, "this.auth.isAuthed");
       // console.log(this.auth.isSuperAdmin, "this.auth.isSuperAdmin");
-      console.log(this.auth.isAuthed && this.auth.isSuperAdmin, "ISSUPERADMIN");
+      // console.log(this.auth.isAuthed && this.auth.isSuperAdmin, "ISSUPERADMIN");
       return this.auth.isAuthed && this.auth.isSuperAdmin;
     } else {
       if (this.auth.isAuthed) {
@@ -37,39 +41,3 @@ export class AuthGuard implements CanActivate {
     }
   }
 }
-//   private handleAuthState(): boolean {
-//     if (this.isLoginOrRegister()) {
-//       this.router.navigate(["/"]);
-//       return false;
-//     }
-//     return true;
-//   }
-//   private handleNotAuthState(): boolean {
-//     if (this.isLoginOrRegister()) {
-//       return true;
-//     }
-//     this.router.navigate(["/login"]);
-//     return false;
-//   }
-
-//   private isLoginOrRegister(): boolean {
-//     // if (this.url.includes("login") || this.url.includes("register")) {
-//     if (this.url.includes("login")) {
-//       return true;
-//     }
-//     return false;
-//   }
-//   canActivate(
-//     next: ActivatedRouteSnapshot,
-//     state: RouterStateSnapshot
-//   ): boolean {
-//     this.url = state.url;
-//     console.log(this.url, state.url);
-//     console.log(this.auth.isAuthed);
-//     if (this.auth.isAuthed) {
-//       console.log("im here");
-//       return this.handleAuthState();
-//     }
-//     return this.handleNotAuthState();
-//   }
-// }
