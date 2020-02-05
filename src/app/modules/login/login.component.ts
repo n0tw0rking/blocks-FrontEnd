@@ -65,10 +65,21 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.value);
     this.auth.login(this.loginForm.value).subscribe(
       token => {
-        console.log(token.data);
-        console.log(token.errors);
-        console.log("login func in login component");
-        this.router.navigate(["/"]);
+        if (token.errors) {
+          console.log(token.errors[0].message);
+        } else {
+          if (token.data.login.isSuperAdmin) {
+            console.log(" this is the superAdmin");
+            this.router.navigate(["/"]);
+          } else if (token.data.login.Admin) {
+            console.log(token);
+            console.log("this is the Admin");
+            this.router.navigate(["/"]);
+          } else {
+            console.log("this is the user");
+            this.router.navigate(["/login"]);
+          }
+        }
       },
       errorResponse => {
         // NOTE:

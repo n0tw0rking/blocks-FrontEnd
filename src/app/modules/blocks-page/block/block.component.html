@@ -17,14 +17,14 @@
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
           <span class="card-title">{{ block.name }}</span>
-          <p class="card-text">Status: {{ block.status }}</p>
-          <p class="card-text">Date of subscreption: {{ block.dateOfSubscreption }}</p>
+          <p class="card-text">ID: {{ block.id }}</p>
+          <p class="card-text">Date of subscreption: {{ block.dateOfSubscreption }} </p>
           <p>{{block.location}}I am a very simple card. I am good at containing small bits of information.
-          I am convenient because .</p>
+          {{id}}I am convenient because .</p>
         </div>
         <div class="card-action">
-          <a  href="#" [routerLink]="['/block', block.id, block.name]">Edit</a>
-          <a href="#">More Info</a>
+          <a >Status: {{block.status}}</a>
+          <!-- <a href="#">More Info</a> -->
         </div>
       </div>
     </div>
