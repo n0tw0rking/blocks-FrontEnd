@@ -33,8 +33,8 @@
     <div class="container">
       <div class="row" id="whole">
         <div class="row">
-          <app-block [routerLink]="['/blocks','edit', block.id]" *ngFor="let block of blocks" [block]="block">
-          </app-block>
+          <!-- [routerLink]="['/blocks','edit', block.id]"  //display the user block -->
+          <app-block [routerLink]="['/user',block.id]" *ngFor="let block of blocks" [block]="block"></app-block>
           <!-- <router-outlet></router-outlet> -->
         </div>
       </div>

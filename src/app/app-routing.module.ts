@@ -19,15 +19,18 @@ const routes: Routes = [
 
   { path: "login", component: LoginComponent },
   { path: "", component: MainPageComponent },
+  // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
   { path: "user/add", component: AddUserComponent },
-  { path: "user/balance", component: BalanceEditComponent },
+  { path: "user/balance/:id", component: BalanceEditComponent },
+  { path: "user/:id", component: UsersComponent },
+
   {
     path: "user",
     component: UsersComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: "", component: UsersComponent },
-      { path: ":id", component: UsersComponent }
+      { path: "", component: UsersComponent }
+      // { path: ":id", component: UsersComponent }
     ]
   },
 

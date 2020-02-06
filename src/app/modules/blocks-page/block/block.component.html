@@ -23,8 +23,8 @@
           {{id}}I am convenient because .</p>
         </div>
         <div class="card-action">
-          <a >Status: {{block.status}}</a>
-          <!-- <a href="#">More Info</a> -->
+          <a>Status: {{block.status}} </a>
+          <a [routerLink]="['/blocks','edit', block.id]">More Info</a>
         </div>
       </div>
     </div>
