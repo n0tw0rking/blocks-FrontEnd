@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-balance-edit',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./balance-edit.component.css']
 })
 export class BalanceEditComponent implements OnInit {
-
-  constructor() { }
+sub:any;
+email:string;
+  constructor( private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.sub = this.route.params.subscribe(params =>{
+     this.email = params.id
+    console.log(params)
+    })
   }
 
 }
