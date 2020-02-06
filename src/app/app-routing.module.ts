@@ -12,7 +12,6 @@ import { EditComponent } from "./modules/blocks-page/edit/edit.component";
 import { AddBlockComponent } from "./modules/blocks-page/add-block/add-block.component";
 import { AddUserComponent } from "./modules/main-page/user/add-user/add-user.component";
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
-
 const routes: Routes = [
   { path: "super", component: SuperAdminComponent, canActivate: [AuthGuard] },
   { path: "blocks", component: BlocksPageComponent, canActivate: [AuthGuard] },
@@ -20,7 +19,6 @@ const routes: Routes = [
 
   { path: "login", component: LoginComponent },
   { path: "", component: MainPageComponent },
-  // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
   { path: "user/add", component: AddUserComponent },
   { path: "user/balance", component: BalanceEditComponent },
   {
