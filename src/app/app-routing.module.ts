@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: "", component: MainPageComponent, canActivate: [AuthGuard] },
   // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
   {path: 'user/add', component: AddUserComponent},
-  {path: 'user/balance', component: BalanceEditComponent},
+  {path: 'user/balance/:id', component: BalanceEditComponent},
+  {path: 'user/:id', component: UsersComponent},
 
   {
     path: "user",
@@ -27,7 +28,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: "", component: UsersComponent },
-      { path: ":id", component: UsersComponent }
+      // { path: ":id", component: UsersComponent }
     ]
   },
 
