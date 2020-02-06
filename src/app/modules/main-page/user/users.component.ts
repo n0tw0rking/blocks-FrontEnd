@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Apollos } from '../../../core/apollo.service'
+// import { Apollo } from 'apollo-angular';
 
 
 @Component({
@@ -13,7 +15,7 @@ users = [
   {email:"tow@tow.com", userSubscription: [{name:'hasan2',balance:100,user:'username2',block:'block2'}] ,  adminBlock:'admin2'}
 
 ]
-  constructor( private router: Router, private route: ActivatedRoute) { }
+  constructor( private router: Router, private route: ActivatedRoute, private polo: Apollos) { }
 id='';
 sub:any;
 ngOnInit() {
@@ -29,7 +31,7 @@ ngOnInit() {
   // }
   userMoreInfo(use){
     console.log(use)
-    //redirect to new page that have rteh user record
+    //redirect to new page that have the user record
     this.router.navigate(["/user/balance", use.email]);
       // Get http record
 
