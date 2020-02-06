@@ -1,13 +1,41 @@
-<div class="container">
-    <div class="card">
-        <h2>{{ service.name }}</h2>
-    <!-- <img class="card-img-top" src="" alt="Card image" /> -->
-    <div class="card-body">
-      <h4 class="card-title">{{ service.paymentStatus }}</h4>
-      <p class="card-text">{{ service.status }}</p>
-      <a href="#" class="btn btn-primary" 
-        >Details</a>
-    </div>
-  </div>
-</div>
-<br>
+            <!-- <div class="col-lg-3 col-md-3">
+              <div class="card ">
+                <img class="card-img-middle img-responsive"
+                  src="https://cdn2.vectorstock.com/i/1000x1000/56/46/fill-gear-icon-settings-symbol-flat-style-vector-25235646.jpg"
+                  alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">{{ service.name }}</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                  <a href="#" class="btn btn-primary"> ENABLE </a>
+                  <a href="#" class="btn btn-secondary"> DISABLE</a>
+                </div>
+              </div>
+            </div> -->
+            <div class="col-md-4 d-inline-block">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title text-center"><strong>{{ service.name }}</strong></h4>
+                  <hr />
+                  <p class="card-text text-center">With supporting text below as a natural lead-in to additional
+                    content.</p>
+                  <p class="card-text"> Price: 100$</p>
+                  <p class="card-text"> status: Enabled</p>
+
+                  <!-- <button href="#" class="btn btn-primary "> ENABLE </button>
+                  <button type="button" class="btn btn-unique btn-sm">Middle</button>
+                  <button href="#" class="btn btn-secondary center"> DISABLE</button> -->
+                  <!-- <div class="btn-group" role="group" aria-label="Basic example"> -->
+                  <!-- <button type="button" class="btn btn-primary btn-rounded">Enabled</button> -->
+                  <!-- <button type="button" class="btn btn-outline-danger">DISABLE</button> -->
+                  <button type="button" class="btn btn-info btn-circle btn-xl">
+                    <i class="fa fa-check"></i>
+                  </button>
+                  <button type="button" class="btn btn-warning btn-circle btn-xl">
+                    <i class="fa fa-times"></i>
+                  </button>
+                  <!-- </div> -->
+                </div>
+              </div>
+            </div>
