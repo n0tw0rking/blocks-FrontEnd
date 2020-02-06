@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: "super", component: SuperAdminComponent, canActivate: [AuthGuard] },
   { path: "blocks", component: BlocksPageComponent, canActivate: [AuthGuard] },
   { path: "services", component: ServicesPageComponent },
-
+  { path: "home", component: MainPageComponent },
   { path: "login", component: LoginComponent },
   { path: "", component: MainPageComponent },
   // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
