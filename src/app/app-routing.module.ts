@@ -12,13 +12,35 @@ import { EditComponent } from "./modules/blocks-page/edit/edit.component";
 import { AddBlockComponent } from "./modules/blocks-page/add-block/add-block.component";
 import { AddUserComponent } from "./modules/main-page/user/add-user/add-user.component";
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
+import { ErrorPageComponent } from "./modules/error-page/error-page.component";
+
 const routes: Routes = [
-  { path: "super", component: SuperAdminComponent, canActivate: [AuthGuard] },
-  { path: "blocks", component: BlocksPageComponent, canActivate: [AuthGuard] },
+  {
+    path: "super",
+    component: SuperAdminComponent
+    // canActivate: [AuthGuard]
+  },
+  { path: "login", component: LoginComponent },
+  { path: "", component: MainPageComponent },
+  // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
+  { path: "user/add", component: AddUserComponent },
+  { path: "user/balance/:id", component: BalanceEditComponent },
+  { path: "user/:id", component: UsersComponent },
+
+  {
+    path: "user",
+    component: UsersComponent,
+    // canActivate: [AuthGuard],
+    children: [
+      { path: "", component: UsersComponent }
+      // { path: ":id", component: UsersComponent }
+    ]
+  },
+
   {
     path: "services",
-    component: ServicesPageComponent,
-    canActivate: [AuthGuard]
+    component: ServicesPageComponent
+    // canActivate: [AuthGuard]
   },
   { path: "home", component: MainPageComponent, canActivate: [AuthGuard] },
   { path: "login", component: LoginComponent },
@@ -31,7 +53,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: "user/:id", component: UsersComponent, canActivate: [AuthGuard] },
-  { path: "blocks/add", component: AddBlockComponent, canActivate: [AuthGuard] }
+  {
+    path: "blocks/add",
+    component: AddBlockComponent,
+    canActivate: [AuthGuard]
+  },
   // {
   //   path: "services",
   //   component: ServicesPageComponent,
@@ -48,7 +74,16 @@ const routes: Routes = [
   //   ]
   // }
   // { path: "blocks/add", component: AddBlockComponent },
-  // { path: "blocks/edit/:id", component: EditComponent }
+  // { path: "blocks/edit/:id", component: EditComponent }.
+  { path: "blocks/add", component: AddBlockComponent },
+  { path: "blocks/edit/:id", component: EditComponent },
+
+  {
+    path: "not-found",
+    component: ErrorPageComponent,
+    data: { message: "Page not found!" }
+  },
+  { path: "**", redirectTo: "/not-found" }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

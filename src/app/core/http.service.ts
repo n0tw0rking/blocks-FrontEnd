@@ -22,10 +22,7 @@ export class HttpService {
       .subscribe(data => console.log(data));
   }
 
-  getUser(id){
-
-  }
-
+ 
   getBlock(id){ //get all info of block by id 
 
   }

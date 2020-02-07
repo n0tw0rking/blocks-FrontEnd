@@ -44,6 +44,7 @@ import { EditComponent } from "./modules/blocks-page/edit/edit.component";
 import { AddBlockComponent } from "./modules/blocks-page/add-block/add-block.component";
 import { AddUserComponent } from "./modules/main-page/user/add-user/add-user.component";
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
+import { ErrorPageComponent } from "./modules/error-page/error-page.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +62,8 @@ import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/bala
     EditComponent,
     SuperAdminComponent,
     AddUserComponent,
-    BalanceEditComponent
+    BalanceEditComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
