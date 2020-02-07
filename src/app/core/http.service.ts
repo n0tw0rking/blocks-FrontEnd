@@ -22,39 +22,7 @@ export class HttpService {
       .subscribe(data => console.log(data));
   }
 
-  getUser(id){
-   return this.apollo
-    .watchQuery<any>({
-        query: gql`
-        query{
-          oneUser(id:${id}){
-            _id
-            isAdmin
-            isSuperAdmin
-            email
-            password
-            userSubscription{
-              _id
-              user{
-                _id
-              }
-              block{
-                _id
-                name
-                location
-              }
-            }
-          }
-        }
-       `,
-       errorPolicy: "all"
-     })
-     .valueChanges.subscribe(result => {
-       console.log(result);
-     });
-
-  }
-
+ 
   getBlock(id){ //get all info of block by id 
 
   }

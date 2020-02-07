@@ -24,7 +24,7 @@
         </div>
         <div class="card-action">
           <a>Status: {{block.status}} </a>
-          <a [routerLink]="['/blocks','edit', block.id]">More Info</a>
+          <a [routerLink]="['/blocks','edit', block.id]" [queryParams]="{ order: 'popular'}">More Info</a>
         </div>
       </div>
     </div>
