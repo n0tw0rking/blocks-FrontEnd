@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
               } else {
                 console.log(res.data);
 
-                this.router.navigate(["/dash"]);
+                this.router.navigate(["/main"]);
               }
             },
             err => {

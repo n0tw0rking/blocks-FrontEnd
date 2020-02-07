@@ -10,10 +10,9 @@ import { AuthService } from "./core/auth.service";
 export class AppComponent {
   title = "angular";
   toggle = true;
-
+  showMobileMenu = false;
   constructor(private router: Router, private auth: AuthService) {}
   //constructor(private _http: HttpService, private router: Router) {}
-
   ngOnInit() {
     if (localStorage.getItem("currentUser")) {
       this.auth.isAuthSuperAndAdmin().subscribe(
@@ -34,9 +33,26 @@ export class AppComponent {
     if (!signInData) {
       console.log(signInData);
       this.router.navigate([
-        // "login"
-        "home"
+        //  "login"
+        "/main"
       ]);
     }
+  }
+  toggleSidebar() {
+    this.showMobileMenu = true;
+  }
+  // Fucntion that checks if the location router on the window is /main
+  isMain() {
+    if (this.router.url == "/main") {
+      return true;
+    }
+    console.log(this.router.url);
+    return false;
+  }
+  isLogin() {
+    if (this.router.url == "/login") {
+      return true;
+    }
+    return false;
   }
 }

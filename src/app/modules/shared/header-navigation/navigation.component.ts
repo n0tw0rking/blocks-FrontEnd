@@ -1,6 +1,12 @@
-import { Component, AfterViewInit, EventEmitter, Output } from "@angular/core";
+import {
+  Component,
+  AfterViewInit,
+  EventEmitter,
+  Output,
+  Input
+} from "@angular/core";
 import { Location } from "@angular/common";
-import { ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
 import {
   NgbModal,
   ModalDismissReasons,
@@ -9,7 +15,7 @@ import {
 } from "@ng-bootstrap/ng-bootstrap";
 import { PerfectScrollbarConfigInterface } from "ngx-perfect-scrollbar";
 declare var $: any;
-
+@Input()
 @Component({
   selector: "app-navigation",
   templateUrl: "./navigation.component.html"
@@ -28,7 +34,7 @@ export class NavigationComponent implements AfterViewInit {
   constructor(
     private modalService: NgbModal,
     public location: Location,
-    public activatedRoute: ActivatedRoute
+    private router: Router
   ) {}
 
   // This is for Notifications
@@ -98,5 +104,19 @@ export class NavigationComponent implements AfterViewInit {
   ngAfterViewInit() {}
   ngOnInit() {
     // this.tittle = this.location.path().slice(1);
+  }
+  isMain() {
+    if (this.router.url == "/main") {
+      return true;
+    }
+    console.log(this.router.url);
+    return false;
+  }
+  isLogin() {
+    if (this.router.url == "/login") {
+      console.log(this.router.url);
+      return true;
+    }
+    return false;
   }
 }
