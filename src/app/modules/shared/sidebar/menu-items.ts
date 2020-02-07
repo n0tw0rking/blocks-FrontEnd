@@ -26,16 +26,33 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: "/user",
-    title: "Tabs",
-    icon: "mdi mdi-sort-variant",
-    class: "",
+    path: "",
+    title: "Users",
+    icon: "ngbDropdownToggle",
+    class: "top-right",
     extralink: false,
-    submenu: []
+    submenu: [
+      {
+        path: "/user/add",
+        title: "Add User",
+        icon: "mdi mdi-sort-variant",
+        class: "",
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: "/user/balance",
+        title: "Balance",
+        icon: "mdi mdi-sort-variant",
+        class: "",
+        extralink: false,
+        submenu: []
+      }
+    ]
   },
   {
     path: "/",
-    title: "TEST",
+    title: "RECURION",
     icon: "mdi mdi-toggle-switch",
     class: "",
     extralink: false,

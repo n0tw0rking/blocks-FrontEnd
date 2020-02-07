@@ -1,5 +1,6 @@
-import { Component, OnInit, HostListener } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, OnInit, HostListener, Inject } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
+import { DOCUMENT } from "@angular/common";
 import { PerfectScrollbarConfigInterface } from "ngx-perfect-scrollbar";
 declare var $: any;
 import { Apollo } from "apollo-angular";
@@ -11,7 +12,13 @@ import gql from "graphql-tag";
   styleUrls: ["./main-page.component.css"]
 })
 export class MainPageComponent implements OnInit {
-  constructor(public router: Router, private apollo: Apollo) {}
+  snapshot;
+  constructor(
+    public router: Router,
+    private apollo: Apollo,
+    // private actRoute: ActivatedRoute,
+    @Inject(DOCUMENT) private document: Document
+  ) {}
 
   public config: PerfectScrollbarConfigInterface = {};
 
@@ -44,6 +51,7 @@ export class MainPageComponent implements OnInit {
       this.router.navigate(["/home"]);
     }
     this.handleLayout();
+    this.snapshot = this.router.routerState.snapshot;
   }
 
   @HostListener("window:resize", ["$event"])
