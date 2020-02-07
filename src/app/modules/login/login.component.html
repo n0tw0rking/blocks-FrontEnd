@@ -1,40 +1,53 @@
-<div class="col s12">
-  <div class="container">
-    <div class="alert alert-success" *ngIf="notifyMessage">
-      {{ notifyMessage }}
-    </div>
-    <div id="form">
-      <h2>Login</h2>
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <!-- type="email" -->
-          <!-- aria-describedby="email" -->
-          <input
-            class="form-control"
-            id="email"
-            placeholder="email@local.com"
-            formControlName="email"
-          />
-          <div *ngIf="isInvalidForm('email')" class="alert alert-danger">
-            <div *ngIf="isRequired('email')">
-              Email is required.
-            </div>
-            <div *ngIf="loginForm.controls['email'].errors.pattern">
-              Please provide a valid Email
+<div class="container  mt-5 shadow w-50 ">
+  <div class="row ">
+    <div class="col m-3">
+      <div class="alert alert-success" *ngIf="notifyMessage">
+        {{ notifyMessage }}
+      </div>
+      <div id="form">
+        <h2>Login</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="email@local.com"
+              formControlName="email" />
+            <div *ngIf="isInvalidForm('email')" class="alert alert-danger">
+              <div *ngIf="isRequired('email')">
+                Email is required.
+              </div>
+              <div *ngIf="loginForm.controls['email'].errors.pattern">
+                Please provide a valid Email
+              </div>
             </div>
           </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password"
+              minlength="6" />
+          </div>
+          <button type="submit" class="btn btn-primary">
+            login
+          </button>
+        </form>
+        <div *ngIf="errors.length > 0" class="alert alert-danger">
+          <p *ngFor="let error of errors">
+            {{ error.detail }}
+          </p>
         </div>
-      </form>
-      <div class="footer register-footer text-center">
-        <h6>
-          &copy;{{ test | date: "yyyy" }}, made with
-          <i class="fa fa-heart heart"></i> by
-          <hr />
-          <span class="social-line"> !WORKING</span>
-          TEAM
-        </h6>
       </div>
+    </div>
+  </div>
+</div>
+<div class="preloader-wrapper big active">
+  <div class="spinner-layer spinner-blue-only">
+    <div class="circle-clipper left">
+      <div class="circle"></div>
+    </div>
+    <div class="gap-patch">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-clipper right">
+      <div class="circle"></div>
     </div>
   </div>
 </div>

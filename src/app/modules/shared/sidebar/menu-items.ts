@@ -2,17 +2,17 @@ import { RouteInfo } from "./sidebar.metadata";
 
 export const ROUTES: RouteInfo[] = [
   {
-    path: "/services",
-    title: "Services",
-    icon: "mdi mdi-image-filter-vintage",
+    path: "/home",
+    title: "HOME",
+    icon: "mdi mdi-home",
     class: "",
     extralink: false,
     submenu: []
   },
   {
-    path: "/component/progressbar",
-    title: "Progressbar",
-    icon: "mdi mdi-poll",
+    path: "/services",
+    title: "Services",
+    icon: "mdi mdi-image-filter-vintage",
     class: "",
     extralink: false,
     submenu: []
@@ -23,15 +23,32 @@ export const ROUTES: RouteInfo[] = [
     icon: "mdi mdi-bandcamp",
     class: "",
     extralink: false,
-    submenu: []
+    submenu: [
+      {
+        path: "/blocks/add",
+        title: "Add Block",
+        icon: "mdi mdi-bandcamp",
+        class: "",
+        extralink: false,
+        submenu: []
+      }
+    ]
   },
   {
-    path: "",
+    path: "/user",
     title: "Users",
     icon: "ngbDropdownToggle",
     class: "top-right",
     extralink: false,
     submenu: [
+      {
+        path: "/user",
+        title: "Users",
+        icon: "ngbDropdownToggle",
+        class: "top-right",
+        extralink: false,
+        submenu: []
+      },
       {
         path: "/user/add",
         title: "Add User",
@@ -49,13 +66,5 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       }
     ]
-  },
-  {
-    path: "/",
-    title: "RECURION",
-    icon: "mdi mdi-toggle-switch",
-    class: "",
-    extralink: false,
-    submenu: []
   }
 ];

@@ -1,11 +1,4 @@
-import {
-  Component,
-  AfterViewInit,
-  OnInit,
-  HostBinding,
-  Input,
-  Output
-} from "@angular/core";
+import { Component, AfterViewInit, OnInit } from "@angular/core";
 import { ROUTES } from "./menu-items";
 import { RouteInfo } from "./sidebar.metadata";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -21,17 +14,7 @@ declare var $: any;
 
 @Component({
   selector: "app-sidebar",
-  templateUrl: "./sidebar.component.html",
-  animations: [
-    trigger("indicatorRotate", [
-      state("collapsed", style({ transform: "rotate(0deg)" })),
-      state("expanded", style({ transform: "rotate(180deg)" })),
-      transition(
-        "expanded <=> collapsed",
-        animate("225ms cubic-bezier(0.4,0.0,0.2,1)")
-      )
-    ])
-  ]
+  templateUrl: "./sidebar.component.html"
 })
 export class SidebarComponent implements OnInit {
   showMenu = "";

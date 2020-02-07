@@ -15,42 +15,40 @@ import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/bala
 const routes: Routes = [
   { path: "super", component: SuperAdminComponent, canActivate: [AuthGuard] },
   { path: "blocks", component: BlocksPageComponent, canActivate: [AuthGuard] },
-  { path: "services", component: ServicesPageComponent },
-  { path: "home", component: MainPageComponent },
-  { path: "login", component: LoginComponent },
-  { path: "**", component: MainPageComponent },
-  { path: "user", component: UsersComponent, canActivate: [AuthGuard] },
-  { path: "user/add", component: AddUserComponent },
-  { path: "user/balance/:id", component: BalanceEditComponent },
-  { path: "user/:id", component: UsersComponent },
-
-  // {
-  //   path: "user",
-  //   component: UsersComponent,
-  //   canActivate: [AuthGuard],
-  //   children: [
-  //     { path: "", component: UsersComponent }
-  //    { path: ":id", component: UsersComponent }
-  //   ]
-  // },
-
   {
     path: "services",
     component: ServicesPageComponent,
     canActivate: [AuthGuard]
   },
-  // { path: "blocks", component: BlocksPageComponent },
+  { path: "home", component: MainPageComponent, canActivate: [AuthGuard] },
+  { path: "login", component: LoginComponent },
+  { path: "**", component: LoginComponent, canActivate: [AuthGuard] },
+  { path: "user", component: UsersComponent, canActivate: [AuthGuard] },
+  { path: "user/add", component: AddUserComponent, canActivate: [AuthGuard] },
   {
-    path: "blocks",
-    component: BlocksPageComponent,
-    // canActivate: [AuthGuard],
-    children: [
-      { path: "", component: BlockComponent }
-      // {path: 'edit/:id', component: EditComponent}
-    ]
+    path: "user/balance/:id",
+    component: BalanceEditComponent,
+    canActivate: [AuthGuard]
   },
-  { path: "blocks/add", component: AddBlockComponent },
-  { path: "blocks/edit/:id", component: EditComponent }
+  { path: "user/:id", component: UsersComponent, canActivate: [AuthGuard] },
+  { path: "blocks/add", component: AddBlockComponent, canActivate: [AuthGuard] }
+  // {
+  //   path: "services",
+  //   component: ServicesPageComponent,
+  //   canActivate: [AuthGuard]
+  // },
+  // {
+  //   path: "blocks",
+  //   component: BlocksPageComponent,
+  //   // canActivate: [AuthGuard],
+  //   children: [
+  //     { path: "", component: BlockComponent },
+  //     { path: "add", component: AddBlockComponent },
+  //     { path: "edit/:id", component: EditComponent }
+  //   ]
+  // }
+  // { path: "blocks/add", component: AddBlockComponent },
+  // { path: "blocks/edit/:id", component: EditComponent }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
