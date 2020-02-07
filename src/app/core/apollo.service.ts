@@ -40,35 +40,42 @@ export class ApolloService {
     }).valueChanges;
   }
 
-  getsUser(id) {
-    return this.apollo
-      .watchQuery<any>({
-        query: gql`
-         query{
-           oneUser(id:${id}){
-             _id
-             isAdmin
-             isSuperAdmin
-             email
-             password
-             userSubscription{
-               _id
-               user{
-                 _id
-               }
-               block{
-                 _id
-                 name
-                 location
-               }
-             }
-           }
-         }
-        `,
-        errorPolicy: "all"
-      })
-      .valueChanges.subscribe(result => {
-        console.log(result);
-      });
+  getService(): any {
+    return this.apollo.watchQuery<any>({
+      query: gql`
+        query($name: String!) {
+          oneService(name: $name) {
+            _id
+            subscriptionId {
+              _id
+            }
+          }
+        }
+      `,
+      variables: {
+        name: "water"
+      },
+      errorPolicy: "all"
+    }).valueChanges;
+  }
+
+  getSubscription(): any {
+    return this.apollo.watchQuery<any>({
+      query: gql`
+        query($name: String!) {
+          oneSubscription(name: $name) {
+            _id
+
+            block {
+              _id
+            }
+          }
+        }
+      `,
+      variables: {
+        name: "BBB"
+      },
+      errorPolicy: "all"
+    }).valueChanges;
   }
 }
