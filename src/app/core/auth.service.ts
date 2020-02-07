@@ -13,7 +13,8 @@ import gql from "graphql-tag";
 export class AuthService {
   private user;
 
-  private urlLogin = "https://blocks-backend.herokuapp.com/graphql";
+  private urlLogin = "http://localhost:4000/graphql";
+  //"https://blocks-backend.herokuapp.com/graphql";
   public isAuthed = !!localStorage.getItem("currentUser");
   public isSuperAdmin: boolean;
   public isAdmin: boolean;
