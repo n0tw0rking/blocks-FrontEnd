@@ -26,6 +26,7 @@ export class BlocksPageComponent implements OnInit {
   ngOnInit() {
     // http get blocks list 
     //getBlocks()
+    
   }
 
   getBlocks(){

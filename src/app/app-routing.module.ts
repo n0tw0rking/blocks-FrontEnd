@@ -12,11 +12,14 @@ import { EditComponent } from './modules/blocks-page/edit/edit.component';
 import { AddBlockComponent } from './modules/blocks-page/add-block/add-block.component';
 import { AddUserComponent } from './modules/main-page/user/add-user/add-user.component';
 import { BalanceEditComponent } from './modules/main-page/user/balance-edit/balance-edit.component';
+import { ErrorPageComponent } from './modules/error-page/error-page.component';
 
 const routes: Routes = [
-  { path: "super", component: SuperAdminComponent, canActivate: [AuthGuard] },
+  { path: "super", component: SuperAdminComponent, 
+  // canActivate: [AuthGuard]
+  },
   { path: "login", component: LoginComponent },
-  { path: "", component: MainPageComponent, canActivate: [AuthGuard] },
+  { path: "", component: MainPageComponent },
   // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
   {path: 'user/add', component: AddUserComponent},
   {path: 'user/balance/:id', component: BalanceEditComponent},
@@ -25,7 +28,7 @@ const routes: Routes = [
   {
     path: "user",
     component: UsersComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       { path: "", component: UsersComponent },
       // { path: ":id", component: UsersComponent }
@@ -35,7 +38,7 @@ const routes: Routes = [
   {
     path: "services",
     component: ServicesPageComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   // { path: "blocks", component: BlocksPageComponent },
   {
@@ -48,7 +51,10 @@ const routes: Routes = [
     ]
   },
       {path: 'blocks/add', component: AddBlockComponent},
-      {path: 'blocks/edit/:id', component: EditComponent}
+      {path: 'blocks/edit/:id', component: EditComponent},
+
+      { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
+      { path: '**', redirectTo: '/not-found' }
   
 ];
 

@@ -12,10 +12,12 @@ import gql from "graphql-tag";
 })
 export class AuthService {
   private user;
-  private urlLogin = "https://blocks-backend.herokuapp.com/graphql" //"http://localhost:4000/graphql";
-  public isAuthed = true //!!localStorage.getItem("currentUser");
+
+  private urlLogin = "http://localhost:4000/graphql";
+  public isAuthed =true // !!localStorage.getItem("currentUser");
   public isSuperAdmin: boolean;
   public isAdmin: boolean;
+
   @Output() getIsAuthed: EventEmitter<any> = new EventEmitter();
   constructor(
     private http: HttpClient,
@@ -103,6 +105,7 @@ export class AuthService {
   public getCurrentUserName(): string {
     return JSON.parse(localStorage.getItem("currentUser")).name;
   }
+
   public isAuthSuperAndAdmin(): any {
     return this.apollo.watchQuery<any>({
       query: gql`
