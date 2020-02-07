@@ -16,7 +16,7 @@ import { BalanceEditComponent } from './modules/main-page/user/balance-edit/bala
 const routes: Routes = [
   { path: "super", component: SuperAdminComponent, canActivate: [AuthGuard] },
   { path: "login", component: LoginComponent },
-  { path: "", component: MainPageComponent, canActivate: [AuthGuard] },
+  { path: "", component: MainPageComponent },
   // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
   {path: 'user/add', component: AddUserComponent},
   {path: 'user/balance/:id', component: BalanceEditComponent},
