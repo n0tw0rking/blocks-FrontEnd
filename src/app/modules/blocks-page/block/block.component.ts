@@ -1,25 +1,28 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute, Params } from '@angular/router';
-
-
-
+import { Subscription } from "rxjs/Subscription";
+import { ActivatedRoute, Params } from "@angular/router";
 
 @Component({
-  selector: 'app-block',
-  templateUrl: './block.component.html',
-  styleUrls: ['./block.component.css']
+  selector: "app-block",
+  templateUrl: "./block.component.html",
+  styleUrls: ["./block.component.css"]
 })
 export class BlockComponent implements OnInit {
-  @Input() block:{id:number, name:string, location:string, status:string, dateOfSubscreption:string}
+  @Input() block: {
+    id: number;
+    name: string;
+    location: string;
+    status: string;
+    dateOfSubscreption: string;
+  };
   paramsSubscription: Subscription;
 
-// @Input() block;
+  // @Input() block;
 
-  constructor( private route: ActivatedRoute) { }
-// id = 0
-// name = ''
+  constructor(private route: ActivatedRoute) {}
+  id = 0;
+  name = "";
   ngOnInit() {
     // this.block = {
     //   id: this.route.snapshot.params['id'],
@@ -34,10 +37,9 @@ export class BlockComponent implements OnInit {
     //   .subscribe(
     //     (params: Params) => {
     //       // this.block.id = params['id'];
-          // this.block.name = params['name'];
-          // console.log(this.block)
-      //   }
-      // );
+    // this.block.name = params['name'];
+    // console.log(this.block)
+    //   }
+    // );
   }
-
 }

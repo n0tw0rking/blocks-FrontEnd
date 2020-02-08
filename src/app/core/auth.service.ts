@@ -4,9 +4,11 @@ import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
+// import { SubscriptionService } from "../core/subscription.service";
 // import { ApolloService } from "./apollo.service";
 import { Apollo } from "apollo-angular";
 import gql from "graphql-tag";
+
 @Injectable({
   providedIn: "root"
 })
@@ -19,15 +21,18 @@ export class AuthService {
   public isAdmin: boolean;
 
   @Output() getIsAuthed: EventEmitter<any> = new EventEmitter();
+
   constructor(
     private http: HttpClient,
     private router: Router,
-    private apollo: Apollo // private apollo: ApolloService
+    private apollo: Apollo // private apollo: ApolloService // private sub: SubscriptionService
   ) {
     console.log(this.isAuthed);
     this.getIsAuthed.emit(this.isAuthed);
   }
+
   public login(userData: any): Observable<any> {
+    console.log(userData);
     return this.apollo
       .watchQuery<any>({
         query: gql`
@@ -54,22 +59,24 @@ export class AuthService {
             this.user = res.data.login.userId;
             this.isSuperAdmin = res.data.login.isSuperAdmin;
             this.isAdmin = res.data.login.isAdmin;
-            if (this.isSuperAdmin || this.isAdmin) {
-              this.saveTokenAndCurrentUser(res.data.login.token);
-            }
+
+            this.saveTokenAndCurrentUser(res.data.login.token);
           }
           return res;
-          // return this.saveTokenAndCurrentUser(res.data.login.token);
         })
       );
   }
+
   public logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("currentUser");
     this.isAuthed = false;
+    // this.sub.status = false;
+    // this.sub.sub = undefined;
     this.router.navigate(["/login"]);
     this.getIsAuthed.emit(this.isAuthed);
   }
+
   private saveTokenAndCurrentUser(token: string): string {
     localStorage.setItem("token", token);
     console.log(this.user);
@@ -79,9 +86,11 @@ export class AuthService {
     });
     return token;
   }
+
   public getToken(): string {
     return localStorage.getItem("token");
   }
+
   public isAuthenticated(): any {
     return this.apollo
       .watchQuery<any>({
@@ -102,6 +111,7 @@ export class AuthService {
         })
       );
   }
+
   public getCurrentUserName(): string {
     return JSON.parse(localStorage.getItem("currentUser")).name;
   }

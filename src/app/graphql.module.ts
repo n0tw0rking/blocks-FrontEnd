@@ -10,8 +10,6 @@ import { setContext } from "apollo-link-context";
 const uri ="https://blocks-backend.herokuapp.com/graphql" //"http://localhost:3000/graphql"; // <-- add the URL of the GraphQL server here
 
 const token = localStorage.getItem("token");
-// const token =
-//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZTMyY2Y2YzY0MTg3MDU2NDNjOWE1YjMiLCJlbWFpbCI6InN1cGVyQWRtaW4iLCJpc0FkbWluIjpmYWxzZSwiaXNTdXBlckFkbWluIjp0cnVlLCJpYXQiOjE1ODA1NTQ0MzgsImV4cCI6MTU4MDU3MjQzOH0.jRFZg08BMIkFplR3z-TuON4vC0Mu0lcbaPlgYGdBnZM';
 export function provideApollo(httpLink: HttpLink, apollo: Apollo) {
   const basic = setContext((operation, context) => ({
     headers: {
@@ -29,7 +27,9 @@ export function provideApollo(httpLink: HttpLink, apollo: Apollo) {
   // const errorLink = onError(({ graphQLErrors, networkError }) => {
   //   if (graphQLErrors)
   //     graphQLErrors.forEach(({ message, locations, path }) =>
-  //       console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`),
+  //       console.log(
+  //         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+  //       )
   //     );
   //   if (networkError) console.log(`[Network error]: ${networkError.name}`);
   // });

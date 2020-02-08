@@ -1,45 +1,45 @@
-<app-nav-bar></app-nav-bar>
+<!-- <app-nav-bar></app-nav-bar> -->
 
 <div class="container-fluid">
-    <div class="row">
+  <div class="row">
     <div class="">
-    <ul class="nav nav-sidebar">
+      <ul class="nav nav-sidebar">
         <li class="active"><a routerLink="/user">Users List</a></li>
         <li><a routerLink="/user/add">add new </a></li>
         <li><a href="#">Analytics</a></li>
         <li><a href="#">Export</a></li>
-    </ul>
+      </ul>
     </div>
-    </div>
+  </div>
 </div>
 <br>
 
 <table class="table" style="color: rgb(77, 35, 35);">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">email</th>
-        <th scope="col">Balance</th>
-        <th scope="col">Username</th>
-        <th scope="col">balance</th>  
-        <th scope="col">Block</th>
-      </tr>      
-    </thead>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">email</th>
+      <th scope="col">Balance</th>
+      <th scope="col">Username</th>
+      <th scope="col">balance</th>
+      <th scope="col">Block</th>
+    </tr>
+  </thead>
 
-    <tbody *ngFor="let user of users">
-      <tr>
-        <th scope="row">{{user.userSubscription[0].name }}</th>
-        <td>{{ user.email }}</td>
-        <div>
-          <td >{{  user.userSubscription[0].balance }}</td>
-        </div>
-        <div>
-          <td >{{ user.userSubscription[0].balance }}</td>
-        </div>
-        <div></div>
-        <td >{{ user.userSubscription[0].user}}</td>
-        <td>{{user.userSubscription[0].block}}</td>
-  
+  <tbody *ngFor="let user of users">
+    <tr>
+      <th scope="row">{{user.userSubscription[0].name }}</th>
+      <td>{{ user.email }}</td>
+      <div>
+        <td>{{  user.userSubscription[0].balance }}</td>
+      </div>
+      <div>
+        <td>{{ user.userSubscription[0].balance }}</td>
+      </div>
+      <div></div>
+      <td>{{ user.userSubscription[0].user}}</td>
+      <td>{{user.userSubscription[0].block}}</td>
+   
         <td (click)="userMoreInfo(user)">record</td> 
         <!-- routerLink="/userRercords" -->
       </tr>
