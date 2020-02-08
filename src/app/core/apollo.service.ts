@@ -91,6 +91,7 @@ export class ApolloService {
 
 
    createUser(user){ 
+     console.log(user)
     return this.apollo
     .watchQuery<any>({
         query: gql`

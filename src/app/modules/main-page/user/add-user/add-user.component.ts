@@ -21,19 +21,22 @@ export class AddUserComponent implements OnInit {
   createForm() {
     this.newblockForm = this.formbuilder.group({
       email: [ "" ],
-      password: ["", Validators.required]
+      password: ["", Validators.required],
+      Subscription:[""],
+      block: [""],
+      type:[""]
     });
   }
 
   onNewForm(){
-    console.log(this.newblockForm.value)
+    // console.log(this.newblockForm.value)
     this.polo.createUser(this.newblockForm.value)
     .subscribe(
       res=>console.log(res),error=>{console.log(error)})
     
     // this.blocks.push(this.newblockForm.value)
 
-    this.router.navigate(["/blocks"]);
+    // this.router.navigate(["/blocks"]);
 
   }
 
