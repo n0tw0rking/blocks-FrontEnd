@@ -1,12 +1,11 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Apollo } from "apollo-angular";
-import gql from "graphql-tag";
+
 @Injectable({
   providedIn: "root"
 })
 export class HttpService {
-  constructor(private http: HttpClient, private apollo: Apollo) {}
+  constructor(private http: HttpClient) {}
 
   getUsers() {
     return this.http
@@ -23,7 +22,23 @@ export class HttpService {
       .subscribe(data => console.log(data));
   }
 
-  postBlock(Block) {
+ 
+  getBlock(id){ //get all info of block by id 
+
+  }
+
+  getBlocks(){ //get all blocks id s and name s
+
+  }
+
+  getUsersOfBlock(id) { //get all user s inside this block(id)
+
+  }
+
+
+
+
+  postNewBlock(Block) {
     console.log("getuser triggerde", Block);
     return this.http
       .post("http://localhost:3000/api/", Block)

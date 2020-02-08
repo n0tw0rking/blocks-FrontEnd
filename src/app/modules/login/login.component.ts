@@ -2,17 +2,16 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../core/auth.service";
 import { Router, ActivatedRoute } from "@angular/router";
+
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
-  test: Date = new Date();
-  focusEmail;
-  focusPass;
   loginForm: FormGroup;
   errors: any = [];
+  loading = true;
   notifyMessage = "";
 
   constructor(
@@ -58,26 +57,28 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls[fieldName].errors.required;
   }
 
-  async login() {
-    if (this.isInvalidForm("email") || this.isInvalidForm("password")) {
-      return;
-    }
+  login() {
     console.log(this.loginForm.value);
     this.auth.login(this.loginForm.value).subscribe(
       token => {
-        console.log(token.data);
-        console.log(token.errors);
-        console.log("login func in login component");
-        this.router.navigate(["/"]);
+        if (token.errors) {
+          console.log(token.errors[0].message);
+        } else {
+          if (token.data.login.isSuperAdmin) {
+            console.log(" this is the superAdmin");
+            this.router.navigate(["/"]);
+          } else if (token.data.login.isAdmin) {
+            console.log(token);
+            console.log("this is the Admin");
+            this.router.navigate(["/"]);
+          } else {
+            console.log("this is the user");
+            this.router.navigate(["/login"]);
+          }
+        }
       },
       errorResponse => {
-        // NOTE:
-        // THE RESPONSE FORM THE SERVER DOES NOT HAVE AN ERROR ATTR
         console.log(errorResponse);
-        // this.errors = errorResponse.error.errors;
-
-        console.log("login func in login component");
-        this.router.navigate(["/login"]);
       }
     );
   }
