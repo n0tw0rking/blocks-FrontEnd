@@ -9,39 +9,34 @@ export class ApolloService {
   constructor(private apollo: Apollo) {}
 
   getUser(currentUser): any {
-    return this.apollo.watchQuery<any>({
+    return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
-        query($id: String!) {
-          oneUser(id: $id) {
-            _id
-            isAdmin
-            isSuperAdmin
+        {
+          query: user(userId: 13) {
             email
-            password
-            userSubscription {
-              _id
-              name
+            phoneNumber
+            blockUsers {
+              blockId
+            }
+            subscriptions {
+              subscriptionId
+              subscriptionName
               user {
-                _id
-              }
-              block {
-                _id
-                name
-                location
+                userId
               }
             }
           }
         }
       `,
-      variables: {
-        id: currentUser
-      },
+      // variables: {
+      //   userId: currentUser
+      // },
       errorPolicy: "all"
     }).valueChanges;
   }
 
   getService(): any {
-    return this.apollo.watchQuery<any>({
+    return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
         query($name: String!) {
           oneService(name: $name) {
@@ -60,7 +55,7 @@ export class ApolloService {
   }
 
   getSubscription(): any {
-    return this.apollo.watchQuery<any>({
+    return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
         query($name: String!) {
           oneSubscription(name: $name) {

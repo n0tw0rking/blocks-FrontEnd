@@ -12,8 +12,6 @@ import gql from "graphql-tag";
 })
 export class AuthService {
   private user;
-
-  private urlLogin = "https://blocks-backend.herokuapp.com/graphql";
   public isAuthed = !!localStorage.getItem("currentUser");
   public isSuperAdmin: boolean;
   public isAdmin: boolean;
@@ -28,6 +26,7 @@ export class AuthService {
     this.getIsAuthed.emit(this.isAuthed);
   }
   public login(userData: any): Observable<any> {
+    //fetch
     return this.apollo
       .watchQuery<any>({
         query: gql`

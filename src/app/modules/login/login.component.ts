@@ -11,6 +11,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errors: any = [];
+  loading = true;
   notifyMessage = "";
 
   constructor(
@@ -78,7 +79,6 @@ export class LoginComponent implements OnInit {
       },
       errorResponse => {
         console.log(errorResponse);
-        // this.errors = errorResponse.error.errors;
       }
     );
   }
