@@ -1,0 +1,14 @@
+{
+  query: usersWithSubs {
+    email
+    subscriptions {
+      subscriptionName
+    }
+  }
+  query: usersWithSubs {
+    email
+    subscriptions {
+      subscriptionName
+    }
+  }
+}

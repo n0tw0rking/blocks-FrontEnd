@@ -6,7 +6,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloLink } from "apollo-link";
 import { onError } from "apollo-link-error";
 import { setContext } from "apollo-link-context";
-const uri = "http://localhost:4000/graphql"; // <-- add the URL of the GraphQL server here
+const uri = "https://blocks-backend.herokuapp.com/graphql"; // <-- add the URL of the GraphQL server here
 
 const token = localStorage.getItem("token");
 export function provideApollo(httpLink: HttpLink, apollo: Apollo) {
