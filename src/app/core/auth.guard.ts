@@ -32,7 +32,7 @@ export class AuthGuard implements CanActivate {
       return this.auth.isAuthed && this.auth.isSuperAdmin;
     } else {
       if (this.auth.isAuthed) {
-        console.log(state.url, "######");
+        // console.log(state.url, "######");
         return true;
       } else {
         this.router.navigate(["/login"]);
