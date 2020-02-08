@@ -34,10 +34,11 @@ ngOnInit() {
     console.log(use)
     //redirect to new page that have the user record
     this.router.navigate(["/user/balance", use.email]);
+
       // Get http record
-    //  this.polo.getUser(this.id).subscribe(result => {
-    //   console.log(result.data);
-    // });
+     this.polo.getUser(this.id).subscribe(result => {
+      console.log(result.data.oneUser);
+    });
     console.log(this.val)
       // this.polo.getsUser
 

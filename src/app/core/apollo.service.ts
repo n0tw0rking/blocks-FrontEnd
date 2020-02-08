@@ -58,7 +58,7 @@ export class ApolloService {
       errorPolicy: "all"
     }).valueChanges;
   }
-
+//works
   getsUser(id){
     return this.apollo
      .watchQuery<any>({
@@ -86,14 +86,11 @@ export class ApolloService {
         `,
         errorPolicy: "all"
       })
-      .valueChanges.subscribe(result => {
-        console.log(result);
-        return result
-      });
- 
+      .valueChanges
    }
 
-   createUser(){
+
+   createUser(user){ 
     return this.apollo
     .watchQuery<any>({
         query: gql`
@@ -108,9 +105,7 @@ export class ApolloService {
        `,
        errorPolicy: "all"
      })
-     .valueChanges.subscribe(result => {
-       console.log(result);
-     });
+     .valueChanges
    }
 
    getBlock(id){ //get all info of block by id 
@@ -126,15 +121,16 @@ export class ApolloService {
    }
  
  
- 
+ //works
    createNewBlock(Block) {
-      console.log(Block)
-    return this.apollo.watchQuery<any>({
-      query: gql`
-      mutation{
-        createBlock(blockInput:{name:$name,location:$location){
+      console.log(Block, 'inside newblock')
+    return this.apollo.mutate<any>({
+      mutation: gql`
+      mutation($name:String!, $location:String!) {
+        createBlock(blockInput:{name:$name,location:$location}){
           _id
           name
+          location
         }
       }
       `,
@@ -144,7 +140,7 @@ export class ApolloService {
 
       },
       errorPolicy: "all"
-    }).valueChanges
+    })
 
 
    }
