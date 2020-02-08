@@ -16,8 +16,9 @@ users = [
 
 ]
   constructor( private router: Router, private route: ActivatedRoute, private polo: ApolloService) { }
-id='';
+id='5e3454731487322a3813c2ee';
 sub:any;
+val:any;
 ngOnInit() {
     this.sub = this.route.params.subscribe(params =>{
       // this.id = params+'';
@@ -34,7 +35,10 @@ ngOnInit() {
     //redirect to new page that have the user record
     this.router.navigate(["/user/balance", use.email]);
       // Get http record
-      this.polo.getUser(use)
+    //  this.polo.getUser(this.id).subscribe(result => {
+    //   console.log(result.data);
+    // });
+    console.log(this.val)
       // this.polo.getsUser
 
   }

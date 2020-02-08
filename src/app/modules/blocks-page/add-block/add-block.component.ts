@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder , FormGroup, Validators} from '@angular/forms';
 import { HttpService } from 'src/app/core/http.service';
+import { ApolloService } from '../../../core/apollo.service'
+
 
 
 @Component({
@@ -12,7 +14,7 @@ import { HttpService } from 'src/app/core/http.service';
 export class AddBlockComponent implements OnInit {
   newblockForm:FormGroup
 
-  constructor(private formbuilder: FormBuilder, private router: Router,  private http:HttpService) { }
+  constructor(private formbuilder: FormBuilder, private router: Router,  private http:HttpService, private polo: ApolloService) { }
 
   ngOnInit() {
     this.createForm()
@@ -26,12 +28,14 @@ export class AddBlockComponent implements OnInit {
   }
 
   onNewForm(){
-    console.log(this.newblockForm.value.id)
-    this.http.postNewBlock(this.newblockForm.value)
+    console.log(this.newblockForm.value)
+    this.polo.createNewBlock(this.newblockForm.value)
     
     // this.blocks.push(this.newblockForm.value)
 
     this.router.navigate(["/blocks"]);
 
   }
+
+
 }
