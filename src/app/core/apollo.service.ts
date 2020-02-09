@@ -9,10 +9,11 @@ export class ApolloService {
   constructor(private apollo: Apollo) {}
 
   getUser(currentUser): any {
+    console.log("currnentUser : ", currentUser);
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
-        {
-          query: user(userId: 13) {
+        query {
+          user(userId: ) {
             email
             phoneNumber
             blockUsers {
@@ -28,13 +29,27 @@ export class ApolloService {
           }
         }
       `,
+      // I NEEED TO UNCOMMENT THIS LATER these are the varible to send the query
       // variables: {
       //   userId: currentUser
       // },
       errorPolicy: "all"
     }).valueChanges;
   }
-
+  getAllServices(): any {
+    return this.apollo.use("ASP").watchQuery<any>({
+      query: gql`
+        {
+          services {
+            serviceName
+            serviceName
+            isActive
+          }
+        }
+      `,
+      errorPolicy: "all"
+    }).valueChanges;
+  }
   getService(): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`

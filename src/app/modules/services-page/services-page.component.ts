@@ -26,11 +26,12 @@ export class ServicesPageComponent implements OnInit {
   constructor(private appollo: ApolloService) {}
 
   ngOnInit() {
-    this.appollo.getUser(localStorage.getItem("currentUser")).subscribe(
+    this.appollo.getAllServices().subscribe(
       result => {
         if (result.errors) {
           console.log(result.errors[0].message);
         } else {
+          this.services = result.data.services;
           console.log(result);
         }
       },
@@ -39,5 +40,4 @@ export class ServicesPageComponent implements OnInit {
       }
     );
   }
-  f;
 }
