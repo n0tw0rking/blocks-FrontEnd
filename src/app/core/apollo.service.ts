@@ -92,6 +92,7 @@ export class ApolloService {
 
    createUser(user){ 
      console.log(user)
+     //create subscreption if new user
     return this.apollo
     .watchQuery<any>({
         query: gql`
@@ -114,11 +115,31 @@ export class ApolloService {
    }
  
    getBlocks(){ //get all blocks id s and name s
+    return this.apollo
+    .watchQuery<any>({
+        query: gql`
+        query{
+          blocks {
+            blockName
+            blockSubscriptions {
+              subscriptionId
+              subscription {
+                subscriptionName
+              }
+            }
+          }
+        }
+        
+       `,
+       errorPolicy: "all"
+     })
+     .valueChanges
+   
  
    }
  
    getUsersOfBlock(id) { //get all user s inside this block(id)
- 
+    
    }
  
  

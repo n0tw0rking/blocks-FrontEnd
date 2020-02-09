@@ -53,7 +53,7 @@ const routes: Routes = [
     ]
   },
       {path: 'blocks/add', component: AddBlockComponent},
-      {path: 'blocks/edit/:id', component: EditComponent},
+      {path: 'blocks/edit/:name', component: EditComponent},
 
       // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
       // { path: '**', redirectTo: '/not-found' }

@@ -9,7 +9,7 @@ import { ApolloService } from '../../../../core/apollo.service'
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
-  newblockForm:FormGroup
+  newUserForm:FormGroup
   selectedValue :any ;
 
   constructor(private formbuilder: FormBuilder, private router: Router, private polo: ApolloService) { }
@@ -19,7 +19,7 @@ export class AddUserComponent implements OnInit {
   }
 
   createForm() {
-    this.newblockForm = this.formbuilder.group({
+    this.newUserForm = this.formbuilder.group({
       email: [ "" ],
       password: ["", Validators.required],
       Subscription:[""],
@@ -30,7 +30,7 @@ export class AddUserComponent implements OnInit {
 
   onNewForm(){
     // console.log(this.newblockForm.value)
-    this.polo.createUser(this.newblockForm.value)
+    this.polo.createUser(this.newUserForm.value)
     .subscribe(
       res=>console.log(res),error=>{console.log(error)})
     

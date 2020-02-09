@@ -6,8 +6,8 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloLink } from "apollo-link";
 import { onError } from "apollo-link-error";
 import { setContext } from "apollo-link-context";
-// const uri = 'https://hotgraphapi20200206111431.azurewebsites.net/'; // <-- add the URL of the GraphQL server here
-const uri ="https://blocks-backend.herokuapp.com/graphql" //"http://localhost:3000/graphql"; // <-- add the URL of the GraphQL server here
+const uri = 'https://hotgraphapi20200206111431.azurewebsites.net/'; // <-- add the URL of the GraphQL server here
+// const uri ="https://blocks-backend.herokuapp.com/graphql" //"http://localhost:3000/graphql"; // <-- add the URL of the GraphQL server here
 
 const token = localStorage.getItem("token");
 export function provideApollo(httpLink: HttpLink, apollo: Apollo) {

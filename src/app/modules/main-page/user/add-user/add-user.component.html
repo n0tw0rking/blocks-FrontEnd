@@ -71,7 +71,7 @@
           <div class="tab-pane active" id="home">
             <hr>
             
-            <form class="form" [formGroup]="newblockForm" (ngSubmit)="onNewForm()">
+            <form class="form" [formGroup]="newUserForm" (ngSubmit)="onNewForm()">
               <div class="form-group">
 
                 <div class="col-xs-6">
@@ -89,7 +89,7 @@
                     <h4>Password</h4>
                   </label>
                   <input type="password" class="form-control"  formControlName="password" id="password" placeholder="password"
-                    title="enter your password.">
+                    title="enter your password."  minlength="6">
                 </div>
               </div>
 
@@ -99,8 +99,8 @@
                   <label for="mobile">
                     <h4>Subscrebtion Name</h4>
                   </label>
-                  <input type="text" class="form-control"  formControlName="Subscription" id="mobile" placeholder="enter mobile number"
-                    title="enter your mobile number if any.">
+                  <input type="text" class="form-control"  formControlName="Subscription" id="mobile" placeholder="Create Subscription name if new user or enter previouse Subscription"
+                    title="Subscription name">
                 </div>
               </div>
               
@@ -123,8 +123,8 @@
 
 
                   <select id="block"  class="form-control" formControlName="block">
-                    <option value="volvo">block1</option>
-                    <option value="saab">block2</option>
+                    <option value="block1">block1</option>
+                    <option value="block2">block2</option>
                     <option value="opel">Opel</option>
                     <option value="audi">Audi</option>
                   </select>
