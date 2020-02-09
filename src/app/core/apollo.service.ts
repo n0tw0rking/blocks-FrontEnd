@@ -138,7 +138,7 @@ export class ApolloService {
  
    }
  
-   getUsersOfBlock(id) { //get all user s inside this block(id)
+   getUsersOfBlock(name) { //get all user s inside this block(id)
     
    }
  
