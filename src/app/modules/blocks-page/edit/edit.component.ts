@@ -12,17 +12,17 @@ import { Observable } from 'rxjs/Observable';
 export class EditComponent implements OnInit {             
   constructor( private route: ActivatedRoute,  private router: Router ) { }
   id = 0;
-  order: string;
+  order: any;
 
   ngOnInit() {
     this.route.params.subscribe(params =>{
-      this.id = params.id;
+      this.order = params;
     // }
     //  this.getBlock(this.id)
     //  this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
      //display the params
     // this.route.queryParams.subscribe(params => {
-    //   console.log(params);
+      console.log(params);
     })
   
 

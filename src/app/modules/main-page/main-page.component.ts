@@ -47,9 +47,9 @@ export class MainPageComponent implements OnInit {
       .valueChanges.subscribe(result => {
         console.log(result);
       });
-    if (this.router.url === "/") {
-      this.router.navigate(["/home"]);
-    }
+    // if (this.router.url === "/") {
+    //   this.router.navigate(["/"]);
+    // }
     this.handleLayout();
     this.snapshot = this.router.routerState.snapshot;
   }
