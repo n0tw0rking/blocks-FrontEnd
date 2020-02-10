@@ -40,8 +40,6 @@ export class SidebarComponent implements OnInit {
 
   // End open close
   ngOnInit() {
-    console.log(
-      (this.sidebarnavItems = ROUTES.filter(sidebarnavItem => sidebarnavItem))
-    );
+    this.sidebarnavItems = ROUTES.filter(sidebarnavItem => sidebarnavItem);
   }
 }

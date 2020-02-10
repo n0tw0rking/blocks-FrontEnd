@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../core/auth.service";
 import { Router, ActivatedRoute } from "@angular/router";
-import { ApolloService } from "../../core/apollo.service";
 
 @Component({
   selector: "app-login",
@@ -12,15 +11,14 @@ import { ApolloService } from "../../core/apollo.service";
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errors: any = [];
+  loading = true;
   notifyMessage = "";
-  public currentUser;
 
   constructor(
     private formbuilder: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private route: ActivatedRoute,
-    private apollo: ApolloService
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -66,25 +64,17 @@ export class LoginComponent implements OnInit {
         if (token.errors) {
           console.log(token.errors[0].message);
         } else {
-          console.log("this is the user");
-          this.currentUser = localStorage.getItem("currentUser");
-          this.apollo.getUser(this.currentUser).subscribe(
-            res => {
-              //only user with the subscription can loged in so its even for the admin with subscription
-              // console.log(res.data.oneUser.userSubscription);
-
-              if (res.data.oneUser.userSubscription.length === 0) {
-                this.auth.logout();
-              } else {
-                console.log(res.data);
-
-                this.router.navigate(["/main"]);
-              }
-            },
-            err => {
-              console.log(err);
-            }
-          );
+          if (token.data.login.isSuperAdmin) {
+            console.log(" this is the superAdmin");
+            this.router.navigate(["/"]);
+          } else if (token.data.login.isAdmin) {
+            console.log(token);
+            console.log("this is the Admin");
+            this.router.navigate(["/"]);
+          } else {
+            console.log("this is the user");
+            this.router.navigate(["/login"]);
+          }
         }
       },
       errorResponse => {
