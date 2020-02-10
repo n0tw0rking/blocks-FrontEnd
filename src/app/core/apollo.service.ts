@@ -40,7 +40,7 @@ export class ApolloService {
       query: gql`
         {
           services {
-            serviceName
+            aServiceId
             serviceName
             isActive
           }
@@ -141,15 +141,22 @@ export class ApolloService {
       errorPolicy: "all"
     }).valueChanges;
   }
-  updateServiceById(serviceId) {
-    return this.apollo.use("ASP").watchQuery<any>({
-      query: gql`
-        query($blockId: Int!) {
-        
-         } `,
-      variables: {},
+  updateServiceById(serviceId, state) {
+    return this.apollo.use("ASP").mutate<any>({
+      mutation: gql`
+        mutation($inputServiceId: Int!, $serviceState: Boolean!) {
+          updateServiceState(
+            inputServiceId: $inputServiceId
+            serviceState: $serviceState
+          )
+        }
+      `,
+      variables: {
+        inputServiceId: serviceId,
+        serviceState: state
+      },
       errorPolicy: "all"
-    }).valueChanges;
+    });
   }
   getBlocksByAdminId(id) {
     //get all info of block by id
@@ -188,40 +195,42 @@ export class ApolloService {
             }
           }
         }
-        
-       `,
-       errorPolicy: "all"
-     })
-     .valueChanges
-   
- 
-   }
- 
-   getUsersOfBlock(block) { //get all user s inside this block(id)
+      `,
+      errorPolicy: "all"
+    }).valueChanges;
+  }
+
+  getUsersOfBlock(block) {
+    //get all user s inside this block(id)
     // console.log(typeof(+block), "inside apolo")
-    return this.apollo.use("ASP")
-    .watchQuery<any>({
-        query: gql`
-        query($blockId: Int!){
-          block(blockId:$blockId) {
-          blockSubscriptions{subscriptionId,subscription{user{email, userId, phoneNumber }}}}
+    return this.apollo.use("ASP").watchQuery<any>({
+      query: gql`
+        query($blockId: Int!) {
+          block(blockId: $blockId) {
+            blockSubscriptions {
+              subscriptionId
+              subscription {
+                user {
+                  email
+                  userId
+                  phoneNumber
+                }
+              }
+            }
+          }
         }
-       `,
-       variables: {
+      `,
+      variables: {
         blockId: +block
       },
-       errorPolicy: "all"
-     })
-     .valueChanges
-   }
- 
- 
- //works
-   createNewBlock(Block) {
-      console.log(Block, 'inside newblock')
-    return this.apollo
-    .mutate<any>({
+      errorPolicy: "all"
+    }).valueChanges;
+  }
 
+  //works
+  createNewBlock(Block) {
+    console.log(Block, "inside newblock");
+    return this.apollo.mutate<any>({
       mutation: gql`
         mutation($name: String!, $location: String!) {
           createBlock(blockInput: { name: $name, location: $location }) {
