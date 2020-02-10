@@ -181,9 +181,7 @@ export class ApolloService {
        `,
        errorPolicy: "all"
      })
-     .valueChanges
-   
- 
+     .valueChanges    
    }
  
    getUsersOfBlock(block) { //get all user s inside this block(id)

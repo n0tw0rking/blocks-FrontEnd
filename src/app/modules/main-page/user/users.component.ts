@@ -9,21 +9,7 @@ import { ApolloService } from "../../../core/apollo.service";
 })
 export class UsersComponent implements OnInit, OnDestroy {
   users = []
-  //   {
-  //     email: "one@one.com",
-  //     userSubscription: [
-  //       { name: "fathi1", balance: -200, user: "username1", block: "block1" }
-  //     ],
-  //     adminBlock: "admin1"
-  //   },
-  //   {
-  //     email: "tow@tow.com",
-  //     userSubscription: [
-  //       { name: "hasan2", balance: 100, user: "username2", block: "block2" }
-  //     ],
-  //     adminBlock: "admin2"
-  //   }
-  // ];
+  
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -31,6 +17,8 @@ export class UsersComponent implements OnInit, OnDestroy {
   ) {}
   id = "";
   sub: any;
+  userId:any;
+  userIds:Number[]
   ngOnInit() {
 
 
@@ -38,7 +26,7 @@ export class UsersComponent implements OnInit, OnDestroy {
       // this.id = params+'';
       //  this.getBlock(this.id)
       if(params.id){
-        // call users in this block
+        // call users in selected blockId passed by params
         console.log(params, 'this is blockId');
         this.apollo.getUsersOfBlock(params.id)
         .subscribe(res =>
@@ -51,10 +39,26 @@ export class UsersComponent implements OnInit, OnDestroy {
       }
       else {
           //call all users by admin id
-        console.log('ther ia no params')
+       console.log('ther ia no params')
+       this.userId= localStorage.getItem("currentUser")
+
+        this.apollo.getBlocksByAdminId(this.userId)
+       .subscribe(res=> 
+      // this.blocks= res.data.blocks
+      // console.log(res.data.blocks )
+      res.data.blocks.forEach(element => {
+        // console.log(element.blockId)
+        if(element.blockId != undefined){
+          this.userIds.push(element.blockId)
+          console.log(element.userId)
+        }
+      })
+      )
+      //   this.apollo.getUser()
+      //   .subscribe(res => console.log(res))
       }
 
-    });
+    })
   }
   // onSelect(use) {
   //   console.log(use)
