@@ -18,14 +18,14 @@ const routes: Routes = [
   {
     path: "super",
     component: SuperAdminComponent
-  // canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   { path: "login", component: LoginComponent },
   { path: "", component: MainPageComponent },
   // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
-  {path: 'user/add', component: AddUserComponent},
-  {path: 'user/balance/:id', component: BalanceEditComponent},
-  {path: 'user/:id', component: UsersComponent},
+  { path: "user/add", component: AddUserComponent },
+  { path: "user/balance/:id", component: BalanceEditComponent },
+  { path: "user/:id", component: UsersComponent },
 
   {
     path: "user",
@@ -36,9 +36,18 @@ const routes: Routes = [
     //   // { path: ":id", component: UsersComponent }
     ]
   },
-
   {
     path: "services",
+    component: ServicesPageComponent
+    // canActivate: [AuthGuard]
+  },
+  /*
+  NOTES FROM ADAM:
+I have added the name so I can search by name
+  */
+  //
+  {
+    path: "services/:id",
     component: ServicesPageComponent
     // canActivate: [AuthGuard]
   },
@@ -48,16 +57,15 @@ const routes: Routes = [
     component: BlocksPageComponent,
     // canActivate: [AuthGuard],
     children: [
-      {path: '', component: BlockComponent},
+      { path: "", component: BlockComponent }
       // {path: 'edit/:id', component: EditComponent}
     ]
   },
-      {path: 'blocks/add', component: AddBlockComponent},
-      {path: 'blocks/edit/:name', component: EditComponent},
+  { path: "blocks/add", component: AddBlockComponent },
+  { path: "blocks/edit/:name", component: EditComponent }
 
-      // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
-      // { path: '**', redirectTo: '/not-found' }
-  
+  // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
+  // { path: '**', redirectTo: '/not-found' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
