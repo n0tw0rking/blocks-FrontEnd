@@ -1,5 +1,4 @@
-<div class="row">
-<div class="col-md-8 d-inline-block">
+<div class="col-md-8 d-inline-block" style="margin-left:60% ;">
   <div class="card">
     <div class="card-body">
       <h4 class="card-title text-center"><strong>{{ service.serviceName }}</strong></h4>
@@ -9,14 +8,13 @@
       <p class="card-text" *ngIf="service.isActive"> Status: Enabled</p>
       <p class="card-text" *ngIf="!service.isActive"> Status: Disabled</p>
       <div style="text-align: center;">
-        <button type="button" class="btn btn-info  btn-xl">
+        <button type="button" class="btn btn-info btn-circle btn-xl">
           <i class="fa fa-check"></i>
         </button>
-         <button type="button" class="btn btn-warning  btn-xl"><!-- btn-circle -->
+        <button type="button" class="btn btn-warning btn-circle btn-xl">
           <i class="fa fa-times"></i>
         </button>
       </div>
     </div>
   </div>
-</div>
 </div>
