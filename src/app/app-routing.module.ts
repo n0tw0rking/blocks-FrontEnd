@@ -36,54 +36,36 @@ const routes: Routes = [
       // { path: ":id", component: UsersComponent }
     ]
   },
-
   {
     path: "services",
     component: ServicesPageComponent
     // canActivate: [AuthGuard]
   },
-  { path: "home", component: MainPageComponent, canActivate: [AuthGuard] },
-  { path: "login", component: LoginComponent },
-  { path: "**", component: MainPageComponent, canActivate: [AuthGuard] },
-  { path: "user", component: UsersComponent, canActivate: [AuthGuard] },
-  { path: "user/add", component: AddUserComponent, canActivate: [AuthGuard] },
+  /*
+  NOTES FROM ADAM:
+I have added the name so I can search by name
+  */
+  //
   {
-    path: "user/balance/:id",
-    component: BalanceEditComponent,
-    canActivate: [AuthGuard]
+    path: "services/:id",
+    component: ServicesPageComponent
+    // canActivate: [AuthGuard]
   },
-  { path: "user/:id", component: UsersComponent, canActivate: [AuthGuard] },
+  // { path: "blocks", component: BlocksPageComponent },
   {
-    path: "blocks/add",
-    component: AddBlockComponent,
-    canActivate: [AuthGuard]
+    path: "blocks",
+    component: BlocksPageComponent,
+    // canActivate: [AuthGuard],
+    children: [
+      { path: "", component: BlockComponent }
+      // {path: 'edit/:id', component: EditComponent}
+    ]
   },
-  // {
-  //   path: "services",
-  //   component: ServicesPageComponent,
-  //   canActivate: [AuthGuard]
-  // },
-  // {
-  //   path: "blocks",
-  //   component: BlocksPageComponent,
-  //   // canActivate: [AuthGuard],
-  //   children: [
-  //     { path: "", component: BlockComponent },
-  //     { path: "add", component: AddBlockComponent },
-  //     { path: "edit/:id", component: EditComponent }
-  //   ]
-  // }
-  // { path: "blocks/add", component: AddBlockComponent },
-  // { path: "blocks/edit/:id", component: EditComponent }.
   { path: "blocks/add", component: AddBlockComponent },
-  { path: "blocks/edit/:id", component: EditComponent },
+  { path: "blocks/edit/:name", component: EditComponent }
 
-  {
-    path: "not-found",
-    component: ErrorPageComponent,
-    data: { message: "Page not found!" }
-  },
-  { path: "**", redirectTo: "/not-found" }
+  // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
+  // { path: '**', redirectTo: '/not-found' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
