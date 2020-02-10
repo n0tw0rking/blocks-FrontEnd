@@ -125,6 +125,7 @@ export class ApolloService {
               subscription {
                 aServiceSubscriptions {
                   service {
+                    aServiceId
                     isActive
                     serviceName
                   }
@@ -137,6 +138,16 @@ export class ApolloService {
       variables: {
         blockId: blockId
       },
+      errorPolicy: "all"
+    }).valueChanges;
+  }
+  updateServiceById(serviceId) {
+    return this.apollo.use("ASP").watchQuery<any>({
+      query: gql`
+        query($blockId: Int!) {
+        
+         } `,
+      variables: {},
       errorPolicy: "all"
     }).valueChanges;
   }
