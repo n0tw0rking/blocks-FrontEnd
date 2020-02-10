@@ -1,6 +1,9 @@
 import { BrowserModule } from "@angular/platform-browser";
 import * as $ from "jquery";
+import { HttpLink } from "apollo-angular-link-http";
+import { InMemoryCache } from "apollo-cache-inmemory";
 
+import { Apollo } from "apollo-angular";
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";

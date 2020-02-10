@@ -11,6 +11,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errors: any = [];
+  loading = true;
   notifyMessage = "";
 
   constructor(
@@ -66,7 +67,7 @@ export class LoginComponent implements OnInit {
           if (token.data.login.isSuperAdmin) {
             console.log(" this is the superAdmin");
             this.router.navigate(["/"]);
-          } else if (token.data.login.Admin) {
+          } else if (token.data.login.isAdmin) {
             console.log(token);
             console.log("this is the Admin");
             this.router.navigate(["/"]);

@@ -14,6 +14,7 @@ import {
   NgbCarouselConfig
 } from "@ng-bootstrap/ng-bootstrap";
 import { PerfectScrollbarConfigInterface } from "ngx-perfect-scrollbar";
+import { AuthService } from "../../../core/auth.service";
 declare var $: any;
 @Input()
 @Component({
@@ -32,6 +33,7 @@ export class NavigationComponent implements AfterViewInit {
   public showSearch = false;
 
   constructor(
+    private authService: AuthService,
     private modalService: NgbModal,
     public location: Location,
     private router: Router
@@ -104,6 +106,9 @@ export class NavigationComponent implements AfterViewInit {
   ngAfterViewInit() {}
   ngOnInit() {
     // this.tittle = this.location.path().slice(1);
+  }
+  logout() {
+    this.authService.logout();
   }
   isMain() {
     if (this.router.url == "/main") {

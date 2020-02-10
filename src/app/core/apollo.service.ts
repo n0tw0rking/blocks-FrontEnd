@@ -8,40 +8,49 @@ import gql from "graphql-tag";
 export class ApolloService {
   constructor(private apollo: Apollo) {}
 
-  getUser(currentUser): any {
-    return this.apollo.watchQuery<any>({
+  getUser(): any {
+    return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
-        query($id: String!) {
-          oneUser(id: $id) {
-            _id
-            isAdmin
-            isSuperAdmin
+        query($userId: String!) {
+          user(userId: $userId) {
             email
-            password
-            userSubscription {
-              _id
-              name
+            phoneNumber
+            blockUsers {
+              blockId
+            }
+            subscriptions {
+              subscriptionId
+              subscriptionName
               user {
-                _id
-              }
-              block {
-                _id
-                name
-                location
+                userId
               }
             }
           }
         }
       `,
+      // I NEED TO UNCOMMENT THIS LATER these are the varible to send the query
       variables: {
-        id: currentUser
+        userId: localStorage.getItem("currnetUser")
       },
       errorPolicy: "all"
     }).valueChanges
   }
-
+  getAllServices(): any {
+    return this.apollo.use("ASP").watchQuery<any>({
+      query: gql`
+        {
+          services {
+            serviceName
+            serviceName
+            isActive
+          }
+        }
+      `,
+      errorPolicy: "all"
+    }).valueChanges;
+  }
   getService(): any {
-    return this.apollo.watchQuery<any>({
+    return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
         query($name: String!) {
           oneService(name: $name) {
@@ -206,21 +215,19 @@ export class ApolloService {
 
  
 
-  getSubscription(): any {
-    return this.apollo.watchQuery<any>({
+  getSubscriptionBYName(subName): any {
+    return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
-        query($name: String!) {
-          oneSubscription(name: $name) {
-            _id
-
-            block {
-              _id
-            }
+        query($aServiceName: String!) {
+          serviceByName(aServiceName: $aServiceName) {
+            aServiceId
+            serviceName
+            isActive
           }
         }
       `,
       variables: {
-        name: "BBB"
+        aServiceName: subName
       },
       errorPolicy: "all"
     }).valueChanges;
