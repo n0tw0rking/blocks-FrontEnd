@@ -33,8 +33,8 @@ export class AppComponent {
     if (!signInData) {
       console.log(signInData);
       this.router.navigate([
-        //  "login"
-        "/main"
+         "login"
+        // "/main"
       ]);
     }
   }
@@ -49,6 +49,7 @@ export class AppComponent {
     console.log(this.router.url);
     return false;
   }
+  
   isLogin() {
     if (this.router.url == "/login") {
       return true;

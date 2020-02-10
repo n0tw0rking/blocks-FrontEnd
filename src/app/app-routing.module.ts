@@ -18,14 +18,14 @@ const routes: Routes = [
   {
     path: "super",
     component: SuperAdminComponent
-    // canActivate: [AuthGuard]
+  // canActivate: [AuthGuard]
   },
   { path: "login", component: LoginComponent },
   { path: "", component: MainPageComponent },
   // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
-  { path: "user/add", component: AddUserComponent },
-  { path: "user/balance/:id", component: BalanceEditComponent },
-  { path: "user/:id", component: UsersComponent },
+  {path: 'user/add', component: AddUserComponent},
+  {path: 'user/balance/:id', component: BalanceEditComponent},
+  {path: 'user/:id', component: UsersComponent},
 
   {
     path: "user",
@@ -42,48 +42,22 @@ const routes: Routes = [
     component: ServicesPageComponent
     // canActivate: [AuthGuard]
   },
-  { path: "home", component: MainPageComponent, canActivate: [AuthGuard] },
-  { path: "login", component: LoginComponent },
-  { path: "**", component: MainPageComponent, canActivate: [AuthGuard] },
-  { path: "user", component: UsersComponent, canActivate: [AuthGuard] },
-  { path: "user/add", component: AddUserComponent, canActivate: [AuthGuard] },
+  // { path: "blocks", component: BlocksPageComponent },
   {
-    path: "user/balance/:id",
-    component: BalanceEditComponent,
-    canActivate: [AuthGuard]
+    path: "blocks",
+    component: BlocksPageComponent,
+    // canActivate: [AuthGuard],
+    children: [
+      {path: '', component: BlockComponent},
+      // {path: 'edit/:id', component: EditComponent}
+    ]
   },
-  { path: "user/:id", component: UsersComponent, canActivate: [AuthGuard] },
-  {
-    path: "blocks/add",
-    component: AddBlockComponent,
-    canActivate: [AuthGuard]
-  },
-  // {
-  //   path: "services",
-  //   component: ServicesPageComponent,
-  //   canActivate: [AuthGuard]
-  // },
-  // {
-  //   path: "blocks",
-  //   component: BlocksPageComponent,
-  //   // canActivate: [AuthGuard],
-  //   children: [
-  //     { path: "", component: BlockComponent },
-  //     { path: "add", component: AddBlockComponent },
-  //     { path: "edit/:id", component: EditComponent }
-  //   ]
-  // }
-  // { path: "blocks/add", component: AddBlockComponent },
-  // { path: "blocks/edit/:id", component: EditComponent }.
-  { path: "blocks/add", component: AddBlockComponent },
-  { path: "blocks/edit/:id", component: EditComponent },
+      {path: 'blocks/add', component: AddBlockComponent},
+      {path: 'blocks/edit/:name', component: EditComponent},
 
-  {
-    path: "not-found",
-    component: ErrorPageComponent,
-    data: { message: "Page not found!" }
-  },
-  { path: "**", redirectTo: "/not-found" }
+      // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
+      // { path: '**', redirectTo: '/not-found' }
+  
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
