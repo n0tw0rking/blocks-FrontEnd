@@ -32,10 +32,20 @@ export class UsersComponent implements OnInit, OnDestroy {
   id = "";
   sub: any;
   ngOnInit() {
+
+
     this.sub = this.route.params.subscribe(params => {
       // this.id = params+'';
       //  this.getBlock(this.id)
-      console.log(params);
+      if(params.id){
+        // call users in this block
+        console.log(params, 'there blockId');
+      }
+      else {
+          //call all users by admin id
+        console.log('ther ia no params')
+      }
+
     });
   }
   // onSelect(use) {

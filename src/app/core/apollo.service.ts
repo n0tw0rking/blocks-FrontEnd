@@ -126,6 +126,7 @@ export class ApolloService {
         query{
           blocks {
             blockName
+            blockId
             blockSubscriptions {
               subscriptionId
               subscription {

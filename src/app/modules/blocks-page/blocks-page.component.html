@@ -34,7 +34,7 @@
       <div class="row" id="whole">
         <div class="row">
           <!-- [routerLink]="['/blocks','edit', block.id]"  //display the user block -->
-          <app-block [routerLink]="['/user',block]" 
+          <app-block [routerLink]="['/user',block.blockId]" 
           *ngFor="let block of blocks" [block]="block"></app-block>
           <!-- <router-outlet></router-outlet> -->
         </div>
