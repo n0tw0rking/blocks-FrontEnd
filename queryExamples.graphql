@@ -45,24 +45,21 @@ query($id: String!) {
             }
           }
         }
-..
-query {
-          user(userId: ) {
-            email
-            phoneNumber
-            blockUsers {
-              blockId
-            }
-            subscriptions {
-              subscriptionId
-              subscriptionName
-              user {
-                userId
-              }
-            }
-          }
-        }
 #
+{
+  blockServices(blockId:1){
+  blockName,
+    blockSubscriptions{
+        subscription{
+          aServiceSubscriptions{
+            service{
+                serviceName
+            }
+         }
+      }
+    }
+  }
+}
 query($id: String!) {
   oneUser(id: $id) {
     _id

@@ -33,7 +33,7 @@ export class ApolloService {
         userId: localStorage.getItem("currnetUser")
       },
       errorPolicy: "all"
-    }).valueChanges
+    }).valueChanges;
   }
   getAllServices(): any {
     return this.apollo.use("ASP").watchQuery<any>({
@@ -49,7 +49,7 @@ export class ApolloService {
       errorPolicy: "all"
     }).valueChanges;
   }
-  getService(): any {
+  getService(service): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
         query($name: String!) {
@@ -62,16 +62,15 @@ export class ApolloService {
         }
       `,
       variables: {
-        name: "water"
+        name: service
       },
       errorPolicy: "all"
     }).valueChanges;
   }
-//works
-  getsUser(id){
-    return this.apollo
-     .watchQuery<any>({
-         query: gql`
+  //works
+  getsUser(id) {
+    return this.apollo.watchQuery<any>({
+      query: gql`
          query{
            oneUser(id:${id}){
              _id
@@ -93,59 +92,59 @@ export class ApolloService {
            }
          }
         `,
-        errorPolicy: "all"
-      })
-      .valueChanges
-   }
+      errorPolicy: "all"
+    }).valueChanges;
+  }
 
-
-   createUser(user){ 
-     console.log(user)
-     //create subscreption if new user
-    return this.apollo
-    .watchQuery<any>({
-        query: gql`
-        mutation{
-          createUser(userInput:{email:"user1",password:"user1",isAdmin:false}){
+  createUser(user) {
+    console.log(user);
+    //create subscreption if new user
+    return this.apollo.watchQuery<any>({
+      query: gql`
+        mutation {
+          createUser(
+            userInput: { email: "user1", password: "user1", isAdmin: false }
+          ) {
             _id
             email
             password
             isAdmin
           }
         }
-       `,
-       errorPolicy: "all"
-     })
-     .valueChanges
-   }
-
-   getBlocksByAdminId(id){ //get all info of block by id 
-    return this.apollo.use("ASP")
-    .watchQuery<any>({
-        query: gql`
-        query{
-          blocks {
+      `,
+      errorPolicy: "all"
+    }).valueChanges;
+  }
+  getServicesByBlockId(blockId) {
+    return this.apollo.use("ASP").watchQuery<any>({
+      query: gql`
+        query($blockId: Int!) {
+          blockServices(blockId: $blockId) {
             blockName
             blockSubscriptions {
-              subscriptionId
               subscription {
-                subscriptionName
+                aServiceSubscriptions {
+                  service {
+                    isActive
+                    serviceName
+                  }
+                }
               }
             }
           }
-        }        
-       `,
-       errorPolicy: "all"
-     })
-     .valueChanges
-
-   }
- 
-   getBlocks(){ //get all blocks id s and name s
-    return this.apollo
-    .watchQuery<any>({
-        query: gql`
-        query{
+        }
+      `,
+      variables: {
+        blockId: blockId
+      },
+      errorPolicy: "all"
+    }).valueChanges;
+  }
+  getBlocksByAdminId(id) {
+    //get all info of block by id
+    return this.apollo.use("ASP").watchQuery<any>({
+      query: gql`
+        query {
           blocks {
             blockName
             blockSubscriptions {
@@ -156,66 +155,72 @@ export class ApolloService {
             }
           }
         }
-        
-       `,
-       errorPolicy: "all"
-     })
-     .valueChanges
-   
- 
-   }
- 
-   getUsersOfBlock(name) { //get all user s inside this block(id)
-    
-   }
- 
- 
- //works
-   createNewBlock(Block) {
-      console.log(Block, 'inside newblock')
-    return this.apollo
-    .mutate<any>({
+      `,
+      errorPolicy: "all"
+    }).valueChanges;
+  }
+
+  getBlocks() {
+    //get all blocks id s and name s
+    return this.apollo.watchQuery<any>({
+      query: gql`
+        query {
+          blocks {
+            blockId
+            blockName
+            blockSubscriptions {
+              subscriptionId
+              subscription {
+                subscriptionName
+              }
+            }
+          }
+        }
+      `,
+      errorPolicy: "all"
+    }).valueChanges;
+  }
+
+  getUsersOfBlock(name) {
+    //get all user s inside this block(id)
+  }
+
+  //works
+  createNewBlock(Block) {
+    console.log(Block, "inside newblock");
+    return this.apollo.mutate<any>({
       mutation: gql`
-      mutation($name:String!, $location:String!) {
-        createBlock(blockInput:{name:$name,location:$location}){
-          _id
-          name
-          location
+        mutation($name: String!, $location: String!) {
+          createBlock(blockInput: { name: $name, location: $location }) {
+            _id
+            name
+            location
+          }
         }
-      }
       `,
       variables: {
         name: Block.name,
         location: Block.location
-
       },
       errorPolicy: "all"
-    })
+    });
+  }
 
-
-   }
-
-   createNewBlockASP(Block) {
-    console.log(Block, 'inside newblock')
-  return this.apollo.use("ASP")
-  .mutate<any>({
-    mutation: gql`
-    mutation($name:String!, $location:String!) {
-      createBlock(input:{blockName:$name, location:$location})
-    }
-    `,
-    variables: {
-      name: Block.name,
-      location: Block.location
-
-    },
-    errorPolicy: "all"
-  })
-
-
- }
-
- 
+  createNewBlockASP(Block) {
+    console.log(Block, "inside newblock");
+    return this.apollo.use("ASP").mutate<any>({
+      mutation: gql`
+        mutation($name: String!, $location: String!) {
+          createBlock(input: { blockName: $name, location: $location })
+        }
+      `,
+      variables: {
+        name: Block.name,
+        location: Block.location
+      },
+      errorPolicy: "all"
+    });
+  }
 
   getSubscriptionBYName(subName): any {
     return this.apollo.use("ASP").watchQuery<any>({

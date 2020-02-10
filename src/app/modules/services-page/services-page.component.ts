@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ApolloService } from "../../core/apollo.service";
+import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: "app-services-page",
   templateUrl: "./services-page.component.html",
@@ -7,24 +8,56 @@ import { ApolloService } from "../../core/apollo.service";
 })
 export class ServicesPageComponent implements OnInit {
   services = [];
+  blockId;
   loading = true;
-  constructor(private appollo: ApolloService) {}
+  error = "";
+  constructor(private appollo: ApolloService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    // UNCOMMENT THIS LATER ADAM
-    this.appollo.getAllServices().subscribe(
-      result => {
-        if (result.errors) {
-          console.log(result.errors[0].message);
-        } else {
-          this.loading = result.data.loading;
-          this.services = result.data.services;
-          console.log(result);
+    this.route.params.subscribe(params => {
+      this.blockId = parseInt(params.id);
+      console.log(this.blockId);
+    });
+    if (this.blockId) {
+      console.log("entering");
+      this.appollo.getServicesByBlockId(this.blockId).subscribe(
+        result => {
+          if (result.errors) {
+            this.loading = false;
+            console.log(result.errors[0].message);
+            this.error = result.errors[0].message;
+          } else {
+            result.data.blockServices.blockSubscriptions.forEach(obj => {
+              obj.subscription.aServiceSubscriptions.forEach(obj => {
+                this.services.push(obj.service);
+              });
+            });
+            console.log(this.services);
+            this.loading = result.data.loading;
+            // this.services =
+            //   result.data.blockServices.blockSubscriptions.subscription.aServiceSubscriptions;
+          }
+        },
+        errorResponse => {
+          console.log(errorResponse);
         }
-      },
-      errorResponse => {
-        console.log(errorResponse);
-      }
-    );
+      );
+    } else {
+      this.appollo.getAllServices().subscribe(
+        result => {
+          if (result.errors) {
+            this.loading = result.data.loading;
+            console.log(result.errors[0].message);
+          } else {
+            this.services = result.data.services;
+            console.log(this.services);
+            this.loading = result.data.loading;
+          }
+        },
+        errorResponse => {
+          console.log(errorResponse);
+        }
+      );
+    }
   }
 }
