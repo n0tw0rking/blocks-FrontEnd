@@ -29,10 +29,10 @@ export class AddBlockComponent implements OnInit {
 
   onNewForm(){
     console.log(this.newblockForm.value)
-    this.polo.createNewBlock(this.newblockForm.value)
-    .subscribe(
-      res=>console.log(res),error=>{console.log(error)})
-    
+    this.polo.createNewBlockASP(this.newblockForm.value)
+    .subscribe()
+      // res=>console.log(res),error=>{console.log(error)})
+     
     // this.blocks.push(this.newblockForm.value)
 
     this.router.navigate(["/blocks"]);
