@@ -38,17 +38,9 @@ export const ROUTES: RouteInfo[] = [
     path: "/user",
     title: "Users",
     icon: "ngbDropdownToggle",
-    class: "top-right",
+    class: "",
     extralink: false,
-    submenu: [
-      {
-        path: "/user",
-        title: "Users",
-        icon: "ngbDropdownToggle",
-        class: "top-right",
-        extralink: false,
-        submenu: []
-      },
+    submenu: [      
       {
         path: "/user/add",
         title: "Add User",
