@@ -166,8 +166,22 @@ export class ApolloService {
  
    }
  
-   getUsersOfBlock(name) { //get all user s inside this block(id)
-    
+   getUsersOfBlock(block) { //get all user s inside this block(id)
+    // console.log(typeof(+block), "inside apolo")
+    return this.apollo.use("ASP")
+    .watchQuery<any>({
+        query: gql`
+        query($blockId: Int!){
+          block(blockId:$blockId) {
+          blockSubscriptions{subscriptionId,subscription{user{email, userId, phoneNumber }}}}
+        }
+       `,
+       variables: {
+        blockId: +block
+      },
+       errorPolicy: "all"
+     })
+     .valueChanges
    }
  
  
