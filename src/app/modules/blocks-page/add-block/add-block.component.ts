@@ -37,7 +37,10 @@ export class AddBlockComponent implements OnInit {
           console.log(result.errors[0].message);
         } else {
           this.services = result.data.services;
-          console.log(result);
+          // console.log(result.data.createBlock === 1)
+          if(result.data.createBlock === 1){
+              this.router.navigate(["/blocks"]);
+          }
         }
       },
       errorResponse => {
@@ -48,7 +51,7 @@ export class AddBlockComponent implements OnInit {
      
     // this.blocks.push(this.newblockForm.value)
 
-    this.router.navigate(["/blocks"]);
+    // this.router.navigate(["/blocks"]);
 
   }
 
