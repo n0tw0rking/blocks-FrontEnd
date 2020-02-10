@@ -17,7 +17,7 @@
 <table class="table" style="color: rgb(77, 35, 35);">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Name</th>
+      <th scope="col">ID</th>
       <th scope="col">email</th>
       <th scope="col">Balance</th>
       <th scope="col">Username</th>
@@ -28,17 +28,17 @@
 
   <tbody *ngFor="let user of users">
     <tr>
-      <th scope="row">{{user.userSubscription[0].name }}</th>
-      <td>{{ user.email }}</td>
+      <th scope="row">{{user.subscriptionId }}</th>
+      <td>{{ user.subscription.user.email }}</td>
       <div>
-        <td>{{  user.userSubscription[0].balance }}</td>
+        <td>{{  user.subscription.user.email }}</td>
       </div>
       <div>
-        <td>{{ user.userSubscription[0].balance }}</td>
+        <td>{{ user.subscription.user.userId}}</td>
       </div>
       <div></div>
-      <td>{{ user.userSubscription[0].user}}</td>
-      <td>{{user.userSubscription[0].block}}</td>
+      <td>{{ user.subscription.user.email}}</td>
+      <td>{{user.subscription.user.phoneNumber}}</td>
    
         <td (click)="userMoreInfo(user)">record</td> 
         <!-- routerLink="/userRercords" -->

@@ -158,6 +158,7 @@ export class ApolloService {
         query {
           blocks {
             blockName
+            blockId
             blockSubscriptions {
               subscriptionId
               subscription {
@@ -187,19 +188,40 @@ export class ApolloService {
             }
           }
         }
-      `,
-      errorPolicy: "all"
-    }).valueChanges;
-  }
+        
+       `,
+       errorPolicy: "all"
+     })
+     .valueChanges
+   
+ 
+   }
+ 
+   getUsersOfBlock(block) { //get all user s inside this block(id)
+    // console.log(typeof(+block), "inside apolo")
+    return this.apollo.use("ASP")
+    .watchQuery<any>({
+        query: gql`
+        query($blockId: Int!){
+          block(blockId:$blockId) {
+          blockSubscriptions{subscriptionId,subscription{user{email, userId, phoneNumber }}}}
+        }
+       `,
+       variables: {
+        blockId: +block
+      },
+       errorPolicy: "all"
+     })
+     .valueChanges
+   }
+ 
+ 
+ //works
+   createNewBlock(Block) {
+      console.log(Block, 'inside newblock')
+    return this.apollo
+    .mutate<any>({
 
-  getUsersOfBlock(name) {
-    //get all user s inside this block(id)
-  }
-
-  //works
-  createNewBlock(Block) {
-    console.log(Block, "inside newblock");
-    return this.apollo.mutate<any>({
       mutation: gql`
         mutation($name: String!, $location: String!) {
           createBlock(blockInput: { name: $name, location: $location }) {
