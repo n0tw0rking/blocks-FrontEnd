@@ -26,6 +26,7 @@ export class ServicesPageComponent implements OnInit {
   constructor(private appollo: ApolloService) {}
 
   ngOnInit() {
+    // UNCOMMENT THIS LATER ADAM
     this.appollo.getAllServices().subscribe(
       result => {
         if (result.errors) {

@@ -26,7 +26,6 @@ export class AuthService {
     this.getIsAuthed.emit(this.isAuthed);
   }
   public login(userData: any): Observable<any> {
-    //fetch
     return this.apollo
       .watchQuery<any>({
         query: gql`
@@ -74,7 +73,7 @@ export class AuthService {
     console.log(this.user);
     localStorage.setItem("currentUser", this.user);
     this.isAuthenticated().subscribe(res => {
-      console.log(res);
+      console.log("isAuthenticated query", res);
     });
     return token;
   }

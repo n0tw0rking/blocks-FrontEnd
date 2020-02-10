@@ -8,12 +8,11 @@ import gql from "graphql-tag";
 export class ApolloService {
   constructor(private apollo: Apollo) {}
 
-  getUser(currentUser): any {
-    console.log("currnentUser : ", currentUser);
+  getUser(): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
-        query {
-          user(userId: ) {
+        query($userId: String!) {
+          user(userId: $userId) {
             email
             phoneNumber
             blockUsers {
@@ -29,10 +28,10 @@ export class ApolloService {
           }
         }
       `,
-      // I NEEED TO UNCOMMENT THIS LATER these are the varible to send the query
-      // variables: {
-      //   userId: currentUser
-      // },
+      // I NEED TO UNCOMMENT THIS LATER these are the varible to send the query
+      variables: {
+        userId: localStorage.getItem("currnetUser")
+      },
       errorPolicy: "all"
     }).valueChanges;
   }
@@ -69,21 +68,19 @@ export class ApolloService {
     }).valueChanges;
   }
 
-  getSubscription(): any {
+  getSubscriptionBYName(subName): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
-        query($name: String!) {
-          oneSubscription(name: $name) {
-            _id
-
-            block {
-              _id
-            }
+        query($aServiceName: String!) {
+          serviceByName(aServiceName: $aServiceName) {
+            aServiceId
+            serviceName
+            isActive
           }
         }
       `,
       variables: {
-        name: "BBB"
+        aServiceName: subName
       },
       errorPolicy: "all"
     }).valueChanges;
