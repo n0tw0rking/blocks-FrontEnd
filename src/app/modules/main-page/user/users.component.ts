@@ -8,22 +8,22 @@ import { ApolloService } from "../../../core/apollo.service";
   styleUrls: ["./users.component.css"]
 })
 export class UsersComponent implements OnInit, OnDestroy {
-  users = [
-    {
-      email: "one@one.com",
-      userSubscription: [
-        { name: "fathi1", balance: -200, user: "username1", block: "block1" }
-      ],
-      adminBlock: "admin1"
-    },
-    {
-      email: "tow@tow.com",
-      userSubscription: [
-        { name: "hasan2", balance: 100, user: "username2", block: "block2" }
-      ],
-      adminBlock: "admin2"
-    }
-  ];
+  users = []
+  //   {
+  //     email: "one@one.com",
+  //     userSubscription: [
+  //       { name: "fathi1", balance: -200, user: "username1", block: "block1" }
+  //     ],
+  //     adminBlock: "admin1"
+  //   },
+  //   {
+  //     email: "tow@tow.com",
+  //     userSubscription: [
+  //       { name: "hasan2", balance: 100, user: "username2", block: "block2" }
+  //     ],
+  //     adminBlock: "admin2"
+  //   }
+  // ];
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -32,10 +32,28 @@ export class UsersComponent implements OnInit, OnDestroy {
   id = "";
   sub: any;
   ngOnInit() {
+
+
     this.sub = this.route.params.subscribe(params => {
       // this.id = params+'';
       //  this.getBlock(this.id)
-      console.log(params);
+      if(params.id){
+        // call users in this block
+        console.log(params, 'this is blockId');
+        this.apollo.getUsersOfBlock(params.id)
+        .subscribe(res =>
+            res.data.block.blockSubscriptions.forEach(element => {
+              this.users.push(element)
+              console.log(element)
+            })
+          
+          )
+      }
+      else {
+          //call all users by admin id
+        console.log('ther ia no params')
+      }
+
     });
   }
   // onSelect(use) {
