@@ -6,23 +6,8 @@ import { ApolloService } from "../../core/apollo.service";
   styleUrls: ["./services-page.component.css"]
 })
 export class ServicesPageComponent implements OnInit {
-  services = [
-    {
-      id: 1,
-      name: "alivator",
-      paymentStatus: "dept",
-      status: "active",
-      dateOfSubscreption: "1-1-2019"
-    },
-    {
-      id: 2,
-      name: "cleaning",
-      paymentStatus: "payed",
-      status: "active",
-      dateOfSubscreption: "2-2-2019"
-    }
-  ];
-
+  services = [];
+  loading = true;
   constructor(private appollo: ApolloService) {}
 
   ngOnInit() {
@@ -32,6 +17,7 @@ export class ServicesPageComponent implements OnInit {
         if (result.errors) {
           console.log(result.errors[0].message);
         } else {
+          this.loading = result.data.loading;
           this.services = result.data.services;
           console.log(result);
         }

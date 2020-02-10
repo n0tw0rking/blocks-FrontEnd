@@ -1,16 +1,15 @@
-<!-- <app-nav-bar></app-nav-bar>
-<div class="container">
-  <h1>Services List</h1>
-  <div class="container">
-    <div class="row" id="whole">
-      <div class="row">
-        <app-service *ngFor="let service of services" [service]="service"></app-service>
-      </div>
-    </div>
+<div *ngIf="services.length">
+  <div class="row">
+    <app-service *ngFor="let service of services" [service]="service"></app-service>
   </div>
-</div> -->
-<!-- Card -->
-<div class="row">
-  <app-service *ngFor="let service of services" [service]="service"></app-service>
+</div>
 
+<div class="text-center" *ngIf="!services.length" style="vertical-align: middle;">
+  <div class="spinner-grow" style="width: 20rem; height: 20rem; text-align: center;" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+
+  <div class="spinner-grow fast" style="width: 20rem; height: 20rem;" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
 </div>

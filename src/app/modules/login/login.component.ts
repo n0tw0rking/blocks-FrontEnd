@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errors: any = [];
   loading = true;
+  submitted = false;
   notifyMessage = "";
 
   constructor(
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.submitted = false;
     this.createForm();
     this.route.params.subscribe(params => {
       if (params.registered === "success") {
@@ -58,11 +60,13 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.submitted = true;
     console.log(this.loginForm.value);
     this.auth.login(this.loginForm.value).subscribe(
       token => {
         if (token.errors) {
           console.log(token.errors[0].message);
+          this.errors = token.errors[0].message;
         } else {
           if (token.data.login.isSuperAdmin) {
             console.log(" this is the superAdmin");

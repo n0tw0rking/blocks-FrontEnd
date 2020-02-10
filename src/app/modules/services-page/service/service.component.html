@@ -1,20 +1,20 @@
-<div class="col-md-8 d-inline-block">
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title text-center"><strong>{{ service.serviceName }}</strong></h4>
-      <p class="card-text text-center">With supporting text below as a natural lead-in to additional
-        content.</p>
-      <p class="card-text"> Price: 100$</p>
-      <p class="card-text" *ngIf="service.isActive"> Status: Enabled</p>
-      <p class="card-text" *ngIf="!service.isActive"> Status: Disabled</p>
-      <div style="text-align: center;">
-        <button type="button" class="btn btn-info btn-circle btn-xl">
-          <i class="fa fa-check"></i>
-        </button>
-        <button type="button" class="btn btn-warning btn-circle btn-xl">
-          <i class="fa fa-times"></i>
-        </button>
+  <div class="col-md-8 d-inline-block">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title text-center"><strong>{{ service.serviceName }}</strong></h4>
+        <p class="card-text text-center">With supporting text below as a natural lead-in to additional
+          content.</p>
+        <p class="card-text"> Price: 100$</p>
+        <p class="card-text" *ngIf="service.isActive"> Status: Enabled</p>
+        <p class="card-text" *ngIf="!service.isActive"> Status: Disabled</p>
+        <div style="text-align: center;">
+          <button type="button" class="btn btn-info btn-circle btn-xl">
+            <i class="fa fa-check"></i>
+          </button>
+          <button type="button" class="btn btn-warning btn-circle btn-xl">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
