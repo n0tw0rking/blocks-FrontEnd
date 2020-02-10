@@ -120,7 +120,7 @@ export class ApolloService {
    }
 
    getBlocksByAdminId(id){ //get all info of block by id 
-    return this.apollo
+    return this.apollo.use("ASP")
     .watchQuery<any>({
         query: gql`
         query{
@@ -173,7 +173,8 @@ export class ApolloService {
  //works
    createNewBlock(Block) {
       console.log(Block, 'inside newblock')
-    return this.apollo.mutate<any>({
+    return this.apollo
+    .mutate<any>({
       mutation: gql`
       mutation($name:String!, $location:String!) {
         createBlock(blockInput:{name:$name,location:$location}){
@@ -196,14 +197,15 @@ export class ApolloService {
 
    createNewBlockASP(Block) {
     console.log(Block, 'inside newblock')
-  return this.apollo.mutate<any>({
+  return this.apollo.use("ASP")
+  .mutate<any>({
     mutation: gql`
     mutation($name:String!, $location:String!) {
       createBlock(input:{blockName:$name, location:$location})
     }
     `,
     variables: {
-      blockName: Block.name,
+      name: Block.name,
       location: Block.location
 
     },

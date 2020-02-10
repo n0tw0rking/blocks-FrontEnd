@@ -33,7 +33,7 @@ userId:any;
     this.polo.getBlocksByAdminId(this.userId)
     .subscribe(res=> 
       this.blocks= res.data.blocks
-      // console.log(res.data.blocks)
+      // console.log(res.data.blocks )
       )
     
   }

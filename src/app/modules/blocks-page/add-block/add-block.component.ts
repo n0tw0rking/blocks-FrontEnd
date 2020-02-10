@@ -13,6 +13,7 @@ import { ApolloService } from '../../../core/apollo.service'
 })
 export class AddBlockComponent implements OnInit {
   newblockForm:FormGroup
+  services:any
 
   constructor(private formbuilder: FormBuilder, private router: Router,  private http:HttpService, private polo: ApolloService) { }
 
@@ -30,7 +31,19 @@ export class AddBlockComponent implements OnInit {
   onNewForm(){
     console.log(this.newblockForm.value)
     this.polo.createNewBlockASP(this.newblockForm.value)
-    .subscribe()
+    .subscribe(
+      result => {
+        if (result.errors) {
+          console.log(result.errors[0].message);
+        } else {
+          this.services = result.data.services;
+          console.log(result);
+        }
+      },
+      errorResponse => {
+        console.log(errorResponse);
+      }
+    )
       // res=>console.log(res),error=>{console.log(error)})
      
     // this.blocks.push(this.newblockForm.value)
