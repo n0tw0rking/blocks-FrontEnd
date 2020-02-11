@@ -1,6 +1,16 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  AfterViewInit
+} from "@angular/core";
 import { ApolloService } from "../../core/apollo.service";
 import { Router, ActivatedRoute } from "@angular/router";
+import { async } from "@angular/core/testing";
+// @Output() open: EventEmitter<any>
+// @Output() close: EventEmitter<any>
+
 @Component({
   selector: "app-services-page",
   templateUrl: "./services-page.component.html",
@@ -71,12 +81,7 @@ export class ServicesPageComponent implements OnInit {
       );
     }
   }
-  updateParent(serviceid) {
-    console.log(this.services);
-    this.services.forEach(service => {
-      if (service.aServiceId === serviceid) {
-        service.isActive = !service.isActive;
-      }
-    });
+  updateParent($event) {
+    this.services[$event].isActive = !this.services[$event].isActive;
   }
 }

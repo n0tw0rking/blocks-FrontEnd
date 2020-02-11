@@ -8,30 +8,21 @@
         With supporting text below as a natural lead-in to additional content.
       </p>
       <p class="card-text">Price: 100$</p>
-      <p class="card-text" *ngIf="service.isActive">Status: Enabled</p>
-      <p class="card-text" *ngIf="!service.isActive">Status: Disabled</p>
+      <p class="card-text" *ngIf="service.isActive;else kay">Status: Enabled</p>
+      <ng-template #kay>
+        <p class="card-text">Status: Disabled</p>
+      </ng-template>
+      <!-- <p class="card-text" *ngIf="!service.isActive">Status: Disabled</p> -->
     </div>
-    <button
-      _ngcontent-c4=""
-      type="button"
-      [class]="
+    <button _ngcontent-c4="" type="button" [class]="
         !service.isActive
           ? 'btn btn-success btn-round'
           : 'btn btn-danger btn-round'
-      "
-    >
-      <p
-        class="text-center"
-        *ngIf="!service.isActive"
-        (click)="updateService(service.aServiceId, true)"
-      >
+      ">
+      <p class="text-center" *ngIf="!service.isActive" (click)="updateService(service.aServiceId, true)">
         Enable
       </p>
-      <p
-        class="text-center"
-        *ngIf="service.isActive"
-        (click)="updateService(service.aServiceId, false)"
-      >
+      <p class="text-center" *ngIf="service.isActive" (click)="updateService(service.aServiceId, false)">
         Disable
       </p>
     </button>

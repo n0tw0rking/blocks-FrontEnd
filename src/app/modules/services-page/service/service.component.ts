@@ -1,20 +1,32 @@
-import { Component, OnInit, Input } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  EventEmitter,
+  Output,
+  AfterViewInit
+} from "@angular/core";
 import { ApolloService } from "../../../core/apollo.service";
 import { retry } from "rxjs/operators";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-service",
   templateUrl: "./service.component.html",
   styleUrls: ["./service.component.css"]
 })
-export class ServiceComponent implements OnInit {
+export class ServiceComponent implements AfterViewInit {
   loading = false;
   error;
-  constructor(private apollo: ApolloService) {}
+  constructor(private apollo: ApolloService, private _router: Router) {}
   @Input() service: any;
+  @Input() index: any;
+
   @Input() updParent: any;
-  ngOnInit() {
-    console.log("the service", this.service);
-  }
+  @Input() blockId: Number;
+  @Output() ServciceEvent: EventEmitter<any> = new EventEmitter<any>();
+  // @Output() close: EventEmitter<any> = new EventEmitter();
+
+  ngAfterViewInit() {}
   updateService(serviceid, state) {
     console.log(serviceid, state);
     if (!this.checkService(serviceid, state)) {
@@ -26,8 +38,8 @@ export class ServiceComponent implements OnInit {
             console.log(result.errors[0].message);
           } else {
             console.log(result);
-            this.service.aServiceId = !state;
             this.loading = result.data.loading;
+            this.ServciceEvent.emit(this.index);
           }
         },
         errorResponse => {
@@ -35,7 +47,6 @@ export class ServiceComponent implements OnInit {
         }
       );
     }
-    this.updParent(serviceid);
   }
   checkService(serviceid, state) {
     this.apollo.getServiceById(serviceid).subscribe(
@@ -56,4 +67,5 @@ export class ServiceComponent implements OnInit {
     );
     return false;
   }
+  updateServices($) {}
 }
