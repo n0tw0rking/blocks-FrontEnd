@@ -48,6 +48,7 @@ import { AddBlockComponent } from "./modules/blocks-page/add-block/add-block.com
 import { AddUserComponent } from "./modules/main-page/user/add-user/add-user.component";
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
 import { ErrorPageComponent } from "./modules/error-page/error-page.component";
+import { NotificationComponent } from './modules/main-page/notification/notification.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +67,8 @@ import { ErrorPageComponent } from "./modules/error-page/error-page.component";
     SuperAdminComponent,
     AddUserComponent,
     BalanceEditComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
