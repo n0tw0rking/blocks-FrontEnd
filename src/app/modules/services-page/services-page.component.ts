@@ -18,21 +18,29 @@ export class ServicesPageComponent implements OnInit {
       this.blockId = parseInt(params.id);
       console.log(this.blockId);
     });
-    if (this.blockId) {
-      console.log("entering");
+    if (
+      this.blockId !== undefined ||
+      this.blockId !== null ||
+      this.blockId !== "NaN"
+    ) {
       this.appollo.getServicesByBlockId(this.blockId).subscribe(
         result => {
           if (result.errors) {
             this.loading = false;
             console.log(result.errors[0].message);
-            this.error = result.errors[0].message;
+            this.error =
+              result.errors[0].message === "Unexpected Execution Error"
+                ? "This block has 0 service "
+                : result.errors[0].message;
           } else {
             result.data.blockServices.blockSubscriptions.forEach(obj => {
               obj.subscription.aServiceSubscriptions.forEach(obj => {
                 this.services.push(obj.service);
               });
             });
-            console.log(this.services);
+            this.error = !this.services.length
+              ? "This block has 0 service "
+              : null;
             this.loading = result.data.loading;
             // this.services =
             //   result.data.blockServices.blockSubscriptions.subscription.aServiceSubscriptions;
