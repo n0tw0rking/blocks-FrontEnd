@@ -183,7 +183,7 @@ export class ApolloService {
      })
      .valueChanges
    
- 
+
    }
  
    getUsersOfBlock(block) { //get all user s inside this block(id)
@@ -210,7 +210,6 @@ export class ApolloService {
       console.log(Block, 'inside newblock')
     return this.apollo
     .mutate<any>({
-
       mutation: gql`
         mutation($name: String!, $location: String!) {
           createBlock(blockInput: { name: $name, location: $location }) {
