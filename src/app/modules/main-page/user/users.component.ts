@@ -31,6 +31,8 @@ export class UsersComponent implements OnInit, OnDestroy {
   ) {}
   id = "";
   sub: any;
+  userId:any;
+  userIds:Number[]
   ngOnInit() {
 
 
@@ -38,6 +40,7 @@ export class UsersComponent implements OnInit, OnDestroy {
       // this.id = params+'';
       //  this.getBlock(this.id)
       if(params.id){
+        
         // call users in this block
         console.log(params, 'this is blockId');
         this.apollo.getUsersOfBlock(params.id)
@@ -51,10 +54,33 @@ export class UsersComponent implements OnInit, OnDestroy {
       }
       else {
           //call all users by admin id
-        console.log('ther ia no params')
+
+       console.log('ther ia no params')
+       this.userId= localStorage.getItem("currentUser")
+
+        this.apollo.getBlocksByAdminId(this.userId)
+       .subscribe(res=> 
+      // this.blocks= res.data.blocks
+      // console.log(res.data.blocks )
+      res.data.blocks.forEach(element => {
+        // console.log(element.blockId)
+        if(element.blockId != undefined){
+          this.userIds.push(element.blockId)
+          console.log(element.userId)
+        }
+      })
+      )
+      //   this.apollo.getUser()
+      //   .subscribe(res => console.log(res))
       }
 
-    });
+    })
+
+  //      console.log('ther ia no params')
+  //    }
+
+ //   });
+
   }
   // onSelect(use) {
   //   console.log(use)

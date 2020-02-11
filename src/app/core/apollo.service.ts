@@ -195,6 +195,7 @@ export class ApolloService {
             }
           }
         }
+
       `,
       errorPolicy: "all"
     }).valueChanges;
@@ -223,14 +224,17 @@ export class ApolloService {
       variables: {
         blockId: +block
       },
-      errorPolicy: "all"
-    }).valueChanges;
-  }
+       errorPolicy: "all"
+     })
+     .valueChanges
+   } 
+ 
+ //works
+   createNewBlock(Block) {
+      console.log(Block, 'inside newblock')
+    return this.apollo
+    .mutate<any>({
 
-  //works
-  createNewBlock(Block) {
-    console.log(Block, "inside newblock");
-    return this.apollo.mutate<any>({
       mutation: gql`
         mutation($name: String!, $location: String!) {
           createBlock(blockInput: { name: $name, location: $location }) {
