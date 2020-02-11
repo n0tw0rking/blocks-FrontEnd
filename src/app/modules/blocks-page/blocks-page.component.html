@@ -36,6 +36,7 @@
           <!-- [routerLink]="['/blocks','edit', block.id]"  //display the user block -->
           <app-block [routerLink]="['/user',block.blockId]" 
           *ngFor="let block of blocks" [block]="block"></app-block>
+
           <!-- <router-outlet></router-outlet> -->
         </div>
       </div>
