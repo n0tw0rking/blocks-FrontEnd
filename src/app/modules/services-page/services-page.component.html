@@ -6,7 +6,9 @@
   </div>
   <div *ngIf="services.length">
     <div class="row">
-      <app-service *ngFor="let service of services" [service]="service"></app-service>
+      <app-service *ngFor="let service of services; let i = index" [index]="i" [service]="service"
+        (ServciceEvent)="updateParent($event)">
+      </app-service>
     </div>
   </div>
 
