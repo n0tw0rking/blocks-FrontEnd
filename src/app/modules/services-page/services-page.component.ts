@@ -1,6 +1,16 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  AfterViewInit
+} from "@angular/core";
 import { ApolloService } from "../../core/apollo.service";
-import { ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
+import { async } from "@angular/core/testing";
+// @Output() open: EventEmitter<any>
+// @Output() close: EventEmitter<any>
+
 @Component({
   selector: "app-services-page",
   templateUrl: "./services-page.component.html",
@@ -11,25 +21,30 @@ export class ServicesPageComponent implements OnInit {
   blockId;
   loading = true;
   error = "";
-  constructor(private appollo: ApolloService, private route: ActivatedRoute) {}
+  constructor(
+    private appollo: ApolloService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.blockId = parseInt(params.id);
+      this.blockId =
+        parseInt(params.id) !== null || undefined ? parseInt(params.id) : "";
       console.log(this.blockId);
     });
-    if (
-      this.blockId !== undefined ||
-      this.blockId !== null ||
-      this.blockId !== "NaN"
-    ) {
+    if (this.blockId !== undefined && this.blockId && this.blockId !== null) {
       this.appollo.getServicesByBlockId(this.blockId).subscribe(
         result => {
           if (result.errors) {
             this.loading = false;
             console.log(result.errors[0].message);
+            /*NOTE: This folliwing part is for error handlings checking the Error to display ..
+          "This block has 0 service"
+          */
             this.error =
-              result.errors[0].message === "Unexpected Execution Error"
+              result.errors[0].message === "Unexpected Execution Error" ||
+              "Variable`blockId` of type`Int!` must not be null."
                 ? "This block has 0 service "
                 : result.errors[0].message;
           } else {
@@ -42,8 +57,6 @@ export class ServicesPageComponent implements OnInit {
               ? "This block has 0 service "
               : null;
             this.loading = result.data.loading;
-            // this.services =
-            //   result.data.blockServices.blockSubscriptions.subscription.aServiceSubscriptions;
           }
         },
         errorResponse => {
@@ -58,7 +71,6 @@ export class ServicesPageComponent implements OnInit {
             console.log(result.errors[0].message);
           } else {
             this.services = result.data.services;
-            console.log(this.services);
             this.loading = result.data.loading;
           }
         },
@@ -67,5 +79,8 @@ export class ServicesPageComponent implements OnInit {
         }
       );
     }
+  }
+  updateParent($event) {
+    this.services[$event].isActive = !this.services[$event].isActive;
   }
 }
