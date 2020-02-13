@@ -285,4 +285,28 @@ export class ApolloService {
       errorPolicy: "all"
     }).valueChanges;
   }
+
+  createMessageASP(msg){
+    //mutation{createMessage(input:{content:"where is thee money for alivator", senderId:13, toList:[17]})}
+    return this.apollo.use("ASP").mutate<any>({
+      mutation: gql`
+      mutation{createMessage(input:{content:$content, senderId:$senderId, toList:$arr})}
+      `,
+      variables: {
+        content: msg.content,
+        senderId: msg.senderId,
+        arr: msg.arr
+      },
+      errorPolicy: "all"
+    });
+  }
+  getMessageASP(msg){
+    return this.apollo.use("ASP").watchQuery<any>({
+      query: gql`
+       query{usersWithMessages{email,userMessages{message{content,sender{email}}}}}     
+       `,     
+     
+      errorPolicy: "all"
+    });
+  }
 }
