@@ -58,15 +58,15 @@ export class UsersComponent implements OnInit, OnDestroy {
           // console.log(element.blockId)
             this.blockIds.push(element.blockId)
             this.blockIds.forEach(element=> 
-              console.log(this.blockIds)
-              // this.apollo.getUsersOfBlock(element)
-              // .subscribe(res =>
+              // console.log(this.blockIds)
+              this.apollo.getUsersOfBlock(element)
+              .subscribe(res =>
               //   //pupulation issue
-              //   res.data.block.blockSubscriptions.forEach(element => {
-              //     this.users.push(element)
+                res.data.block.blockSubscriptions.map(element => {
+                  this.users.push(element)
               //     console.log(element)
-              //   })            
-              // )
+                })            
+              )
             )
           })
         )
@@ -74,16 +74,21 @@ export class UsersComponent implements OnInit, OnDestroy {
 
     })
   }
+
+  onClick(event){
+    event.preventDefault()
+  }
   userMoreInfo(use) {
+   
     /*
     NOTES:
     I have add the service to get user from the backend
     */
     // ADAM
 
-    console.log(use);
+    console.log(use,'this is user');
     //redirect to new page that have the user record
-    this.router.navigate(["/user/balance", use.email]);
+    this.router.navigate(["/user/balance", use.subscription.user.userId]);
     // Get http record
     this.apollo.getUser().subscribe(
       result => {
@@ -98,7 +103,6 @@ export class UsersComponent implements OnInit, OnDestroy {
         console.log(errorResponse);
       }
     );
-    // this.polo.getsUser
   }
 
   ngOnDestroy() {
