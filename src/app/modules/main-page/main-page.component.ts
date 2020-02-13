@@ -33,9 +33,11 @@ export class MainPageComponent implements OnInit {
   public hideLogoText = false;
 
   ngOnInit() {
+    let to:string;
     this.apollo.getMessageASP()
     .subscribe(res =>
-      console.log(res.data.usersWithMessages))
+      to = res.data.usersWithMessages.email
+      // console.log(res.data.usersWithMessages))
       //  this.messsages= res.data.usersWithMessages)
 
     // this.apollo
