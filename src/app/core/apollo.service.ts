@@ -49,7 +49,23 @@ export class ApolloService {
       errorPolicy: "all"
     }).valueChanges;
   }
-  getService(service): any {
+  getServiceById(serviceId) {
+    return this.apollo.use("ASP").watchQuery<any>({
+      query: gql`
+        query($serviceId: Int!) {
+          service(serviceId: $serviceId) {
+            isActive
+            aServiceName
+          }
+        }
+      `,
+      variables: {
+        serviceId: serviceId
+      },
+      errorPolicy: "all"
+    }).valueChanges;
+  }
+  getServicebyName(service): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
         query($name: String!) {
@@ -144,16 +160,16 @@ export class ApolloService {
   updateServiceById(serviceId, state) {
     return this.apollo.use("ASP").mutate<any>({
       mutation: gql`
-        mutation($inputServiceId: Int!, $serviceState: Boolean!) {
+        mutation($inputServiceId: Int!, $stateInput: Boolean!) {
           updateServiceState(
             inputServiceId: $inputServiceId
-            serviceState: $serviceState
+            stateInput: $stateInput
           )
         }
       `,
       variables: {
         inputServiceId: serviceId,
-        serviceState: state
+        stateInput: state
       },
       errorPolicy: "all"
     });
