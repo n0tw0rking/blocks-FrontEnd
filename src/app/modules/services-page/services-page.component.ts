@@ -71,7 +71,6 @@ export class ServicesPageComponent implements OnInit {
             console.log(result.errors[0].message);
           } else {
             this.services = result.data.services;
-            console.log(this.services);
             this.loading = result.data.loading;
           }
         },

@@ -27,13 +27,13 @@
       </a>
     </div>
     <div class="" *ngIf="!isLogin()">
-      <div class=" col-md-4">
-        <form class="form-control">
+      <div class="row">
+        <form class="form-control-cd-10" style="padding-left:5% ;">
           <input type="text" class="form-control text-align: center" placeholder="Search...">
-          <!-- <a href="" class="btn">search</a> -->
         </form>
+        <button class="btn-primary"><i class="ti-search"></i>search</button>
+        <a href="" class="btn">search</a>
       </div>
-      <button class="btn-primary"><i class="ti-search"></i>search</button>
       <div class="" *ngIf="isLogin()">
         <a [routerLink]="['/login']" class="btn">login</a>
       </div>

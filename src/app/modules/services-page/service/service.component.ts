@@ -24,20 +24,17 @@ export class ServiceComponent implements AfterViewInit {
   @Input() updParent: any;
   @Input() blockId: Number;
   @Output() ServciceEvent: EventEmitter<any> = new EventEmitter<any>();
-  // @Output() close: EventEmitter<any> = new EventEmitter();
 
   ngAfterViewInit() {}
   updateService(serviceid, state) {
-    console.log(serviceid, state);
+    this.loading = true;
     if (!this.checkService(serviceid, state)) {
-      console.log("entering");
       this.apollo.updateServiceById(serviceid, state).subscribe(
         result => {
           if (result.errors) {
             this.loading = false;
             console.log(result.errors[0].message);
           } else {
-            console.log(result);
             this.loading = result.data.loading;
             this.ServciceEvent.emit(this.index);
           }
@@ -54,8 +51,6 @@ export class ServiceComponent implements AfterViewInit {
         if (result.errors) {
           return false;
         } else {
-          // this.service = result.data.services;
-          console.log(result);
           if (result.data.service.isActive === state) {
             return true;
           }
@@ -67,5 +62,4 @@ export class ServiceComponent implements AfterViewInit {
     );
     return false;
   }
-  updateServices($) {}
 }

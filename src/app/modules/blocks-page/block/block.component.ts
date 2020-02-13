@@ -13,6 +13,7 @@ export class BlockComponent implements OnInit {
     id: number;
     name: string;
     location: string;
+    blockSubscriptions: [];
     status: string;
     dateOfSubscreption: string;
   };
@@ -24,6 +25,7 @@ export class BlockComponent implements OnInit {
   id = 0;
   name = "";
   ngOnInit() {
+    console.log(this.block);
     // this.block = {
     //   id: this.route.snapshot.params['id'],
     //   name: this.route.snapshot.params['name'],
