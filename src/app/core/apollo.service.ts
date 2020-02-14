@@ -84,6 +84,11 @@ export class ApolloService {
     }).valueChanges;
   }
   //works
+  /**
+   * NOTE:
+   * graphql of node backend HEROKU
+   */
+
   getsUser(id) {
     return this.apollo.watchQuery<any>({
       query: gql`

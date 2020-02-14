@@ -33,7 +33,7 @@
       <div class="">
         <ul class="nav nav-sidebar">
           <li class="active"><a routerLink="/blocks" class="label label-primary">Blocks List</a></li>
-          <li><a routerLink="/blocks/add"  class="label label-info"> Add new </a></li>
+          <li><a routerLink="/blocks/add" class="label label-info"> Add new </a></li>
           <!-- <li><a href="#">Analytics</a></li> -->
           <!-- <li><a href="#">Export</a></li> -->
         </ul>
@@ -48,8 +48,7 @@
       <div class="row" id="whole">
         <div class="row">
           <!-- [routerLink]="['/blocks','edit', block.id]"  //display the user block -->
-          <app-block [routerLink]="['/user',block.blockId]" 
-          *ngFor="let block of blocks" [block]="block"></app-block>
+          <app-block [routerLink]="['/user',block.blockId]" *ngFor="let block of blocks" [block]="block"></app-block>
 
           <!-- <router-outlet></router-outlet> -->
         </div>

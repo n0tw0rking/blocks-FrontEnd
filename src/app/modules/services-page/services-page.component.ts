@@ -7,9 +7,6 @@ import {
 } from "@angular/core";
 import { ApolloService } from "../../core/apollo.service";
 import { Router, ActivatedRoute } from "@angular/router";
-import { async } from "@angular/core/testing";
-// @Output() open: EventEmitter<any>
-// @Output() close: EventEmitter<any>
 
 @Component({
   selector: "app-services-page",

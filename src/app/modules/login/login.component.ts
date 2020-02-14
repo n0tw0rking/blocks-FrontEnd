@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   loading = true;
   submitted = false;
   notifyMessage = "";
-
+  public currentUser;
   constructor(
     private formbuilder: FormBuilder,
     private auth: AuthService,
@@ -60,6 +60,14 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    if (this.isInvalidForm("email")) {
+      console.log(this.loginForm.controls["email"]);
+
+      return (this.errors =
+        this.loginForm.controls["email"].status === "INVALID"
+          ? "Invalid Email"
+          : "");
+    }
     this.submitted = true;
     console.log(this.loginForm.value);
     this.auth.login(this.loginForm.value).subscribe(
