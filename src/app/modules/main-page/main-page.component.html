@@ -22,25 +22,7 @@
   <!-- ============================================================== -->
   <!-- Left Sidebar - style you can find in sidebar.scss  -->
   <!-- ============================================================== -->
-  <aside class="left-sidebar">
-    <div class="d-flex no-block nav-text-box align-items-center">
-      <a (click)="lockSidebar = !lockSidebar" class="nav-lock waves-effect waves-dark ml-auto hidden-md-down"
-        href="javascript:void(0)">
-        <i class="mdi" [ngClass]="
-            lockSidebar ? 'mdi-toggle-switch-off' : 'mdi-toggle-switch'
-          "></i>
-      </a>
-      <a (click)="showMobileMenu = false" class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up"
-        href="javascript:void(0)">
-        <i class="ti-close"></i>
-      </a>
-    </div>
-    <!-- Sidebar scroll-->
-    <div class="scroll-sidebar" [perfectScrollbar]="config">
-      <app-sidebar></app-sidebar>
-    </div>
-    <!-- End Sidebar scroll-->
-  </aside>
+
   <!-- ============================================================== -->
   <!-- End Left Sidebar - style you can find in sidebar.scss  -->
   <!-- ============================================================== -->
@@ -57,7 +39,6 @@
       <!-- Start Page Content -->
       <!-- ============================================================== -->
       <router-outlet></router-outlet>
-      dsfgsdfg
       <!-- ============================================================== -->
       <!-- End Start Page Content -->
       <!-- ============================================================== -->
