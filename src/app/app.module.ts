@@ -17,6 +17,7 @@ import { ServiceComponent } from "./modules/services-page/service/service.compon
 import { BlocksPageComponent } from "./modules/blocks-page/blocks-page.component";
 import { BlockComponent } from "./modules/blocks-page/block/block.component";
 import { SidebarComponent } from "./modules/shared/sidebar/sidebar.component";
+
 import {
   CommonModule,
   LocationStrategy,
