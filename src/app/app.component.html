@@ -18,22 +18,20 @@
        <div class="navbar-header">
          <a class="navbar-brand" href [routerLink]="['/']">
            <!-- Logo icon -->
-           <b>
+           <b style="width:5%;">
              <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
              <!-- Dark Logo icon -->
-             <i class="wi wi-sunset"></i>
-             <!-- <i alt="homepage" class="dark-logo"></i> -->
-
+             <img src="../assets/images/uniB.png" alt="homepage" class="dark-logo">
              <!-- Light Logo icon -->
            </b>
-
+           <!-- <a alt="homepage" class="" src="../assets/images/UB-icon.pfng "></a> -->
            <!--End Logo icon -->
            <!-- Logo text -->
            <!-- <span [ngClass]="{ 'd-none': hideLogoText }"> -->
            <!-- dark Logo text -->
-           <a alt="homepage" style="color: #000; text-align: center;">[UNI]</a>
+           <!-- <a alt="homepage" style="color: #000; text-align: center;">[UNI]</a> -->
            <!-- Light Logo text -->
-           <a alt="homepage" style="color:blue; text-align: center;">Blocks</a>
+           <!-- <a alt="homepage" style="color:blue; text-align: center;">Blocks</a> -->
            <!-- </span> -->
          </a>
        </div>
@@ -67,6 +65,8 @@
    <!-- ============================================================== -->
    <aside class="left-sidebar" *ngIf="!isLogin()">
      <div class="d-flex no-block nav-text-box align-items-center">
+       <span _ngcontent-c1=""><img _ngcontent-c1="" alt="elegant admin template" src="../assets/images/box_icon.png">
+       </span>
        <a (click)="lockSidebar = !lockSidebar" class="nav-lock waves-effect waves-dark ml-auto hidden-md-down"
          href="javascript:void(0)">
          <i class="mdi" [ngClass]="

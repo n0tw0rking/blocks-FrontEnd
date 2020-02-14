@@ -17,6 +17,8 @@ import { ServiceComponent } from "./modules/services-page/service/service.compon
 import { BlocksPageComponent } from "./modules/blocks-page/blocks-page.component";
 import { BlockComponent } from "./modules/blocks-page/block/block.component";
 import { SidebarComponent } from "./modules/shared/sidebar/sidebar.component";
+import { DashBoardComponent } from "./modules/dash-board/dash-board.component";
+import { HomeComponent } from "./modules/home/home.component";
 
 import {
   CommonModule,
@@ -49,7 +51,9 @@ import { AddBlockComponent } from "./modules/blocks-page/add-block/add-block.com
 import { AddUserComponent } from "./modules/main-page/user/add-user/add-user.component";
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
 import { ErrorPageComponent } from "./modules/error-page/error-page.component";
-import { NotificationComponent } from './modules/main-page/notification/notification.component';
+import { NotificationComponent } from "./modules/main-page/notification/notification.component";
+import { SubscriptionComponent } from "./modules/subscription/subscription.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +74,9 @@ import { NotificationComponent } from './modules/main-page/notification/notifica
     BalanceEditComponent,
     ErrorPageComponent,
     NotificationComponent,
+    DashBoardComponent,
+    SubscriptionComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
