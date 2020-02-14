@@ -321,13 +321,13 @@ export class ApolloService {
       errorPolicy: "all"
     });
   }
-  getMessageASP(msg){
+  getMessageASP(){
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
        query{usersWithMessages{email,userMessages{message{content,sender{email}}}}}     
        `,     
      
       errorPolicy: "all"
-    });
+    }).valueChanges
   }
 }
