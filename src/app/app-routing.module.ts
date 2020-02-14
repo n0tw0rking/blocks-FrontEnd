@@ -13,7 +13,8 @@ import { AddBlockComponent } from "./modules/blocks-page/add-block/add-block.com
 import { AddUserComponent } from "./modules/main-page/user/add-user/add-user.component";
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
 import { ErrorPageComponent } from "./modules/error-page/error-page.component";
-
+import { DashBoardComponent } from "./modules/dash-board/dash-board.component";
+import { SubscriptionComponent } from "./modules/subscription/subscription.component";
 const routes: Routes = [
   {
     path: "super",
@@ -33,7 +34,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: "", component: UsersComponent }
-    //   // { path: ":id", component: UsersComponent }
+      //   // { path: ":id", component: UsersComponent }
     ]
   },
   {
@@ -62,8 +63,13 @@ I have added the name so I can search by name
     ]
   },
   { path: "blocks/add", component: AddBlockComponent },
-  { path: "blocks/edit/:name", component: EditComponent }
-
+  { path: "blocks/edit/:name", component: EditComponent },
+  { path: "dash", component: DashBoardComponent, canActivate: [AuthGuard] },
+  {
+    path: "subscription",
+    component: SubscriptionComponent,
+    canActivate: [AuthGuard]
+  }
   // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
   // { path: '**', redirectTo: '/not-found' }
 ];

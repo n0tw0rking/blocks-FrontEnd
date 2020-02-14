@@ -216,7 +216,6 @@ export class ApolloService {
             }
           }
         }
-
       `,
       errorPolicy: "all"
     }).valueChanges;
@@ -245,17 +244,14 @@ export class ApolloService {
       variables: {
         blockId: +block
       },
-       errorPolicy: "all"
-     })
-     .valueChanges
-   } 
- 
- //works
-   createNewBlock(Block) {
-      console.log(Block, 'inside newblock')
-    return this.apollo
-    .mutate<any>({
+      errorPolicy: "all"
+    }).valueChanges;
+  }
 
+  //works
+  createNewBlock(Block) {
+    console.log(Block, "inside newblock");
+    return this.apollo.mutate<any>({
       mutation: gql`
         mutation($name: String!, $location: String!) {
           createBlock(blockInput: { name: $name, location: $location }) {
@@ -289,7 +285,7 @@ export class ApolloService {
     });
   }
 
-  getSubscriptionBYName(subName): any {
+  getSubscription(subName): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
         query($aServiceName: String!) {
@@ -307,11 +303,15 @@ export class ApolloService {
     }).valueChanges;
   }
 
-  createMessageASP(msg){
+  createMessageASP(msg) {
     //mutation{createMessage(input:{content:"where is thee money for alivator", senderId:13, toList:[17]})}
     return this.apollo.use("ASP").mutate<any>({
       mutation: gql`
-      mutation{createMessage(input:{content:$content, senderId:$senderId, toList:$arr})}
+        mutation {
+          createMessage(
+            input: { content: $content, senderId: $senderId, toList: $arr }
+          )
+        }
       `,
       variables: {
         content: msg.content,
@@ -321,13 +321,25 @@ export class ApolloService {
       errorPolicy: "all"
     });
   }
-  getMessageASP(){
+  getMessageASP() {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
-       query{usersWithMessages{email,userMessages{message{content,sender{email}}}}}     
-       `,     
-     
+        query {
+          usersWithMessages {
+            email
+            userMessages {
+              message {
+                content
+                sender {
+                  email
+                }
+              }
+            }
+          }
+        }
+      `,
+
       errorPolicy: "all"
-    }).valueChanges
+    }).valueChanges;
   }
 }

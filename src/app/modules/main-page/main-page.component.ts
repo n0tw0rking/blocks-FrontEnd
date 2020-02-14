@@ -12,7 +12,7 @@ import { ApolloService } from "../../core/apollo.service";
 })
 export class MainPageComponent implements OnInit {
   snapshot;
-  messsages:any;
+  messsages: any;
   constructor(
     public router: Router,
     private apollo: ApolloService,
@@ -33,32 +33,31 @@ export class MainPageComponent implements OnInit {
   public hideLogoText = false;
 
   ngOnInit() {
-    let to:string;
-    this.apollo.getMessageASP()
-    .subscribe(res =>
-      // to = res.data.usersWithMessages.email)
-      // console.log(res.data.usersWithMessages))
-       this.messsages= res.data.usersWithMessages)
-
-    // this.apollo
-    //   .watchQuery<any>({
-    //     query: gql`
-    //       query {
-    //         oneUser {
-    //           _id
-    //         }
-    //       }
-    //     `,
-    //     errorPolicy: "all"
-    //   })
-    //   .valueChanges.subscribe(result => {
-    //     console.log(result);
-    //   });
-    // // if (this.router.url === "/") {
-    // //   this.router.navigate(["/"]);
-    // // }
-    // this.handleLayout();
-    // this.snapshot = this.router.routerState.snapshot;
+    // let to:string;
+    // this.apollo.getMessageASP()
+    // .subscribe(res =>
+    //   // to = res.data.usersWithMessages.email)
+    //   // console.log(res.data.usersWithMessages))
+    //    this.messsages= res.data.usersWithMessages)
+    // // this.apollo
+    // //   .watchQuery<any>({
+    // //     query: gql`
+    // //       query {
+    // //         oneUser {
+    // //           _id
+    // //         }
+    // //       }
+    // //     `,
+    // //     errorPolicy: "all"
+    // //   })
+    // //   .valueChanges.subscribe(result => {
+    // //     console.log(result);
+    // //   });
+    // // // if (this.router.url === "/") {
+    // // //   this.router.navigate(["/"]);
+    // // // }
+    // // this.handleLayout();
+    // // this.snapshot = this.router.routerState.snapshot;
   }
 
   @HostListener("window:resize", ["$event"])

@@ -49,11 +49,9 @@ export class AppComponent {
 
     if (!signInData) {
       console.log(signInData);
-      this.router.navigate([
-        "login"
-        // "/main"
-      ]);
+      this.router.navigate(["login"]);
     }
+    this.handleLayout();
   }
   toggleSidebar() {
     this.showMobileMenu = true;
