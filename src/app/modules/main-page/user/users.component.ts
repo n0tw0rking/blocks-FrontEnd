@@ -75,9 +75,9 @@ export class UsersComponent implements OnInit, OnDestroy {
     })
   }
 
-  onClick(event){
-    event.preventDefault()
-  }
+  // onClick(event){
+  //   event.preventDefault()
+  // }
   userMoreInfo(use) {
    
     /*

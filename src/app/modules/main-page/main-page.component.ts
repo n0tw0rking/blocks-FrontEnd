@@ -3,8 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { DOCUMENT } from "@angular/common";
 import { PerfectScrollbarConfigInterface } from "ngx-perfect-scrollbar";
 declare var $: any;
-import { Apollo } from "apollo-angular";
-import gql from "graphql-tag";
+import { ApolloService } from "../../core/apollo.service";
 
 @Component({
   selector: "app-main-page",
@@ -13,9 +12,10 @@ import gql from "graphql-tag";
 })
 export class MainPageComponent implements OnInit {
   snapshot;
+  messsages: any;
   constructor(
     public router: Router,
-    private apollo: Apollo,
+    private apollo: ApolloService,
     // private actRoute: ActivatedRoute,
     @Inject(DOCUMENT) private document: Document
   ) {}
@@ -33,25 +33,31 @@ export class MainPageComponent implements OnInit {
   public hideLogoText = false;
 
   ngOnInit() {
-    this.apollo
-      .watchQuery<any>({
-        query: gql`
-          query {
-            oneUser {
-              _id
-            }
-          }
-        `,
-        errorPolicy: "all"
-      })
-      .valueChanges.subscribe(result => {
-        console.log(result);
-      });
-    // if (this.router.url === "/") {
-    //   this.router.navigate(["/"]);
-    // }
-    this.handleLayout();
-    this.snapshot = this.router.routerState.snapshot;
+    // let to:string;
+    // this.apollo.getMessageASP()
+    // .subscribe(res =>
+    //   // to = res.data.usersWithMessages.email)
+    //   // console.log(res.data.usersWithMessages))
+    //    this.messsages= res.data.usersWithMessages)
+    // // this.apollo
+    // //   .watchQuery<any>({
+    // //     query: gql`
+    // //       query {
+    // //         oneUser {
+    // //           _id
+    // //         }
+    // //       }
+    // //     `,
+    // //     errorPolicy: "all"
+    // //   })
+    // //   .valueChanges.subscribe(result => {
+    // //     console.log(result);
+    // //   });
+    // // // if (this.router.url === "/") {
+    // // //   this.router.navigate(["/"]);
+    // // // }
+    // // this.handleLayout();
+    // // this.snapshot = this.router.routerState.snapshot;
   }
 
   @HostListener("window:resize", ["$event"])
