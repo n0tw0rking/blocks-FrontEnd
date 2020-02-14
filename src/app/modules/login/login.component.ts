@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  errors: any = [];
+  errors: any = "";
   loading = true;
   submitted = false;
   notifyMessage = "";
