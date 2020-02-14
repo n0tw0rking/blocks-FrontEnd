@@ -65,7 +65,7 @@
    <!-- ============================================================== -->
    <!-- Left Sidebar - style you can find in sidebar.scss  -->
    <!-- ============================================================== -->
-   <aside class="left-sidebar">
+   <aside class="left-sidebar" *ngIf="!isLogin()">
      <div class="d-flex no-block nav-text-box align-items-center">
        <a (click)="lockSidebar = !lockSidebar" class="nav-lock waves-effect waves-dark ml-auto hidden-md-down"
          href="javascript:void(0)">
