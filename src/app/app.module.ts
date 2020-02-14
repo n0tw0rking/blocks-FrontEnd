@@ -17,6 +17,7 @@ import { ServiceComponent } from "./modules/services-page/service/service.compon
 import { BlocksPageComponent } from "./modules/blocks-page/blocks-page.component";
 import { BlockComponent } from "./modules/blocks-page/block/block.component";
 import { SidebarComponent } from "./modules/shared/sidebar/sidebar.component";
+
 import {
   CommonModule,
   LocationStrategy,
@@ -48,6 +49,7 @@ import { AddBlockComponent } from "./modules/blocks-page/add-block/add-block.com
 import { AddUserComponent } from "./modules/main-page/user/add-user/add-user.component";
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
 import { ErrorPageComponent } from "./modules/error-page/error-page.component";
+import { NotificationComponent } from './modules/main-page/notification/notification.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +68,8 @@ import { ErrorPageComponent } from "./modules/error-page/error-page.component";
     SuperAdminComponent,
     AddUserComponent,
     BalanceEditComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
