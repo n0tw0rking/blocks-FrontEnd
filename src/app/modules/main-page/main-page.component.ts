@@ -36,9 +36,9 @@ export class MainPageComponent implements OnInit {
     let to:string;
     this.apollo.getMessageASP()
     .subscribe(res =>
-      to = res.data.usersWithMessages.email
+      // to = res.data.usersWithMessages.email)
       // console.log(res.data.usersWithMessages))
-      //  this.messsages= res.data.usersWithMessages)
+       this.messsages= res.data.usersWithMessages)
 
     // this.apollo
     //   .watchQuery<any>({
