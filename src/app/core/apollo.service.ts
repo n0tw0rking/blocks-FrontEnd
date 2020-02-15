@@ -38,16 +38,16 @@ export class ApolloService {
   getUserWithBlocks(userId): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
-        query($userId: String!) {
-          {
-            userWithBlocks(userId:$userId){
-              email
-              },
-            subscription{
-              subscriptionName,
-              blockSubscriptions {
-                block{blockName,blockId
-                }
+        query($userId: Int!) {
+          userWithBlocks(userId: $userId) {
+            email
+          }
+          subscription {
+            subscriptionName
+            blockSubscriptions {
+              block {
+                blockName
+                blockId
               }
             }
           }
