@@ -44,6 +44,11 @@ export class ApolloService {
           }
           subscription {
             subscriptionName
+            aServiceSubscriptions {
+              service {
+                serviceName
+              }
+            }
             blockSubscriptions {
               block {
                 blockName

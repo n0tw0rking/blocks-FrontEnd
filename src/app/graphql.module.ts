@@ -13,6 +13,11 @@ const basic = setContext((operation, context) => ({
   },
   method: "GET"
 }));
+const auth = setContext((operation, context) => ({
+  headers: {
+    Authorization: `Bearer ${token}` || ""
+  }
+}));
 /*
  IMPORTANT NOTE :
  TOKEN INTERCEPTOR IS TAKING CARE OF THE TOKEN INJECTION.
@@ -31,7 +36,7 @@ export class GraphQLModule {
     };
 
     this.apollo.createDefault({
-      link: ApolloLink.from([basic, this.httpLink.create(options1)]),
+      link: ApolloLink.from([auth, basic, this.httpLink.create(options1)]),
       cache: new InMemoryCache(),
       defaultOptions: {
         watchQuery: {
@@ -42,7 +47,7 @@ export class GraphQLModule {
 
     const options2: any = { uri: this.uri2 };
     this.apollo.createNamed("ASP", {
-      link: this.httpLink.create(options2),
+      link: ApolloLink.from([auth, this.httpLink.create(options2)]),
       cache: new InMemoryCache(),
       defaultOptions: {
         watchQuery: {
@@ -51,7 +56,7 @@ export class GraphQLModule {
       }
     });
     this.apollo.createNamed("mute", {
-      link: this.httpLink.create(options1),
+      link: ApolloLink.from([auth, this.httpLink.create(options1)]),
       cache: new InMemoryCache(),
       defaultOptions: {
         watchQuery: {
