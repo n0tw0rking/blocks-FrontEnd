@@ -9,6 +9,7 @@ import { ApolloService } from "../../../core/apollo.service";
 })
 export class UsersComponent implements OnInit {
   users = [];
+  public currentUser = localStorage.getItem("currentUser");
   loading = true;
   //   {
   //     email: "one@one.com",
@@ -88,7 +89,7 @@ export class UsersComponent implements OnInit {
     //redirect to new page that have the user record
     this.router.navigate(["/user/balance", use.subscription.user.userId]);
     // Get http record
-    this.apollo.getUser().subscribe(
+    this.apollo.getUser(this.currentUser).subscribe(
       result => {
         if (result.errors) {
           console.log(result.errors[0].message);

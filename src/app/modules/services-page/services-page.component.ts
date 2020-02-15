@@ -27,37 +27,20 @@ export class ServicesPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-
-
     const currentUser = //parseInt(localStorage.getItem("currentUser")) ||
       13;
-    this.appollo.getUserWithBlocks(13).subscribe(
+    this.appollo.getUserWithBlocks(currentUser).subscribe(
       response => {
         console.log(response)
         this.blocks = response.data.subscription.map(sub => {
           return sub.blockSubscriptions[0]
         });
-        console.log("here ", this.blocks)
         this.blockId = this.blocks[0].block.blockId
         console.log(this.blockId)
+        this.blockId = 3
         this.appollo.getServicesByBlockId(this.blockId).subscribe(
           result => {
-
-            /////////
-            // this.appollo.getServicesByBlockId(1).subscribe(
-            //   result => {
-            //     if (result.errors) {
-            //       this.loading = false;
-            //       console.log(result.errors[0].message);
-            //       /*NOTE: This folliwing part is for error handlings checking the Error to display ..
-            //     "This block has 0 service"
-            //     */
-            //       this.error =
-            //         result.errors[0].message === "Unexpected Execution Error" ||
-            //           "Variable`blockId` of type`Int!` must not be null."
-            //           ? "This block has 0 service "
-            //           : result.errors[0].message;
+            this.services = []
             result.data.blockServices.blockSubscriptions.forEach(obj => {
               obj.subscription.aServiceSubscriptions.forEach(obj => {
                 this.services.push(obj.service);
@@ -74,7 +57,6 @@ export class ServicesPageComponent implements OnInit {
         );
       }
     );
-
   }
 
   updateParent($event) {
