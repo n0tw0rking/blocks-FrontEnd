@@ -29,6 +29,7 @@ export class DashBoardComponent implements OnInit {
     this.apollo.getUserWithBlocks(13).subscribe(
       res => {
         console.log(res);
+        this.subscription = res.data.subscription;
       },
       err => {
         console.log(err);
@@ -55,9 +56,8 @@ export class DashBoardComponent implements OnInit {
         //only user with the subscription can loged in so its even for the admin with subscription
         console.log(res.data.subscription);
         console.log(res.data);
-        this.data = res.data;
-        this.arr = this.data.subscription;
-
+        this.data = res.data.oneUser;
+        this.arr = this.data.userSubscription;
         this.getServicesArrInt(this.arr[0].name);
       },
       err => {
