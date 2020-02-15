@@ -8,12 +8,15 @@
           alt="Card image cap"
         />
         <div class="card-body">
-          <h5 class="card-title">Sub Name : {{ subscription?.name }}</h5>
           <h5 class="card-title">
-            Block Name : {{ subscription?.block.name }}
+            Sub Name : {{ subscription?.subscriptionName }}
           </h5>
           <h5 class="card-title">
-            Location : {{ subscription?.block.location }}
+            Block Name :
+            {{ (subscription?.blockSubscriptions)[0].block.blockName }}
+          </h5>
+          <h5 class="card-title">
+            Location : {{ (subscription?.blockSubscriptions)[0].block.blockId }}
           </h5>
           <p class="card-text">
             For more information click the button below
@@ -43,9 +46,15 @@
             alt="Card image cap"
           />
           <div class="card-body">
-            <h5 class="card-title">Sub Name : {{ arr[0]?.name }}</h5>
-            <h5 class="card-title">Block Name : {{ arr[0]?.block.name }}</h5>
-            <h5 class="card-title">Location : {{ arr[0]?.block.location }}</h5>
+            <h5 class="card-title">
+              Sub Name : {{ arr[0]?.subscriptionName }}
+            </h5>
+            <h5 class="card-title">
+              Block Name : {{ (arr[0]?.blockSubscriptions)[0].block.blockName }}
+            </h5>
+            <h5 class="card-title">
+              Location : {{ (arr[0]?.blockSubscriptions)[0].block.blockId }}
+            </h5>
             <p class="card-text">
               For more information click the button below
             </p>
