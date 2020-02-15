@@ -18,6 +18,7 @@ export class DashBoardComponent implements OnInit {
   subscription: any;
 
   // status: boolean;
+  public currentUser = localStorage.getItem("currentUser");
   constructor(
     private apollo: ApolloService,
     private auth: AuthService,
@@ -49,13 +50,13 @@ export class DashBoardComponent implements OnInit {
       // this.servicesArr = this.sub.subService;
     }
 
-    this.apollo.getUser().subscribe(
+    this.apollo.getUserWithBlocks(parseInt(this.currentUser)).subscribe(
       res => {
         //only user with the subscription can loged in so its even for the admin with subscription
-        console.log(res.data.oneUser.userSubscription);
+        console.log(res.data.subscription);
         console.log(res.data);
-        this.data = res.data.oneUser;
-        this.arr = this.data.userSubscription;
+        this.data = res.data;
+        this.arr = this.data.subscription;
 
         this.getServicesArrInt(this.arr[0].name);
       },
