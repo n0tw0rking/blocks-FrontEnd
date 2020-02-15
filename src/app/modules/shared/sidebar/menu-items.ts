@@ -20,7 +20,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "/user/balance",
     title: "My Balance",
-    icon: "fas fa-wallet",
+    icon: "fab fa-google-wallet",
     class: "",
     extralink: false,
     submenu: []
@@ -34,25 +34,9 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: "/blocks",
-    title: "Blocks",
-    icon: "mdi mdi-bandcamp",
-    class: "",
-    extralink: false,
-    submenu: []
-  },
-  {
-    path: "/user",
-    title: "Users",
-    icon: "ngbDropdownToggle",
-    class: "",
-    extralink: false,
-    submenu: []
-  },
-  {
     path: "/subscription",
     title: "Subscription",
-    icon: "mdi mdi-home",
+    icon: "fas fa-th-large",
     class: "",
     extralink: false,
     submenu: []

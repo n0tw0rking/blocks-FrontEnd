@@ -14,6 +14,7 @@ declare var $: any;
 export class MainPageComponent implements OnInit {
   snapshot;
   messsages: any;
+  loading = true;
   readonly VAPID_KEY =
     "BIDKneMUisz3eBe-_YA5eA3qm_JAPv6Uz79IIWppgjakBOjpUQYK3E6BbBfcvQaGhKsnodIJ04VYrrvpv256erY";
   constructor(

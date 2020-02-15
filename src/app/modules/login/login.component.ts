@@ -69,18 +69,17 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.isInvalidForm("email")) {
-      console.log(this.loginForm.controls["email"]);
-
       return (this.errors =
         this.loginForm.controls["email"].status === "INVALID"
           ? "Invalid Email"
           : "");
     }
     this.submitted = true;
-    console.log(this.loginForm.value);
     this.auth.login(this.loginForm.value).subscribe(
       token => {
+        this.loading = token.loading;
         if (token.errors) {
+          this.submitted = false;
           console.log(token.errors[0].message);
         } else {
           console.log("this is the user");
@@ -107,8 +106,9 @@ export class LoginComponent implements OnInit {
         }
       },
       errorResponse => {
-        console.log(errorResponse);
-        // this.errors = errorResponse.error.errors;
+        this.submitted = false;
+        console.log("error on the login", errorResponse);
+        this.errors = errorResponse.error;
       }
     );
   }
