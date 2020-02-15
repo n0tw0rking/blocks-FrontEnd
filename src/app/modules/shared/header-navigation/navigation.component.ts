@@ -23,6 +23,7 @@ declare var $: any;
 })
 export class NavigationComponent implements AfterViewInit {
   tittle = "";
+  hidesearchBar;
   @Output()
   toggleSidebar = new EventEmitter<void>();
   @Output()
@@ -119,7 +120,6 @@ export class NavigationComponent implements AfterViewInit {
   }
   isLogin() {
     if (this.router.url == "/login") {
-      console.log(this.router.url);
       return true;
     }
     return false;

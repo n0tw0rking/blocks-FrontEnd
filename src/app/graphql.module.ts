@@ -22,7 +22,8 @@ const basic = setContext((operation, context) => ({
 })
 export class GraphQLModule {
   private uri2 = "https://hotgraphapi20200206111431.azurewebsites.net";
-  private uri1 = "https://blocks-backend.herokuapp.com/graphql";
+  // private uri1 = "https://blocks-backend.herokuapp.com/graphql";
+  private uri1 = "http://localhost:4000/graphql";
 
   constructor(public apollo: Apollo, public httpLink: HttpLink) {
     const options1: any = {

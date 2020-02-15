@@ -34,6 +34,7 @@ export class AppComponent {
   public lockSidebar = false;
   public addMiniSidebar = false;
   public hideLogoText = false;
+  public hidesearchBar = false;
 
   //constructor(private _http: HttpService, private router: Router) {}
   ngOnInit() {
@@ -86,6 +87,11 @@ export class AppComponent {
     } else {
       this.addMiniSidebar = false;
       this.hideLogoText = false;
+    }
+    if (this.innerWidth < 800) {
+      this.hidesearchBar = true;
+    } else {
+      this.hidesearchBar = false;
     }
     this.innerHeight = window.innerHeight;
     this.height = this.innerHeight - this.topOffset;

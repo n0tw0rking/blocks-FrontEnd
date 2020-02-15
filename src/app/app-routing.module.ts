@@ -11,11 +11,19 @@ import { ErrorPageComponent } from "./modules/error-page/error-page.component";
 import { DashBoardComponent } from './modules/dash-board/dash-board.component';
 
 const routes: Routes = [
+  { path: "", component: MainPageComponent, canActivate: [AuthGuard] },
+  {
+    path: "super",
+    component: SuperAdminComponent,
+    canActivate: [AuthGuard]
+  },
   { path: "login", component: LoginComponent },
-  { path: "", component: MainPageComponent },
   // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
-  // { path: "user/add", component: AddUserComponent },
-  { path: "user/balance/:id", component: BalanceEditComponent },
+  {
+    path: "user/balance/:id",
+    component: BalanceEditComponent,
+    canActivate: [AuthGuard]
+  },
   { path: "user/:id", component: UsersComponent },
 
   {
@@ -23,41 +31,39 @@ const routes: Routes = [
     component: UsersComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: "", component: UsersComponent }
-    //   // { path: ":id", component: UsersComponent }
+      { path: "", component: UsersComponent, canActivate: [AuthGuard] }
     ]
   },
   {
     path: "services",
-    component: ServicesPageComponent
-    // canActivate: [AuthGuard]
+    component: ServicesPageComponent,
+    canActivate: [AuthGuard]
   },
-  /*
-  NOTES FROM ADAM:
+  /**
+   * 
+   *   NOTES FROM ADAM:
 I have added the name so I can search by name
-  */
-  //
+   */
   {
     path: "services/:id",
-    component: ServicesPageComponent
+    component: ServicesPageComponent,
+    canActivate: [AuthGuard]
     // canActivate: [AuthGuard]
   },
   {path:'dashboard', component:DashBoardComponent},
   // { path: "blocks", component: BlocksPageComponent },
-  // {
-  //   path: "blocks",
-  //   component: BlocksPageComponent,
-  //   // canActivate: [AuthGuard],
-  //   children: [
-  //     { path: "", component: BlockComponent }
-  //     // {path: 'edit/:id', component: EditComponent}
-  //   ]
-  // },
-  // { path: "blocks/add", component: AddBlockComponent },
-  // { path: "blocks/edit/:name", component: EditComponent }
-
-  { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
-  { path: '**', redirectTo: '/not-found' }
+  { path: "dash", component: DashBoardComponent, canActivate: [AuthGuard] },
+  {
+    path: "subscription",
+    component: SubscriptionComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "not-found",
+    component: ErrorPageComponent,
+    data: { message: "Page not found!" }
+  },
+  { path: "**", redirectTo: "/not-found" }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
