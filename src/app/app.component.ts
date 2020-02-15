@@ -3,6 +3,7 @@ import { AuthService } from "./core/auth.service";
 import { Component, OnInit, HostListener, Inject } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { PerfectScrollbarConfigInterface } from "ngx-perfect-scrollbar";
+import { SwUpdate } from "@angular/service-worker";
 
 @Component({
   selector: "app-root",
@@ -16,8 +17,13 @@ export class AppComponent {
   constructor(
     private router: Router,
     private auth: AuthService,
+    updates: SwUpdate,
     @Inject(DOCUMENT) private document: Document
-  ) {}
+  ) {
+    updates.available.subscribe(event => {
+      updates.activateUpdate().then(() => document.location.reload());
+    });
+  }
   public config: PerfectScrollbarConfigInterface = {};
 
   topOffset = 55;
@@ -47,11 +53,12 @@ export class AppComponent {
     let signInData = localStorage.getItem("token");
     if (!signInData) {
       console.log(signInData);
-      this.router.navigate(["login"]);
+      this.router.navigate([
+        "login"
+        // "/main"
+      ]);
     }
-    this.handleLayout();
   }
-
   toggleSidebar() {
     this.showMobileMenu = true;
   }
