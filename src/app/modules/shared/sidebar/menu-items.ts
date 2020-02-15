@@ -31,16 +31,7 @@ export const ROUTES: RouteInfo[] = [
     icon: "mdi mdi-bandcamp",
     class: "",
     extralink: false,
-    submenu: [
-      {
-        path: "/blocks/add",
-        title: "Add Block",
-        icon: "mdi mdi-bandcamp",
-        class: "",
-        extralink: false,
-        submenu: []
-      }
-    ]
+    submenu: []
   },
   {
     path: "/user",
@@ -49,14 +40,6 @@ export const ROUTES: RouteInfo[] = [
     class: "",
     extralink: false,
     submenu: [
-      {
-        path: "/user/add",
-        title: "Add User",
-        icon: "mdi mdi-sort-variant",
-        class: "",
-        extralink: false,
-        submenu: []
-      },
       {
         path: "/user/balance",
         title: "Balance",
