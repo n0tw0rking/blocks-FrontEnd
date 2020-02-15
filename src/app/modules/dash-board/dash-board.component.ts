@@ -29,6 +29,7 @@ export class DashBoardComponent implements OnInit {
     this.apollo.getUserWithBlocks(13).subscribe(
       res => {
         console.log(res);
+        this.subscription = res.data.subscription;
       },
       err => {
         console.log(err);
