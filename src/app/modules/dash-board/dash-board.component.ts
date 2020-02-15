@@ -25,6 +25,21 @@ export class DashBoardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.apollo.getUserWithBlocks(13).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
+    /**
+     *
+     *
+     * Above this is just a test
+     *
+     */
     if (this.sub.sub === undefined) {
       this.sub.status = false;
     } else {
