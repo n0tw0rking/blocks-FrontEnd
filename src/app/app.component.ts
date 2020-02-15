@@ -44,9 +44,7 @@ export class AppComponent {
         }
       );
     }
-
     let signInData = localStorage.getItem("token");
-
     if (!signInData) {
       console.log(signInData);
       this.router.navigate([
@@ -55,38 +53,10 @@ export class AppComponent {
       ]);
     }
   }
-  // toggleSidebar() {
-  //   this.showMobileMenu = true;
-  // }
-  // // Fucntion that checks if the location router on the window is /main
-  // isMain() {
-  //   if (this.router.url == "/main") {
-  //     return true;
-  //   }
-  //   console.log(this.router.url);
-  //   return false;
-  // }
-
-  // isLogin() {
-  //   if (this.router.url == "/login") {
-  //     return true;
-  //   }
-  //   return false;
-  // }
-  // handleLayout() {
-  //   this.innerWidth = window.innerWidth;
-  //   if (this.innerWidth < 1170) {
-  //     this.addMiniSidebar = true;
-  //     this.hideLogoText = true;
-  //   } else {
-  //     this.addMiniSidebar = false;
-  //     this.hideLogoText = false;
-  //   }
-  //   this.handleLayout();
-  // }
   toggleSidebar() {
     this.showMobileMenu = true;
   }
+
   // Fucntion that checks if the location router on the window is /main
   isMain() {
     if (this.router.url == "/main") {

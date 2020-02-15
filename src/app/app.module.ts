@@ -46,9 +46,6 @@ import { AuthService } from "./core/auth.service";
 import { AuthGuard } from "./core/auth.guard";
 import { ApolloService } from "./core/apollo.service";
 import { SuperAdminComponent } from "./modules/super-admin/super-admin.component";
-import { EditComponent } from "./modules/blocks-page/edit/edit.component";
-import { AddBlockComponent } from "./modules/blocks-page/add-block/add-block.component";
-import { AddUserComponent } from "./modules/main-page/user/add-user/add-user.component";
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
 import { ErrorPageComponent } from "./modules/error-page/error-page.component";
 import { NotificationComponent } from "./modules/main-page/notification/notification.component";
@@ -67,10 +64,7 @@ import { SubscriptionComponent } from "./modules/subscription/subscription.compo
     SidebarComponent,
     NavigationComponent,
     BreadcrumbComponent,
-    AddBlockComponent,
-    EditComponent,
     SuperAdminComponent,
-    AddUserComponent,
     BalanceEditComponent,
     ErrorPageComponent,
     NotificationComponent,

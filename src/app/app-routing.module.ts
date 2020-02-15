@@ -8,9 +8,6 @@ import { BlocksPageComponent } from "./modules/blocks-page/blocks-page.component
 import { AuthGuard } from "./core/auth.guard";
 import { BlockComponent } from "./modules/blocks-page/block/block.component";
 import { SuperAdminComponent } from "./modules/super-admin/super-admin.component";
-import { EditComponent } from "./modules/blocks-page/edit/edit.component";
-import { AddBlockComponent } from "./modules/blocks-page/add-block/add-block.component";
-import { AddUserComponent } from "./modules/main-page/user/add-user/add-user.component";
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
 import { ErrorPageComponent } from "./modules/error-page/error-page.component";
 import { DashBoardComponent } from "./modules/dash-board/dash-board.component";
@@ -24,7 +21,6 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "", component: MainPageComponent },
   // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
-  { path: "user/add", component: AddUserComponent },
   { path: "user/balance/:id", component: BalanceEditComponent },
   { path: "user/:id", component: UsersComponent },
 
@@ -62,8 +58,6 @@ I have added the name so I can search by name
       // {path: 'edit/:id', component: EditComponent}
     ]
   },
-  { path: "blocks/add", component: AddBlockComponent },
-  { path: "blocks/edit/:name", component: EditComponent },
   { path: "dash", component: DashBoardComponent, canActivate: [AuthGuard] },
   {
     path: "subscription",
