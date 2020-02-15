@@ -26,28 +26,12 @@ export class DashBoardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.apollo.getUserWithBlocks(13).subscribe(
-      res => {
-        console.log(res);
-        this.subscription = res.data.subscription;
-      },
-      err => {
-        console.log(err);
-      }
-    );
-
-    /**
-     *
-     *
-     * Above this is just a test
-     *
-     */
     if (this.sub.sub === undefined) {
       this.sub.status = false;
     } else {
       this.subscription = this.sub.sub; // the subscription that was selected in the subscription component
       // this.getServicesArr(this.subscription.name);
-
+      this.servicesArr = this.subscription.aServiceSubscriptions;
       // this.servicesArr = this.sub.subService;
     }
 
@@ -58,7 +42,7 @@ export class DashBoardComponent implements OnInit {
         console.log(res.data);
         this.data = res.data;
         this.arr = this.data.subscription;
-
+        this.servicesArrInt = res.data.subscription[0].aServiceSubscriptions;
         // this.getServicesArrInt(this.arr[0].name);
       },
       err => {
