@@ -13,6 +13,7 @@ import { ApolloService } from "../../core/apollo.service";
 export class MainPageComponent implements OnInit {
   snapshot;
   messsages: any;
+  loading = true;
   constructor(
     public router: Router,
     private apollo: ApolloService,

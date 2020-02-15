@@ -9,6 +9,7 @@ import { ApolloService } from "../../../core/apollo.service";
 })
 export class UsersComponent implements OnInit {
   users = [];
+  loading = true;
   //   {
   //     email: "one@one.com",
   //     userSubscription: [
