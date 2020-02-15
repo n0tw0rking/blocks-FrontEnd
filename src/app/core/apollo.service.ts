@@ -35,6 +35,31 @@ export class ApolloService {
       errorPolicy: "all"
     }).valueChanges;
   }
+  getUserWithBlocks(userId): any {
+    return this.apollo.use("ASP").watchQuery<any>({
+      query: gql`
+        query($userId: String!) {
+          {
+            userWithBlocks(userId:$userId){
+              email
+              },
+            subscription{
+              subscriptionName,
+              blockSubscriptions {
+                block{blockName,blockId
+                }
+              }
+            }
+          }
+        }
+      `,
+      // I NEED TO UNCOMMENT THIS LATER these are the varible to send the query
+      variables: {
+        userId: userId
+      },
+      errorPolicy: "all"
+    }).valueChanges;
+  }
   getAllServices(): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
@@ -65,6 +90,7 @@ export class ApolloService {
       errorPolicy: "all"
     }).valueChanges;
   }
+
   getServicebyName(service): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
@@ -136,6 +162,7 @@ export class ApolloService {
       errorPolicy: "all"
     }).valueChanges;
   }
+
   getServicesByBlockId(blockId) {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
@@ -219,70 +246,6 @@ export class ApolloService {
       `,
       errorPolicy: "all"
     }).valueChanges;
-  }
-
-  getUsersOfBlock(block) {
-    //get all user s inside this block(id)
-    // console.log(typeof(+block), "inside apolo")
-    return this.apollo.use("ASP").watchQuery<any>({
-      query: gql`
-        query($blockId: Int!) {
-          block(blockId: $blockId) {
-            blockSubscriptions {
-              subscriptionId
-              subscription {
-                user {
-                  email
-                  userId
-                  phoneNumber
-                }
-              }
-            }
-          }
-        }
-      `,
-      variables: {
-        blockId: +block
-      },
-      errorPolicy: "all"
-    }).valueChanges;
-  }
-
-  //works
-  createNewBlock(Block) {
-    console.log(Block, "inside newblock");
-    return this.apollo.mutate<any>({
-      mutation: gql`
-        mutation($name: String!, $location: String!) {
-          createBlock(blockInput: { name: $name, location: $location }) {
-            _id
-            name
-            location
-          }
-        }
-      `,
-      variables: {
-        name: Block.name,
-        location: Block.location
-      },
-      errorPolicy: "all"
-    });
-  }
-
-  createNewBlockASP(Block) {
-    console.log(Block, "inside newblock");
-    return this.apollo.use("ASP").mutate<any>({
-      mutation: gql`
-        mutation($name: String!, $location: String!) {
-          createBlock(input: { blockName: $name, location: $location })
-        }
-      `,
-      variables: {
-        name: Block.name,
-        location: Block.location
-      },
-      errorPolicy: "all"
-    });
   }
 
   getSubscription(subName): any {

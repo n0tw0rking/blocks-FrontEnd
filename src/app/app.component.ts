@@ -44,18 +44,18 @@ export class AppComponent {
         }
       );
     }
-
     let signInData = localStorage.getItem("token");
-
     if (!signInData) {
       console.log(signInData);
       this.router.navigate(["login"]);
     }
     this.handleLayout();
   }
+
   toggleSidebar() {
     this.showMobileMenu = true;
   }
+
   // Fucntion that checks if the location router on the window is /main
   isMain() {
     if (this.router.url == "/main") {
