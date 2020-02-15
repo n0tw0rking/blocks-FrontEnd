@@ -18,7 +18,7 @@
        <div class="navbar-header">
          <a class="navbar-brand" href [routerLink]="['/']">
            <!-- Logo icon -->
-           <b style="width:5%;">
+           <b>
              <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
              <!-- Dark Logo icon -->
              <img src="../assets/images/uniB.png" alt="homepage" class="dark-logo">
@@ -36,12 +36,13 @@
          </a>
        </div>
        <div class="" *ngIf="!isLogin()">
-         <div class="row">
+         <!-- This is the Search Element -->
+         <!-- <div class="row" [hidden]="hidesearchBar">
            <form class="form-control-cd-10" style="padding-left:5% ;">
              <input type="text" class="form-control text-align: center" placeholder="Search...">
            </form>
-           <a href="" class="btn"><i class="ti-search" ng-hide="showMobileMenu"></i> search</a>
-         </div>
+           <a href="" class="btn"><i class="ti-search"></i> search</a>
+         </div> -->
          <div class="" *ngIf="isLogin()">
            <a [routerLink]="['/login']" class="btn">login</a>
          </div>
@@ -51,7 +52,8 @@
        <!-- ============================================================== -->
 
        <div class="navbar-collapse">
-         <app-navigation (toggleSidebar)="toggleSidebar()" (isLogin)="isLogin()" (isMain)="isMain()" class=" w-100">
+         <app-navigation (hidesearchBar)="hidesearchBar" (toggleSidebar)="toggleSidebar()" (isLogin)="isLogin()"
+           (isMain)="isMain()" class=" w-100">
          </app-navigation>
        </div>
      </nav>
@@ -64,8 +66,13 @@
    <!-- ============================================================== -->
    <aside class="left-sidebar" *ngIf="!isLogin()">
      <div class="d-flex no-block nav-text-box align-items-center">
-       <span _ngcontent-c1=""><img _ngcontent-c1="" alt="elegant admin template" src="../assets/images/box_icon.png">
-       </span>
+       <div style="cursor: pointer;">
+         <a [routerLink]="['/']">
+           <span _ngcontent-c1="">
+             <img _ngcontent-c1="" alt="homepage" src="../assets/images/box_icon.png">
+           </span>
+         </a>
+       </div>
        <a (click)="lockSidebar = !lockSidebar" class="nav-lock waves-effect waves-dark ml-auto hidden-md-down"
          href="javascript:void(0)">
          <i class="mdi" [ngClass]="
@@ -81,7 +88,6 @@
      <div class="scroll-sidebar" [perfectScrollbar]="config">
        <app-sidebar></app-sidebar>
      </div>
-     <!-- End Sidebar scroll-->
    </aside>
    <!-- ============================================================== -->
    <!-- End Left Sidebar - style you can find in sidebar.scss  -->

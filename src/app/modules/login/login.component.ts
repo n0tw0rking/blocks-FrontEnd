@@ -76,22 +76,22 @@ export class LoginComponent implements OnInit {
           console.log(token.errors[0].message);
           this.errors = token.errors[0].message;
         } else {
-          if (token.data.login.isSuperAdmin) {
-            console.log(" this is the superAdmin");
-            this.router.navigate(["/"]);
-          } else if (token.data.login.isAdmin) {
-            console.log(token);
-            console.log("this is the Admin");
-            this.router.navigate(["/"]);
-          } else {
-            console.log("this is the user");
-            this.router.navigate(["/login"]);
-          }
+          // if (token.data.login.isSuperAdmin) {
+          //   console.log(" this is the superAdmin");
+          //   this.router.navigate(["/"]);
+          // } else if (token.data.login.isAdmin) {
+          //   console.log(token);
+          //   console.log("this is the Admin");
+          //   this.router.navigate(["/"]);
+          // } else {
+          console.log("this is the user");
+          this.router.navigate(["/"]);
+          //   }
         }
       },
       errorResponse => {
         console.log(errorResponse);
-        // this.errors = errorResponse.error.errors;
+        this.errors = errorResponse.error.errors;
       }
     );
   }

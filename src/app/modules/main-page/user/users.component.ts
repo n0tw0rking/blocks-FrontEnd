@@ -7,7 +7,7 @@ import { ApolloService } from "../../../core/apollo.service";
   templateUrl: "./users.component.html",
   styleUrls: ["./users.component.css"]
 })
-export class UsersComponent implements OnInit, OnDestroy {
+export class UsersComponent implements OnInit {
   users = [];
   //   {
   //     email: "one@one.com",
@@ -102,7 +102,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
+  // ngOnDestroy() {
+  //   this.sub.unsubscribe();
+  // }
 }
