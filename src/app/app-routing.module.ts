@@ -9,6 +9,7 @@ import { SuperAdminComponent } from "./modules/super-admin/super-admin.component
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
 import { ErrorPageComponent } from "./modules/error-page/error-page.component";
 import { DashBoardComponent } from './modules/dash-board/dash-board.component';
+import {SubscriptionComponent} from './modules/subscription/subscription.component'
 
 const routes: Routes = [
   { path: "", component: MainPageComponent, canActivate: [AuthGuard] },
