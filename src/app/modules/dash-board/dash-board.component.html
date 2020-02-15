@@ -9,14 +9,15 @@
         />
         <div class="card-body">
           <h5 class="card-title">
-            Sub Name : {{ subscription?.subscriptionName }}
+            Sub Name : {{ subscription.subscriptionName }}
           </h5>
           <h5 class="card-title">
             Block Name :
-            {{ (subscription?.blockSubscriptions)[0].block.blockName }}
+            {{ subscription.blockSubscriptions[0].block.blockName }}
           </h5>
           <h5 class="card-title">
-            Location : {{ (subscription?.blockSubscriptions)[0].block.blockId }}
+            Location :
+            {{ subscription.blockSubscriptions[0].block.blockId }}
           </h5>
           <p class="card-text">
             For more information click the button below

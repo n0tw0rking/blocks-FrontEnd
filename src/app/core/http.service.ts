@@ -5,7 +5,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   providedIn: "root"
 })
 export class HttpService {
-  public notificationUrl = "https://blocks-backend.herokuapp.com/push";
+  // public notificationUrl = "https://blocks-backend.herokuapp.com/push";
+  public notificationUrl = "http://localhost:4000/push";
   constructor(private http: HttpClient) {}
 
   getUsers() {
