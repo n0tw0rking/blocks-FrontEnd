@@ -8,28 +8,6 @@ import gql from "graphql-tag";
 export class ApolloService {
   constructor(private apollo: Apollo) {}
 
-<<<<<<< HEAD
-  getUser(currentUser): any {
-    return this.apollo.watchQuery<any>({
-      query: gql`
-        query($id: String!) {
-          oneUser(id: $id) {
-            _id
-            isAdmin
-            isSuperAdmin
-            email
-            password
-            userSubscription {
-              _id
-              name
-              user {
-                _id
-              }
-              block {
-                _id
-                name
-                location
-=======
   getUser(): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
@@ -45,29 +23,18 @@ export class ApolloService {
               subscriptionName
               user {
                 userId
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
               }
             }
           }
         }
       `,
-<<<<<<< HEAD
-      variables: {
-        id: currentUser
-=======
       // I NEED TO UNCOMMENT THIS LATER these are the varible to send the query
       variables: {
         userId: localStorage.getItem("currnetUser")
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
       },
       errorPolicy: "all"
     }).valueChanges;
   }
-<<<<<<< HEAD
-
-  getService(serviceNAme): any {
-    return this.apollo.watchQuery<any>({
-=======
   getAllServices(): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
@@ -100,7 +67,6 @@ export class ApolloService {
   }
   getServicebyName(service): any {
     return this.apollo.use("ASP").watchQuery<any>({
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
       query: gql`
         query($name: String!) {
           oneService(name: $name) {
@@ -112,27 +78,11 @@ export class ApolloService {
         }
       `,
       variables: {
-<<<<<<< HEAD
-        name: serviceNAme
-=======
         name: service
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
       },
       errorPolicy: "all"
     }).valueChanges;
   }
-<<<<<<< HEAD
-
-  getSubscription(subName): any {
-    return this.apollo.watchQuery<any>({
-      query: gql`
-        query($name: String!) {
-          oneSubscription(name: $name) {
-            _id
-
-            block {
-              _id
-=======
   //works
   /**
    * NOTE:
@@ -202,27 +152,11 @@ export class ApolloService {
                   }
                 }
               }
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
             }
           }
         }
       `,
       variables: {
-<<<<<<< HEAD
-        name: subName
-      },
-      errorPolicy: "all"
-    }).valueChanges;
-  }
-
-  getBlockSubs(blockName) {
-    return this.apollo.watchQuery<any>({
-      query: gql`
-        query($name: String!) {
-          oneBlockSubs(name: $name) {
-            _id
-            name
-=======
         blockId: blockId
       },
       errorPolicy: "all"
@@ -324,16 +258,10 @@ export class ApolloService {
             _id
             name
             location
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
           }
         }
       `,
       variables: {
-<<<<<<< HEAD
-        name: blockName
-      },
-      errorPolicy: "all"
-=======
         name: Block.name,
         location: Block.location
       },
@@ -412,7 +340,6 @@ export class ApolloService {
       `,
 
       errorPolicy: "all"
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
     }).valueChanges;
   }
 }
