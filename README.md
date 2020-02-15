@@ -1,6 +1,31 @@
-# Angular
+![CircleCI](https://img.shields.io/circleci/build/github/AdamMomen/blocks-backend/master)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.6.
+# UniBlocks FrontEnd 🏢
+
+[GitHub](https://github.com/n0tw0rking)
+
+Public Local management service that helps you to organize your home with other property owners in your neighborhood for better life quality.
+It also connects you with your daily life needs regarding your living place and the services you need in your neighborhood.
+also being aware of anything that happens in your building block.
+[UniBlocks-website](https://omx-265700.firebaseapp.com/)
+
+# Motivation
+
+- Engaged communities
+- Community Organisating
+- Share with your neighbours
+- Services and emergency planning
+
+## Live Demo
+
+[DEMO](https://omx-265700.firebaseapp.com/)
+
+# Motivation
+
+- Engaged communities
+- Community Organisating
+- Share with your neighbours
+- Services and emergency planning
 
 ## Development server
 
@@ -26,4 +51,13 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+## Blocks BackEnd
 
+Link to our backend Repo [HERE](https://github.com/n0tw0rking/blocks-backend)
+Deployed backend using Graphql [HERO](https://github.com/n0tw0rking/blocks-backend)
+
+## Contact
+
+[Github](https://github.com/n0tw0rking)
+
+created by [@OmarBara](https://github.com/OmarBara) [@mohamed-fared](https://github.com/mohamed-fared) [@AdamMomen](https://github.com/AdamMomen) [@psktcsharp](https://github.com/psktcsharp)
