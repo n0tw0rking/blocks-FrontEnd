@@ -21,13 +21,32 @@ export class GraphQLModule {
     };
     this.apollo.createDefault({
       link: this.httpLink.create(options1),
-      cache: new InMemoryCache()
+      cache: new InMemoryCache(),
+      defaultOptions: {
+        watchQuery: {
+          errorPolicy: "all"
+        }
+      }
     });
 
     const options2: any = { uri: this.uri2 };
     this.apollo.createNamed("ASP", {
       link: this.httpLink.create(options2),
-      cache: new InMemoryCache()
+      cache: new InMemoryCache(),
+      defaultOptions: {
+        watchQuery: {
+          errorPolicy: "all"
+        }
+      }
+    });
+    this.apollo.createNamed("mute", {
+      link: this.httpLink.create(options1),
+      cache: new InMemoryCache(),
+      defaultOptions: {
+        watchQuery: {
+          errorPolicy: "all"
+        }
+      }
     });
   }
 }

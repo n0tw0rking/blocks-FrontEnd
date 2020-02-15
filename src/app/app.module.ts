@@ -50,6 +50,8 @@ import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/bala
 import { ErrorPageComponent } from "./modules/error-page/error-page.component";
 import { NotificationComponent } from "./modules/main-page/notification/notification.component";
 import { SubscriptionComponent } from "./modules/subscription/subscription.component";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -81,7 +83,8 @@ import { SubscriptionComponent } from "./modules/subscription/subscription.compo
     GraphQLModule,
     BrowserAnimationsModule,
     NgbModule.forRoot(),
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     AuthService,

@@ -305,4 +305,18 @@ export class ApolloService {
       errorPolicy: "all"
     }).valueChanges;
   }
+  deleteNotificationSub(userId, sub) {
+    return this.apollo.use("mute").mutate<any>({
+      mutation: gql`
+        mutation deleteNotificationSub($userId: String!, $sub: String!) {
+          deleteNotificationSub(userId: $userId, sub: $sub)
+        }
+      `,
+      variables: {
+        userId: userId,
+        sub: sub
+      },
+      errorPolicy: "all"
+    });
+  }
 }
