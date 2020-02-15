@@ -6,7 +6,7 @@ import gql from "graphql-tag";
   providedIn: "root"
 })
 export class ApolloService {
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) { }
 
   getUser(): any {
     return this.apollo.use("ASP").watchQuery<any>({
@@ -58,7 +58,7 @@ export class ApolloService {
         userId: userId
       },
       errorPolicy: "all"
-    }).valueChanges;
+    }).valueChanges
   }
   getAllServices(): any {
     return this.apollo.use("ASP").watchQuery<any>({

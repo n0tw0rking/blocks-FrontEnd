@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
           this.errors = token.errors[0].message;
         } else {
           console.log("this is the user");
-          this.router.navigate(["/"]);
+          this.router.navigate(["/dash"]);
         }
       },
       errorResponse => {
