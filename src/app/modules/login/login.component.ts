@@ -6,13 +6,15 @@ import { Router, ActivatedRoute } from "@angular/router";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"]
+  styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errors: any = [];
+  loading = true;
+  submitted = false;
   notifyMessage = "";
-
+  public currentUser;
   constructor(
     private formbuilder: FormBuilder,
     private auth: AuthService,
@@ -21,6 +23,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.submitted = false;
     this.createForm();
     this.route.params.subscribe(params => {
       if (params.registered === "success") {
@@ -57,16 +60,26 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    if (this.isInvalidForm("email")) {
+      console.log(this.loginForm.controls["email"]);
+
+      return (this.errors =
+        this.loginForm.controls["email"].status === "INVALID"
+          ? "Invalid Email"
+          : "");
+    }
+    this.submitted = true;
     console.log(this.loginForm.value);
     this.auth.login(this.loginForm.value).subscribe(
       token => {
         if (token.errors) {
           console.log(token.errors[0].message);
+          this.errors = token.errors[0].message;
         } else {
           if (token.data.login.isSuperAdmin) {
             console.log(" this is the superAdmin");
             this.router.navigate(["/"]);
-          } else if (token.data.login.Admin) {
+          } else if (token.data.login.isAdmin) {
             console.log(token);
             console.log("this is the Admin");
             this.router.navigate(["/"]);

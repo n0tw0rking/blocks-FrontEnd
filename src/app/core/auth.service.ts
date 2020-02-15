@@ -7,21 +7,16 @@ import { Router } from "@angular/router";
 // import { ApolloService } from "./apollo.service";
 import { Apollo } from "apollo-angular";
 import gql from "graphql-tag";
-
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
   private user;
-
-  private urlLogin = "http://localhost:4000/graphql";
-
   public isAuthed = !!localStorage.getItem("currentUser");
   public isSuperAdmin: boolean;
   public isAdmin: boolean;
 
   @Output() getIsAuthed: EventEmitter<any> = new EventEmitter();
-
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -30,7 +25,6 @@ export class AuthService {
     console.log(this.isAuthed);
     this.getIsAuthed.emit(this.isAuthed);
   }
-
   public login(userData: any): Observable<any> {
     return this.apollo
       .watchQuery<any>({
@@ -62,13 +56,11 @@ export class AuthService {
               this.saveTokenAndCurrentUser(res.data.login.token);
             }
           }
-
           return res;
           // return this.saveTokenAndCurrentUser(res.data.login.token);
         })
       );
   }
-
   public logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("currentUser");
@@ -76,21 +68,18 @@ export class AuthService {
     this.router.navigate(["/login"]);
     this.getIsAuthed.emit(this.isAuthed);
   }
-
   private saveTokenAndCurrentUser(token: string): string {
     localStorage.setItem("token", token);
     console.log(this.user);
     localStorage.setItem("currentUser", this.user);
     this.isAuthenticated().subscribe(res => {
-      console.log(res);
+      console.log("isAuthenticated query", res);
     });
     return token;
   }
-
   public getToken(): string {
     return localStorage.getItem("token");
   }
-
   public isAuthenticated(): any {
     return this.apollo
       .watchQuery<any>({
@@ -111,7 +100,6 @@ export class AuthService {
         })
       );
   }
-
   public getCurrentUserName(): string {
     return JSON.parse(localStorage.getItem("currentUser")).name;
   }

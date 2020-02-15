@@ -11,7 +11,6 @@ import { Observable } from "rxjs";
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
   constructor(public auth: AuthService) {}
-
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
@@ -20,8 +19,7 @@ export class TokenInterceptor implements HttpInterceptor {
     if (token) {
       request = request.clone({
         setHeaders: {
-          // auth: token // Authorization: `Bearer ${this.auth.getToken()}`
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}` || ""
         }
       });
     }
