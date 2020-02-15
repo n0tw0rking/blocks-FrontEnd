@@ -8,9 +8,13 @@
           alt="Card image cap"
         />
         <div class="card-body">
-          <h5 class="card-title">Sub Name : {{ item.name }}</h5>
-          <h5 class="card-title">Block Name : {{ item.block.name }}</h5>
-          <h5 class="card-title">Location : {{ item.block.location }}</h5>
+          <h5 class="card-title">Sub Name : {{ item.subscriptionName }}</h5>
+          <h5 class="card-title">
+            Block Name : {{ item.blockSubscriptions[0].block.blockName }}
+          </h5>
+          <h5 class="card-title">
+            Location : {{ item.blockSubscriptions[0].block.blockId }}
+          </h5>
           <p class="card-text">
             For more information click the button below
           </p>

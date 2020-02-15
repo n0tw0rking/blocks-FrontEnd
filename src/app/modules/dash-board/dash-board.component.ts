@@ -45,7 +45,7 @@ export class DashBoardComponent implements OnInit {
       this.sub.status = false;
     } else {
       this.subscription = this.sub.sub; // the subscription that was selected in the subscription component
-      this.getServicesArr(this.subscription.name);
+      // this.getServicesArr(this.subscription.name);
 
       // this.servicesArr = this.sub.subService;
     }
@@ -58,38 +58,38 @@ export class DashBoardComponent implements OnInit {
         this.data = res.data;
         this.arr = this.data.subscription;
 
-        this.getServicesArrInt(this.arr[0].name);
+        // this.getServicesArrInt(this.arr[0].name);
       },
       err => {
         console.log(err);
       }
     );
   }
-  getServicesArrInt(subName) {
-    this.apollo.getSubscription(subName).subscribe(
-      res => {
-        console.log(this.sub.status, "im here and here ");
+  // getServicesArrInt(subName) {
+  //   this.apollo.getSubscription(subName).subscribe(
+  //     res => {
+  //       console.log(this.sub.status, "im here and here ");
 
-        this.servicesArrInt = res.data.oneSubscription.service;
-        this.messagesArrInt = res.data.oneSubscription.userMesg;
-        console.log(this.servicesArrInt);
-        console.log(res.data.oneSubscription);
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
-  getServicesArr(subName) {
-    this.apollo.getSubscription(subName).subscribe(
-      res => {
-        this.servicesArr = res.data.oneSubscription.service;
-        this.messagesArr = res.data.oneSubscription.userMesg;
-        console.log(this.servicesArr);
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
+  //       this.servicesArrInt = res.data.oneSubscription.service;
+  //       this.messagesArrInt = res.data.oneSubscription.userMesg;
+  //       console.log(this.servicesArrInt);
+  //       console.log(res.data.oneSubscription);
+  //     },
+  //     err => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }
+  // getServicesArr(subName) {
+  //   this.apollo.getSubscription(subName).subscribe(
+  //     res => {
+  //       this.servicesArr = res.data.oneSubscription.service;
+  //       this.messagesArr = res.data.oneSubscription.userMesg;
+  //       console.log(this.servicesArr);
+  //     },
+  //     err => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }
 }
