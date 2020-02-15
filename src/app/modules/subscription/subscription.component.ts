@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 export class SubscriptionComponent implements OnInit {
   data: any = {};
   arr: any = [];
+  loading = true;
   public currentUser = localStorage.getItem("currentUser");
   constructor(
     private apollo: ApolloService,
