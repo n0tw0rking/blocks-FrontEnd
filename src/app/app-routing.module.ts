@@ -8,6 +8,7 @@ import { AuthGuard } from "./core/auth.guard";
 import { SuperAdminComponent } from "./modules/super-admin/super-admin.component";
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
 import { ErrorPageComponent } from "./modules/error-page/error-page.component";
+import { DashBoardComponent } from './modules/dash-board/dash-board.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -41,6 +42,7 @@ I have added the name so I can search by name
     component: ServicesPageComponent
     // canActivate: [AuthGuard]
   },
+  {path:'dashboard', component:DashBoardComponent},
   // { path: "blocks", component: BlocksPageComponent },
   // {
   //   path: "blocks",
@@ -54,8 +56,8 @@ I have added the name so I can search by name
   // { path: "blocks/add", component: AddBlockComponent },
   // { path: "blocks/edit/:name", component: EditComponent }
 
-  // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
-  // { path: '**', redirectTo: '/not-found' }
+  { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
+  { path: '**', redirectTo: '/not-found' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

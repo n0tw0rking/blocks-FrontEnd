@@ -14,8 +14,6 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { ServicesPageComponent } from "./modules/services-page/services-page.component";
 import { ServiceComponent } from "./modules/services-page/service/service.component";
-import { BlocksPageComponent } from "./modules/blocks-page/blocks-page.component";
-import { BlockComponent } from "./modules/blocks-page/block/block.component";
 import { SidebarComponent } from "./modules/shared/sidebar/sidebar.component";
 import { DashBoardComponent } from "./modules/dash-board/dash-board.component";
 import { HomeComponent } from "./modules/home/home.component";
@@ -59,8 +57,6 @@ import { SubscriptionComponent } from "./modules/subscription/subscription.compo
     LoginComponent,
     ServicesPageComponent,
     ServiceComponent,
-    BlocksPageComponent,
-    BlockComponent,
     SidebarComponent,
     NavigationComponent,
     BreadcrumbComponent,
