@@ -18,6 +18,14 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
+    path: "/user/balance",
+    title: "My Balance",
+    icon: "fas fa-wallet",
+    class: "",
+    extralink: false,
+    submenu: []
+  },
+  {
     path: "/services",
     title: "Services",
     icon: "mdi mdi-image-filter-vintage",
@@ -39,16 +47,7 @@ export const ROUTES: RouteInfo[] = [
     icon: "ngbDropdownToggle",
     class: "",
     extralink: false,
-    submenu: [
-      {
-        path: "/user/balance",
-        title: "Balance",
-        icon: "mdi mdi-sort-variant",
-        class: "",
-        extralink: false,
-        submenu: []
-      }
-    ]
+    submenu: []
   },
   {
     path: "/subscription",
