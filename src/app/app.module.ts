@@ -43,7 +43,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AuthService } from "./core/auth.service";
 import { AuthGuard } from "./core/auth.guard";
 import { ApolloService } from "./core/apollo.service";
-import { SuperAdminComponent } from "./modules/super-admin/super-admin.component";
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
 import { ErrorPageComponent } from "./modules/error-page/error-page.component";
 import { NotificationComponent } from "./modules/main-page/notification/notification.component";
@@ -62,7 +61,6 @@ import { environment } from '../environments/environment';
     SidebarComponent,
     NavigationComponent,
     BreadcrumbComponent,
-    SuperAdminComponent,
     BalanceEditComponent,
     ErrorPageComponent,
     NotificationComponent,

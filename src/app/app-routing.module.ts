@@ -5,7 +5,6 @@ import { LoginComponent } from "./modules/login/login.component";
 import { MainPageComponent } from "./modules/main-page/main-page.component";
 import { ServicesPageComponent } from "./modules/services-page/services-page.component";
 import { AuthGuard } from "./core/auth.guard";
-import { SuperAdminComponent } from "./modules/super-admin/super-admin.component";
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
 import { ErrorPageComponent } from "./modules/error-page/error-page.component";
 import { DashBoardComponent } from './modules/dash-board/dash-board.component';
@@ -13,11 +12,6 @@ import {SubscriptionComponent} from './modules/subscription/subscription.compone
 
 const routes: Routes = [
   { path: "", component: MainPageComponent, canActivate: [AuthGuard] },
-  {
-    path: "super",
-    component: SuperAdminComponent,
-    canActivate: [AuthGuard]
-  },
   { path: "login", component: LoginComponent },
   // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
   {
