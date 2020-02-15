@@ -2,9 +2,10 @@ import { Component, OnInit, HostListener, Inject } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { DOCUMENT } from "@angular/common";
 import { PerfectScrollbarConfigInterface } from "ngx-perfect-scrollbar";
-declare var $: any;
 import { ApolloService } from "../../core/apollo.service";
-
+import { HttpService } from "../../core/http.service";
+import { SwUpdate, SwPush } from "@angular/service-worker";
+declare var $: any;
 @Component({
   selector: "app-main-page",
   templateUrl: "./main-page.component.html",
@@ -14,9 +15,14 @@ export class MainPageComponent implements OnInit {
   snapshot;
   messsages: any;
   loading = true;
+  readonly VAPID_KEY =
+    "BIDKneMUisz3eBe-_YA5eA3qm_JAPv6Uz79IIWppgjakBOjpUQYK3E6BbBfcvQaGhKsnodIJ04VYrrvpv256erY";
   constructor(
     public router: Router,
     private apollo: ApolloService,
+    private SwUpdate: SwUpdate,
+    private SwPush: SwPush,
+    private http: HttpService,
     // private actRoute: ActivatedRoute,
     @Inject(DOCUMENT) private document: Document
   ) {}
@@ -86,6 +92,18 @@ export class MainPageComponent implements OnInit {
     }
     if (this.height > this.topOffset) {
       this.height = this.height + "px";
+    }
+  }
+  subscribeToNotification() {
+    if (this.SwUpdate.isEnabled) {
+      this.SwPush.requestSubscription({
+        serverPublicKey: this.VAPID_KEY
+      }).then(sub => {
+        console.log(sub);
+        this.http.postSomething(sub).subscribe(res => {
+          console.log(res);
+        });
+      });
     }
   }
 }
