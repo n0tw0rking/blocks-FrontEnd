@@ -17,6 +17,11 @@ import { ServiceComponent } from "./modules/services-page/service/service.compon
 import { BlocksPageComponent } from "./modules/blocks-page/blocks-page.component";
 import { BlockComponent } from "./modules/blocks-page/block/block.component";
 import { SidebarComponent } from "./modules/shared/sidebar/sidebar.component";
+<<<<<<< HEAD
+=======
+import { DashBoardComponent } from "./modules/dash-board/dash-board.component";
+import { HomeComponent } from "./modules/home/home.component";
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
 
 import {
   CommonModule,
@@ -49,7 +54,13 @@ import { AddBlockComponent } from "./modules/blocks-page/add-block/add-block.com
 import { AddUserComponent } from "./modules/main-page/user/add-user/add-user.component";
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
 import { ErrorPageComponent } from "./modules/error-page/error-page.component";
+<<<<<<< HEAD
 import { NotificationComponent } from './modules/main-page/notification/notification.component';
+=======
+import { NotificationComponent } from "./modules/main-page/notification/notification.component";
+import { SubscriptionComponent } from "./modules/subscription/subscription.component";
+
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +81,12 @@ import { NotificationComponent } from './modules/main-page/notification/notifica
     BalanceEditComponent,
     ErrorPageComponent,
     NotificationComponent,
+<<<<<<< HEAD
+=======
+    DashBoardComponent,
+    SubscriptionComponent,
+    HomeComponent
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
   ],
   imports: [
     BrowserModule,

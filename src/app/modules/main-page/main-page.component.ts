@@ -12,7 +12,11 @@ import { ApolloService } from "../../core/apollo.service";
 })
 export class MainPageComponent implements OnInit {
   snapshot;
+<<<<<<< HEAD
   messsages:any;
+=======
+  messsages: any;
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
   constructor(
     public router: Router,
     private apollo: ApolloService,
@@ -33,6 +37,7 @@ export class MainPageComponent implements OnInit {
   public hideLogoText = false;
 
   ngOnInit() {
+<<<<<<< HEAD
     let to:string;
     this.apollo.getMessageASP()
     .subscribe(res =>
@@ -59,6 +64,33 @@ export class MainPageComponent implements OnInit {
     // // }
     // this.handleLayout();
     // this.snapshot = this.router.routerState.snapshot;
+=======
+    // let to:string;
+    // this.apollo.getMessageASP()
+    // .subscribe(res =>
+    //   // to = res.data.usersWithMessages.email)
+    //   // console.log(res.data.usersWithMessages))
+    //    this.messsages= res.data.usersWithMessages)
+    // // this.apollo
+    // //   .watchQuery<any>({
+    // //     query: gql`
+    // //       query {
+    // //         oneUser {
+    // //           _id
+    // //         }
+    // //       }
+    // //     `,
+    // //     errorPolicy: "all"
+    // //   })
+    // //   .valueChanges.subscribe(result => {
+    // //     console.log(result);
+    // //   });
+    // // // if (this.router.url === "/") {
+    // // //   this.router.navigate(["/"]);
+    // // // }
+    // // this.handleLayout();
+    // // this.snapshot = this.router.routerState.snapshot;
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
   }
 
   @HostListener("window:resize", ["$event"])

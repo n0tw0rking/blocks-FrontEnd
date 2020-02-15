@@ -82,6 +82,38 @@ export class AppComponent {
       this.addMiniSidebar = false;
       this.hideLogoText = false;
     }
+<<<<<<< HEAD
+=======
+    this.handleLayout();
+  }
+  toggleSidebar() {
+    this.showMobileMenu = true;
+  }
+  // Fucntion that checks if the location router on the window is /main
+  isMain() {
+    if (this.router.url == "/main") {
+      return true;
+    }
+    console.log(this.router.url);
+    return false;
+  }
+
+  isLogin() {
+    if (this.router.url == "/login") {
+      return true;
+    }
+    return false;
+  }
+  handleLayout() {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth < 1170) {
+      this.addMiniSidebar = true;
+      this.hideLogoText = true;
+    } else {
+      this.addMiniSidebar = false;
+      this.hideLogoText = false;
+    }
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
     this.innerHeight = window.innerHeight;
     this.height = this.innerHeight - this.topOffset;
     if (this.height < 1) {

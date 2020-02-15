@@ -13,7 +13,12 @@ import { AddBlockComponent } from "./modules/blocks-page/add-block/add-block.com
 import { AddUserComponent } from "./modules/main-page/user/add-user/add-user.component";
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
 import { ErrorPageComponent } from "./modules/error-page/error-page.component";
+<<<<<<< HEAD
 
+=======
+import { DashBoardComponent } from "./modules/dash-board/dash-board.component";
+import { SubscriptionComponent } from "./modules/subscription/subscription.component";
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
 const routes: Routes = [
   {
     path: "super",
@@ -33,7 +38,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: "", component: UsersComponent }
+<<<<<<< HEAD
     //   // { path: ":id", component: UsersComponent }
+=======
+      //   // { path: ":id", component: UsersComponent }
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
     ]
   },
   {
@@ -62,8 +71,18 @@ I have added the name so I can search by name
     ]
   },
   { path: "blocks/add", component: AddBlockComponent },
+<<<<<<< HEAD
   { path: "blocks/edit/:name", component: EditComponent }
 
+=======
+  { path: "blocks/edit/:name", component: EditComponent },
+  { path: "dash", component: DashBoardComponent, canActivate: [AuthGuard] },
+  {
+    path: "subscription",
+    component: SubscriptionComponent,
+    canActivate: [AuthGuard]
+  }
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
   // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
   // { path: '**', redirectTo: '/not-found' }
 ];

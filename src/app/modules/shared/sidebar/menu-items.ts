@@ -10,6 +10,17 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
+<<<<<<< HEAD
+=======
+    path: "/dash",
+    title: "My Dashboard",
+    icon: "fas fa-tachometer-alt",
+    class: "",
+    extralink: false,
+    submenu: []
+  },
+  {
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
     path: "/services",
     title: "Services",
     icon: "mdi mdi-image-filter-vintage",
@@ -40,7 +51,11 @@ export const ROUTES: RouteInfo[] = [
     icon: "ngbDropdownToggle",
     class: "",
     extralink: false,
+<<<<<<< HEAD
     submenu: [      
+=======
+    submenu: [
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
       {
         path: "/user/add",
         title: "Add User",
@@ -58,5 +73,16 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       }
     ]
+<<<<<<< HEAD
+=======
+  },
+  {
+    path: "/subscription",
+    title: "Subscription",
+    icon: "mdi mdi-home",
+    class: "",
+    extralink: false,
+    submenu: []
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
   }
 ];

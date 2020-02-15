@@ -37,7 +37,11 @@ $card-alt:#e4e9ef;
 // Color system
 //
 
+<<<<<<< HEAD
 $white:    #fff !default;
+=======
+$white: #fff !default;
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
@@ -47,6 +51,7 @@ $gray-600: #6c757d !default;
 $gray-700: #4F5467 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
+<<<<<<< HEAD
 $black:    #000 !default;
 
 $blue:    #009efb !default;
@@ -91,11 +96,54 @@ $theme-colors: (
   dark:                           $gray-800,
   purple:                         $purple    
 ); 
+=======
+$black: #000 !default;
+
+$blue: #009efb !default;
+$indigo: #6610f2 !default;
+$purple: #7460ee !default;
+$pink: #e83e8c !default;
+$red: #f62d51 !default;
+$orange: #fb9678 !default;
+$yellow: #ffbc34 !default;
+$green: #36bea6 !default;
+$teal: #20c997 !default;
+$cyan: #01c0c8 !default;
+$primary: #7460ee !default;
+$text-muted: $gray-500 !default;
+
+$colors: (blue: $blue,
+  indigo: $indigo,
+  purple: $purple,
+  pink: $pink,
+  red: $red,
+  orange: $orange,
+  yellow: $yellow,
+  green: $green,
+  teal: $teal,
+  cyan: $cyan,
+  white: $white,
+  gray: $gray-600,
+  gray-dark: $gray-800);
+
+$theme-colors: (primary: $primary,
+  secondary: $gray-100,
+  success: $green,
+  info: $blue,
+  warning: $yellow,
+  danger: $red,
+  light: $gray-100,
+  cyan: $cyan,
+  orange: $orange,
+  dark: $gray-800,
+  purple: $purple);
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
 
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
 
+<<<<<<< HEAD
 $enable-caret:              true !default;
 $enable-rounded:            true !default;
 $enable-shadows:            false !default;
@@ -104,21 +152,38 @@ $enable-transitions:        true !default;
 $enable-hover-media-query:  false !default;
 $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
+=======
+$enable-caret: true !default;
+$enable-rounded: true !default;
+$enable-shadows: false !default;
+$enable-gradients: false !default;
+$enable-transitions: true !default;
+$enable-hover-media-query: false !default;
+$enable-grid-classes: true !default;
+$enable-print-styles: true !default;
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
 
 
 // Body
 //
 // Settings for the `<body>` element.
 
+<<<<<<< HEAD
 $body-bg:                   #edf1f5;
 $body-color:                $gray-900 !default;
 $grid-gutter-width:         20px !default;
+=======
+$body-bg: #edf1f5;
+$body-color: $gray-900 !default;
+$grid-gutter-width: 20px !default;
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
 
 
 // Typography
 //
 // Font, line-height, and color for body text, headings, and more.
 
+<<<<<<< HEAD
 $font-size-base:              0.875rem;
 $font-family-sans-serif:      'Rubik', sans-serif !default;
 $font-weight-light:           300 !default;
@@ -135,11 +200,31 @@ $h6-font-size:                14px !default;
 $headings-margin-bottom:      (1rem / 2) !default;
 $headings-font-weight:        400 !default;
 $headings-color:              inherit !default;
+=======
+$font-size-base: 0.875rem;
+$font-family-sans-serif: 'Rubik',
+sans-serif !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-bold: 700 !default;
+
+$h1-font-size: 36px !default;
+$h2-font-size: 30px !default;
+$h3-font-size: 24px !default;
+$h4-font-size: 18px !default;
+$h5-font-size: 16px !default;
+$h6-font-size: 14px !default;
+
+$headings-margin-bottom: (1rem / 2) !default;
+$headings-font-weight: 400 !default;
+$headings-color: inherit !default;
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
 
 
 
 // Breadcrumbs
 
+<<<<<<< HEAD
 $breadcrumb-bg:                   #fff;
 $breadcrumb-margin-bottom:        1.5rem;
 
@@ -148,10 +233,21 @@ $card-border-width:               0px!default;
 $card-border-color:               transparent!default;
 
 $card-border-radius:              0px !default;
+=======
+$breadcrumb-bg: #fff;
+$breadcrumb-margin-bottom: 1.5rem;
+
+// Cards
+$card-border-width: 0px !default;
+$card-border-color: transparent !default;
+
+$card-border-radius: 0px !default;
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
 
 
 // Dropdowns
 
+<<<<<<< HEAD
 $dropdown-item-padding-y:           .65rem !default;
 $dropdown-border-color:           $gray-200;
 $dropdown-divider-bg:             $gray-100;
@@ -178,40 +274,94 @@ $component-active-color:      $white !default;
 $component-active-bg:         $themecolor !default;
 $badge-pill-padding-x:              .2em !default;
 $badge-pill-padding-y:              1em !default;
+=======
+$dropdown-item-padding-y: .65rem !default;
+$dropdown-border-color: $gray-200;
+$dropdown-divider-bg: $gray-100;
+
+// Buttons
+
+$btn-secondary-border: $gray-300;
+
+// Progress bars
+
+$progress-bg: $gray-100;
+
+// Tables
+
+$table-bg-accent: $gray-100;
+$table-bg-hover: $gray-100;
+$table-hover-bg: $gray-100 !default;
+$table-cell-padding: 1rem !default;
+$table-bg-level: -10 !default;
+$table-bg-level2: 1 !default;
+$table-bg-level3: -5 !default;
+// Components
+$component-active-color: $white !default;
+$component-active-bg: $themecolor !default;
+$badge-pill-padding-x: .2em !default;
+$badge-pill-padding-y: 1em !default;
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
 
 
 // Forms
 
+<<<<<<< HEAD
 $input-group-addon-bg:            $gray-100;
 $input-border-color:              $gray-200;
 $input-group-addon-border-color:  $gray-200;
 $input-btn-focus-color:           rgba(0, 0, 0, .25) !default;
 $input-focus-border-color:        rgba(0,0,0, 0.1) !default;
 $custom-control-indicator-active-bg: rgba(0,0,0, 35%) !default;
+=======
+$input-group-addon-bg: $gray-100;
+$input-border-color: $gray-200;
+$input-group-addon-border-color: $gray-200;
+$input-btn-focus-color: rgba(0, 0, 0, .25) !default;
+$input-focus-border-color: rgba(0, 0, 0, 0.1) !default;
+$custom-control-indicator-active-bg: rgba(0, 0, 0, 35%) !default;
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
 $input-btn-focus-box-shadow: transparent !default;
 $custom-select-focus-box-shadow: transparent !default;
 $custom-select-indicator: url(../../assets/images/custom-select.png) !default;
 //
 // Define common padding and border radius sizes and more.
+<<<<<<< HEAD
 $border-width:                1px !default;
 $border-color:                $gray-200 !default;
 
 $border-radius:               .25rem !default;
 $border-radius-lg:            .3rem !default;
 $border-radius-sm:            .2rem !default;
+=======
+$border-width: 1px !default;
+$border-color: $gray-200 !default;
+
+$border-radius: .25rem !default;
+$border-radius-lg: .3rem !default;
+$border-radius-sm: .2rem !default;
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
 
 
 // Progress bars
 
+<<<<<<< HEAD
 $progress-height:                   6px !default;
 
 //Tabs
 $nav-tabs-link-active-bg:           $white !default;
+=======
+$progress-height: 6px !default;
+
+//Tabs
+$nav-tabs-link-active-bg: $white !default;
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
 // Grid breakpoints
 //
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
 
+<<<<<<< HEAD
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -220,3 +370,10 @@ $grid-breakpoints: (
   xl: 1600px
 ) !default;
 
+=======
+$grid-breakpoints: (xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1600px) !default;
+>>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
