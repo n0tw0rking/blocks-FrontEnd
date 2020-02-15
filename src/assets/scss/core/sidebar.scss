@@ -12,26 +12,14 @@ Main sidebar
   left: -200px;
   z-index: 50;
   padding-top: 0px;
-<<<<<<< HEAD
-  background: $sidebar;
-  box-shadow: $shadow;
-  transition: 0.3s ease-in;
-=======
   background: navy;
   box-shadow: $shadow;
   transition: 0.3s ease-in;
 
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
   .nav-text-box {
     padding: 13px 25px 13px 15px;
     border-bottom: 1px solid $border-color;
   }
-<<<<<<< HEAD
-  .upgrade-btn {
-    display: none;
-  }
-=======
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
 }
 
 /*******************
@@ -41,10 +29,6 @@ sidebar navigation
 .scroll-sidebar {
   height: calc(100% - 80px);
   position: relative;
-<<<<<<< HEAD
-=======
-
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
   &.ps .ps__scrollbar-y-rail {
     left: 2px;
     right: auto;
@@ -59,13 +43,6 @@ sidebar navigation
 
 .sidebar-nav {
   padding: 15px 0 0 0px;
-<<<<<<< HEAD
-  ul {
-    margin: 0px;
-    padding: 0px;
-    li {
-      list-style: none;
-=======
 
   ul {
     margin: 0px;
@@ -74,49 +51,30 @@ sidebar navigation
     li {
       list-style: none;
 
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
       a {
         color: $sidebar-text;
         padding: 10px 15px 10px 15px;
         display: block;
         align-items: center;
-<<<<<<< HEAD
-=======
-
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
         i {
           float: $rgt;
           font-style: normal;
           width: 32px;
           text-align: center;
         }
-<<<<<<< HEAD
-        &.active,
-        &:hover {
-          color: $themecolor;
-=======
 
         &.active,
         &:hover {
           color: $themecolor;
 
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
           i {
             color: $themecolor;
           }
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
         &.active {
           color: $gray-800;
         }
       }
-<<<<<<< HEAD
-=======
-
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
       ul {
         padding: 10px 0px 10px 0px;
         background: rgba(0, 0, 0, 0.02);
@@ -124,18 +82,10 @@ sidebar navigation
         li a {
           padding: 7px 15px 7px 20px;
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
         ul {
           padding-left: 15px;
         }
       }
-<<<<<<< HEAD
-=======
-
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
       &.nav-small-cap {
         font-size: 12px;
         margin-bottom: 0px;
@@ -145,10 +95,6 @@ sidebar navigation
         background: rgba(0, 0, 0, 0.1);
         font-weight: 500;
       }
-<<<<<<< HEAD
-=======
-
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
       &.nav-devider {
         height: 1px;
         background: $border-color;
@@ -157,12 +103,8 @@ sidebar navigation
       }
     }
   }
-<<<<<<< HEAD
-  > ul > li > a {
-=======
 
-  >ul>li>a {
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
+  > ul > li > a {
     i {
       font-size: 16px;
 
@@ -170,40 +112,24 @@ sidebar navigation
       vertical-align: middle;
       color: $sidebar-icons;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
     .badge {
       margin-right: 7px;
       vertical-align: top;
     }
   }
-<<<<<<< HEAD
+
   > ul > li {
     margin-bottom: 8px;
     margin-top: 8px;
+
     &.selected > a {
       color: $themecolor;
-=======
 
-  >ul>li {
-    margin-bottom: 8px;
-    margin-top: 8px;
-
-    &.selected>a {
-      color: $themecolor;
-
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
       i {
         color: $themecolor;
       }
     }
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
   .waves-effect {
     transition: none;
     -webkit-transition: none;
@@ -213,13 +139,9 @@ sidebar navigation
 
 .sidebar-nav .has-arrow {
   position: relative;
-<<<<<<< HEAD
-=======
-
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
   &::after {
     position: absolute;
-    content: '';
+    content: "";
     width: 7px;
     height: 7px;
     border-width: 1px 0 0 1px;
@@ -242,14 +164,9 @@ sidebar navigation
 }
 
 /*.sidebar-nav .active > .has-arrow::after,*/
-<<<<<<< HEAD
 .sidebar-nav li.selected > .has-arrow::after,
 .sidebar-nav li > .has-arrow.active::after,
-=======
-.sidebar-nav li.selected>.has-arrow::after,
-.sidebar-nav li>.has-arrow.active::after,
->>>>>>> 36715d8a731e273effb12427c127801fd0ee7067
-.sidebar-nav .has-arrow[aria-expanded='true']::after {
+.sidebar-nav .has-arrow[aria-expanded="true"]::after {
   -webkit-transform: rotate(-135deg) translate(0, -50%);
   -ms-transform: rotate(-135deg) translate(0, -50%);
   -o-transform: rotate(-135deg) translate(0, -50%);
