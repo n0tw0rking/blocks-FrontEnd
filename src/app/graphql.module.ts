@@ -3,7 +3,16 @@ import { ApolloModule, APOLLO_OPTIONS, Apollo } from "apollo-angular";
 import { HttpClientModule } from "@angular/common/http";
 import { HttpLinkModule, HttpLink } from "apollo-angular-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
+import { setContext } from "apollo-link-context";
+import { ApolloLink } from "apollo-link";
 const token = localStorage.getItem("token");
+
+const basic = setContext((operation, context) => ({
+  headers: {
+    Accept: "charset=utf-8"
+  },
+  method: "GET"
+}));
 /*
  IMPORTANT NOTE :
  TOKEN INTERCEPTOR IS TAKING CARE OF THE TOKEN INJECTION.
@@ -19,15 +28,35 @@ export class GraphQLModule {
     const options1: any = {
       uri: this.uri1
     };
+
     this.apollo.createDefault({
-      link: this.httpLink.create(options1),
-      cache: new InMemoryCache()
+      link: ApolloLink.from([basic, this.httpLink.create(options1)]),
+      cache: new InMemoryCache(),
+      defaultOptions: {
+        watchQuery: {
+          errorPolicy: "all"
+        }
+      }
     });
 
     const options2: any = { uri: this.uri2 };
     this.apollo.createNamed("ASP", {
       link: this.httpLink.create(options2),
-      cache: new InMemoryCache()
+      cache: new InMemoryCache(),
+      defaultOptions: {
+        watchQuery: {
+          errorPolicy: "all"
+        }
+      }
+    });
+    this.apollo.createNamed("mute", {
+      link: this.httpLink.create(options1),
+      cache: new InMemoryCache(),
+      defaultOptions: {
+        watchQuery: {
+          errorPolicy: "all"
+        }
+      }
     });
   }
 }

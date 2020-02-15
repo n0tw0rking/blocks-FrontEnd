@@ -28,6 +28,7 @@ export class DashBoardComponent implements OnInit {
     this.apollo.getUserWithBlocks(13).subscribe(
       res => {
         console.log(res);
+        this.subscription = res.data.subscription;
       },
       err => {
         console.log(err);
@@ -56,7 +57,6 @@ export class DashBoardComponent implements OnInit {
         console.log(res.data);
         this.data = res.data.oneUser;
         this.arr = this.data.userSubscription;
-
         this.getServicesArrInt(this.arr[0].name);
       },
       err => {

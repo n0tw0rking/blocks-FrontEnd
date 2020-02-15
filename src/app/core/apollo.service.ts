@@ -38,16 +38,16 @@ export class ApolloService {
   getUserWithBlocks(userId): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
-        query($userId: String!) {
-          {
-            userWithBlocks(userId:$userId){
-              email
-              },
-            subscription{
-              subscriptionName,
-              blockSubscriptions {
-                block{blockName,blockId
-                }
+        query($userId: Int!) {
+          userWithBlocks(userId: $userId) {
+            email
+          }
+          subscription {
+            subscriptionName
+            blockSubscriptions {
+              block {
+                blockName
+                blockId
               }
             }
           }
@@ -304,5 +304,19 @@ export class ApolloService {
 
       errorPolicy: "all"
     }).valueChanges;
+  }
+  deleteNotificationSub(userId, sub) {
+    return this.apollo.use("mute").mutate<any>({
+      mutation: gql`
+        mutation deleteNotificationSub($userId: String!, $sub: String!) {
+          deleteNotificationSub(userId: $userId, sub: $sub)
+        }
+      `,
+      variables: {
+        userId: userId,
+        sub: sub
+      },
+      errorPolicy: "all"
+    });
   }
 }

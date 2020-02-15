@@ -29,7 +29,6 @@ sidebar navigation
 .scroll-sidebar {
   height: calc(100% - 80px);
   position: relative;
-
   &.ps .ps__scrollbar-y-rail {
     left: 2px;
     right: auto;
@@ -57,7 +56,6 @@ sidebar navigation
         padding: 10px 15px 10px 15px;
         display: block;
         align-items: center;
-
         i {
           float: $rgt;
           font-style: normal;
@@ -73,12 +71,10 @@ sidebar navigation
             color: $themecolor;
           }
         }
-
         &.active {
           color: $gray-800;
         }
       }
-
       ul {
         padding: 10px 0px 10px 0px;
         background: rgba(0, 0, 0, 0.02);
@@ -86,12 +82,10 @@ sidebar navigation
         li a {
           padding: 7px 15px 7px 20px;
         }
-
         ul {
           padding-left: 15px;
         }
       }
-
       &.nav-small-cap {
         font-size: 12px;
         margin-bottom: 0px;
@@ -101,7 +95,6 @@ sidebar navigation
         background: rgba(0, 0, 0, 0.1);
         font-weight: 500;
       }
-
       &.nav-devider {
         height: 1px;
         background: $border-color;
@@ -111,7 +104,7 @@ sidebar navigation
     }
   }
 
-  >ul>li>a {
+  > ul > li > a {
     i {
       font-size: 16px;
 
@@ -119,18 +112,17 @@ sidebar navigation
       vertical-align: middle;
       color: $sidebar-icons;
     }
-
     .badge {
       margin-right: 7px;
       vertical-align: top;
     }
   }
 
-  >ul>li {
+  > ul > li {
     margin-bottom: 8px;
     margin-top: 8px;
 
-    &.selected>a {
+    &.selected > a {
       color: $themecolor;
 
       i {
@@ -138,7 +130,6 @@ sidebar navigation
       }
     }
   }
-
   .waves-effect {
     transition: none;
     -webkit-transition: none;
@@ -148,10 +139,9 @@ sidebar navigation
 
 .sidebar-nav .has-arrow {
   position: relative;
-
   &::after {
     position: absolute;
-    content: '';
+    content: "";
     width: 7px;
     height: 7px;
     border-width: 1px 0 0 1px;
@@ -174,9 +164,9 @@ sidebar navigation
 }
 
 /*.sidebar-nav .active > .has-arrow::after,*/
-.sidebar-nav li.selected>.has-arrow::after,
-.sidebar-nav li>.has-arrow.active::after,
-.sidebar-nav .has-arrow[aria-expanded='true']::after {
+.sidebar-nav li.selected > .has-arrow::after,
+.sidebar-nav li > .has-arrow.active::after,
+.sidebar-nav .has-arrow[aria-expanded="true"]::after {
   -webkit-transform: rotate(-135deg) translate(0, -50%);
   -ms-transform: rotate(-135deg) translate(0, -50%);
   -o-transform: rotate(-135deg) translate(0, -50%);
