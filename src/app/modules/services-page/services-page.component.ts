@@ -27,17 +27,15 @@ export class ServicesPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const currentUser = //parseInt(localStorage.getItem("currentUser")) ||
-      13;
+    const currentUser = parseInt(localStorage.getItem("currentUser"))
+    console.log(currentUser)
     this.appollo.getUserWithBlocks(currentUser).subscribe(
       response => {
-        console.log(response)
         this.blocks = response.data.subscription.map(sub => {
           return sub.blockSubscriptions[0]
         });
         this.blockId = this.blocks[0].block.blockId
         console.log(this.blockId)
-        this.blockId = 3
         this.appollo.getServicesByBlockId(this.blockId).subscribe(
           result => {
             this.services = []
@@ -52,6 +50,7 @@ export class ServicesPageComponent implements OnInit {
             this.loading = result.data.loading;
           },
           errorResponse => {
+            this.error = errorResponse
             console.log(errorResponse);
           }
         );
