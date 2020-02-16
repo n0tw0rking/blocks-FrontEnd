@@ -1,121 +1,127 @@
- <!-- I might need to bring the nav bar here -->
- <div id="main-wrapper" class="fixed-sidebar fixed-header skin-default-dark" [ngClass]="{
+<!-- I might need to bring the nav bar here -->
+<div id="main-wrapper" class="fixed-sidebar fixed-header skin-default-dark" [ngClass]="{
     'show-sidebar': showMobileMenu,
     'mini-sidebar': addMiniSidebar,
     'lock-nav': lockSidebar
   }">
-   <!-- ============================================================== -->
-   <!-- Topbar header - style you can find in topbar.scss -->
-   <!-- ============================================================== -->
-   <!-- ============================================================== -->
-   <!-- Topbar header - style you can find in pages.scss -->
-   <!-- ============================================================== -->
-   <header class="topbar">
-     <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-       <!-- ============================================================== -->
-       <!-- Logo -->
-       <!-- ============================================================== -->
-       <div class="navbar-header">
-         <a class="navbar-brand" href [routerLink]="['/']">
-           <!-- Logo icon -->
-           <b style="width:5%;">
-             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-             <!-- Dark Logo icon -->
-             <img src="../assets/images/uniB.png" alt="homepage" class="dark-logo">
-             <!-- Light Logo icon -->
-           </b>
-           <!-- <a alt="homepage" class="" src="../assets/images/UB-icon.pfng "></a> -->
-           <!--End Logo icon -->
-           <!-- Logo text -->
-           <!-- <span [ngClass]="{ 'd-none': hideLogoText }"> -->
-           <!-- dark Logo text -->
-           <!-- <a alt="homepage" style="color: #000; text-align: center;">[UNI]</a> -->
-           <!-- Light Logo text -->
-           <!-- <a alt="homepage" style="color:blue; text-align: center;">Blocks</a> -->
-           <!-- </span> -->
-         </a>
-       </div>
-       <div class="" *ngIf="!isLogin()">
-         <div class="row">
+  <!-- ============================================================== -->
+  <!-- Topbar header - style you can find in topbar.scss -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Topbar header - style you can find in pages.scss -->
+  <!-- ============================================================== -->
+  <header class="topbar">
+    <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+      <!-- ============================================================== -->
+      <!-- Logo -->
+      <!-- ============================================================== -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href [routerLink]="['/']">
+          <!-- Logo icon -->
+          <b>
+            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+            <!-- Dark Logo icon -->
+            <img src="../assets/images/uniB.png" alt="homepage" class="dark-logo">
+            <!-- Light Logo icon -->
+          </b>
+          <!-- <a alt="homepage" class="" src="../assets/images/UB-icon.pfng "></a> -->
+          <!--End Logo icon -->
+          <!-- Logo text -->
+          <!-- <span [ngClass]="{ 'd-none': hideLogoText }"> -->
+          <!-- dark Logo text -->
+          <!-- <a alt="homepage" style="color: #000; text-align: center;">[UNI]</a> -->
+          <!-- Light Logo text -->
+          <!-- <a alt="homepage" style="color:blue; text-align: center;">Blocks</a> -->
+          <!-- </span> -->
+        </a>
+      </div>
+      <div class="" *ngIf="!isLogin()">
+        <!-- This is the Search Element -->
+        <!-- <div class="row" [hidden]="hidesearchBar">
            <form class="form-control-cd-10" style="padding-left:5% ;">
              <input type="text" class="form-control text-align: center" placeholder="Search...">
            </form>
-           <a href="" class="btn"><i class="ti-search" ng-hide="showMobileMenu"></i> search</a>
-         </div>
-         <div class="" *ngIf="isLogin()">
-           <a [routerLink]="['/login']" class="btn">login</a>
-         </div>
-       </div>
-       <!-- ============================================================== -->
-       <!-- End Logo -->
-       <!-- ============================================================== -->
+           <a href="" class="btn"><i class="ti-search"></i> search</a>
+         </div> -->
+        <div class="" *ngIf="isLogin()">
+          <a [routerLink]="['/login']" class="btn">login</a>
+        </div>
+      </div>
+      <!-- ============================================================== -->
+      <!-- End Logo -->
+      <!-- ============================================================== -->
 
-       <div class="navbar-collapse">
-         <app-navigation (toggleSidebar)="toggleSidebar()" (isLogin)="isLogin()" (isMain)="isMain()" class=" w-100">
-         </app-navigation>
-       </div>
-     </nav>
+      <div class="navbar-collapse">
+        <app-navigation (hidesearchBar)="hidesearchBar" (toggleSidebar)="toggleSidebar()" (isLogin)="isLogin()"
+          (isMain)="isMain()" class=" w-100">
+        </app-navigation>
+      </div>
+    </nav>
 
 
-   </header>
+  </header>
 
-   <!-- ============================================================== -->
-   <!-- Left Sidebar - style you can find in sidebar.scss  -->
-   <!-- ============================================================== -->
-   <aside class="left-sidebar" *ngIf="!isLogin()">
-     <div class="d-flex no-block nav-text-box align-items-center">
-       <span _ngcontent-c1=""><img _ngcontent-c1="" alt="elegant admin template" src="../assets/images/box_icon.png">
-       </span>
-       <a (click)="lockSidebar = !lockSidebar" class="nav-lock waves-effect waves-dark ml-auto hidden-md-down"
-         href="javascript:void(0)">
-         <i class="mdi" [ngClass]="
+  <!-- ============================================================== -->
+  <!-- Left Sidebar - style you can find in sidebar.scss  -->
+  <!-- ============================================================== -->
+  <aside class="left-sidebar" *ngIf="!isLogin()">
+    <div class="d-flex no-block nav-text-box align-items-center">
+      <div style="cursor: pointer;">
+        <a [routerLink]="['/']">
+          <span _ngcontent-c1="">
+            <img _ngcontent-c1="" alt="homepage" src="../assets/images/box_icon.png">
+          </span>
+        </a>
+      </div>
+      <a (click)="lockSidebar = !lockSidebar" class="nav-lock waves-effect waves-dark ml-auto hidden-md-down"
+        href="javascript:void(0)">
+        <i class="mdi" [ngClass]="
             lockSidebar ? 'mdi-toggle-switch-off' : 'mdi-toggle-switch'
           "></i>
-       </a>
-       <a (click)="showMobileMenu = false" class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up"
-         href="javascript:void(0)">
-         <i class="ti-close"></i>
-       </a>
-     </div>
-     <!-- Sidebar scroll-->
-     <div class="scroll-sidebar" [perfectScrollbar]="config">
-       <app-sidebar></app-sidebar>
-     </div>
-     <!-- End Sidebar scroll-->
-   </aside>
-   <!-- ============================================================== -->
-   <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-   <!-- ============================================================== -->
-   <!-- ============================================================== -->
-   <!-- Page wrapper  -->
-   <!-- ============================================================== -->
-   <div class="page-wrapper" [ngStyle]="{ 'min-height': height }">
-     <!-- ============================================================== -->
-     <!-- Container fluid  -->
-     <!-- ============================================================== -->
-     <div class=" container-fluid">
-       <app-breadcrumb></app-breadcrumb>
-       <!-- ============================================================== -->
-       <!-- Start Page Content -->
-       <!-- ============================================================== -->
-       <router-outlet></router-outlet>
-       <!-- ============================================================== -->
-       <!-- End Start Page Content -->
-       <!-- ============================================================== -->
-     </div>
-     <!-- ============================================================== -->
-     <!-- End Container fluid  -->
-     <!-- ============================================================== -->
-   </div>
-   <!-- ============================================================== -->
-   <!-- End Page wrapper  -->
-   <!-- ============================================================== -->
-   <!-- ============================================================== -->
-   <!-- footer -->
-   <!-- ============================================================== -->
-   <footer class="footer">
-   </footer>
-   <!-- ============================================================== -->
-   <!-- End footer -->
-   <!-- ============================================================== -->
- </div>
+      </a>
+      <a (click)="showMobileMenu = false" class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up"
+        href="javascript:void(0)">
+        <i class="ti-close"></i>
+      </a>
+    </div>
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar" [perfectScrollbar]="config">
+      <app-sidebar></app-sidebar>
+    </div>
+  </aside>
+  <!-- ============================================================== -->
+  <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Page wrapper  -->
+  <!-- ============================================================== -->
+  <div class="page-wrapper" [ngStyle]="{ 'min-height': height }">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class=" container-fluid">
+      <app-breadcrumb></app-breadcrumb>
+      <!-- ============================================================== -->
+      <!-- Start Page Content -->
+      <!-- ============================================================== -->
+      <router-outlet></router-outlet>
+      <!-- ============================================================== -->
+      <!-- End Start Page Content -->
+      <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Page wrapper  -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- footer -->
+  <!-- ============================================================== -->
+  <footer class="footer">
+  </footer>
+  <!-- ============================================================== -->
+  <!-- End footer -->
+  <!-- ============================================================== -->
+</div>

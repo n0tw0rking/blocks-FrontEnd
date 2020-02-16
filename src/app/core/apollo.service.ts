@@ -6,12 +6,12 @@ import gql from "graphql-tag";
   providedIn: "root"
 })
 export class ApolloService {
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) { }
 
-  getUser(): any {
+  getUser(currentUser): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
-        query($userId: String!) {
+        query($userId: Int!) {
           user(userId: $userId) {
             email
             phoneNumber
@@ -30,7 +30,7 @@ export class ApolloService {
       `,
       // I NEED TO UNCOMMENT THIS LATER these are the varible to send the query
       variables: {
-        userId: localStorage.getItem("currnetUser")
+        userId: currentUser
       },
       errorPolicy: "all"
     }).valueChanges;
@@ -44,6 +44,11 @@ export class ApolloService {
           }
           subscription {
             subscriptionName
+            aServiceSubscriptions {
+              service {
+                serviceName
+              }
+            }
             blockSubscriptions {
               block {
                 blockName
@@ -53,12 +58,13 @@ export class ApolloService {
           }
         }
       `,
+
       // I NEED TO UNCOMMENT THIS LATER these are the varible to send the query
       variables: {
         userId: userId
       },
       errorPolicy: "all"
-    }).valueChanges;
+    }).valueChanges
   }
   getAllServices(): any {
     return this.apollo.use("ASP").watchQuery<any>({
@@ -304,5 +310,19 @@ export class ApolloService {
 
       errorPolicy: "all"
     }).valueChanges;
+  }
+  deleteNotificationSub(userId, sub) {
+    return this.apollo.use("mute").mutate<any>({
+      mutation: gql`
+        mutation deleteNotificationSub($userId: String!, $sub: String!) {
+          deleteNotificationSub(userId: $userId, sub: $sub)
+        }
+      `,
+      variables: {
+        userId: userId,
+        sub: sub
+      },
+      errorPolicy: "all"
+    });
   }
 }

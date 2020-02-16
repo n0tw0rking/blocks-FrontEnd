@@ -2,15 +2,17 @@
   <div class="row">
     <div class="col" *ngFor="let item of arr; index as i">
       <div class="card" style="width: 18rem;">
-        <img
-          class="card-img-top"
+        <img class="card-img-top"
           src="https://previews.123rf.com/images/panyamail/panyamail1809/panyamail180900343/109879063-user-avatar-icon-sign-profile-symbol.jpg"
-          alt="Card image cap"
-        />
+          alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Sub Name : {{ item.name }}</h5>
-          <h5 class="card-title">Block Name : {{ item.block.name }}</h5>
-          <h5 class="card-title">Location : {{ item.block.location }}</h5>
+          <h5 class="card-title">Sub Name : {{ item.subscriptionName }}</h5>
+          <h5 class="card-title">
+            Block Name : {{ item.blockSubscriptions[0].block.blockName }}
+          </h5>
+          <h5 class="card-title">
+            Location : {{ item.blockSubscriptions[0].block.blockId }}
+          </h5>
           <p class="card-text">
             For more information click the button below
           </p>
@@ -21,4 +23,10 @@
       </div>
     </div>
   </div>
+</div>
+<div class="text-center" *ngIf="loading" style="vertical-align: middle;">
+  <div class="spinner-grow" style="width: 20rem; height: 20rem; text-align: center;" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+
 </div>

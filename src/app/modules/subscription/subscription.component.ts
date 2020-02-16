@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 export class SubscriptionComponent implements OnInit {
   data: any = {};
   arr: any = [];
+  loading = true;
   public currentUser = localStorage.getItem("currentUser");
   constructor(
     private apollo: ApolloService,
@@ -19,13 +20,13 @@ export class SubscriptionComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.apollo.getUser().subscribe(
+    this.apollo.getUserWithBlocks(parseInt(this.currentUser)).subscribe(
       res => {
         //only user with the subscription can loged in so its even for the admin with subscription
 
         console.log(res.data);
-        this.data = res.data.oneUser;
-        this.arr = this.data.userSubscription;
+        this.data = res.data;
+        this.arr = this.data.subscription;
       },
       err => {
         console.log(err);
