@@ -42,10 +42,6 @@ const routes: Routes = [
     component: ServicesPageComponent,
     canActivate: [AuthGuard]
   },
-  {
-    path: "home",
-    component: HomeComponent,
-  },
   /**
    * 
    *   NOTES FROM ADAM:
@@ -69,7 +65,12 @@ I have added the name so I can search by name
     component: ErrorPageComponent,
     data: { message: "Page not found!" }
   },
-  { path: "**", redirectTo: "/not-found" }
+  {
+    path: "home",
+    component: HomeComponent,
+  },
+  { path: "**", redirectTo: "/not-found" },
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

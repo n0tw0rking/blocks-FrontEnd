@@ -1,13 +1,5 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  ElementRef,
-  HostListener,
-  AfterViewInit
-} from "@angular/core";
-import * as THREE from "three-full";
-// import GSAP from "gsap";
+import { Component, OnInit, ElementRef, ViewChild, HostListener } from '@angular/core';
+import * as THREE from 'three-full'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -78,4 +70,5 @@ export class HomeComponent implements OnInit {
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
   }
+
 }
