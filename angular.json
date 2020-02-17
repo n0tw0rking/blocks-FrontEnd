@@ -24,8 +24,12 @@
               "src/assets",
               "src/manifest.webmanifest"
             ],
-            "styles": ["src/assets/scss/style.scss"],
-            "scripts": ["./node_modules/jquery/dist/jquery.min.js"]
+            "styles": [
+              "src/assets/scss/style.scss"
+            ],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -85,7 +89,9 @@
               "src/assets",
               "src/manifest.webmanifest"
             ],
-            "styles": ["src/styles.css"],
+            "styles": [
+              "src/styles.css"
+            ],
             "scripts": []
           }
         },
@@ -97,7 +103,9 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {
