@@ -2,8 +2,8 @@ import { RouteInfo } from "./sidebar.metadata";
 
 export const ROUTES: RouteInfo[] = [
   {
-    path: "/",
-    title: "Main    ",
+    path: "/home",
+    title: "Home    ",
     icon: "mdi mdi-home",
     class: "",
     extralink: false,
