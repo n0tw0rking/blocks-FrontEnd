@@ -13,7 +13,7 @@ import { ErrorPageComponent } from "./modules/error-page/error-page.component";
 import { DashBoardComponent } from "./modules/dash-board/dash-board.component";
 import { SubscriptionComponent } from "./modules/subscription/subscription.component";
 const routes: Routes = [
-  { path: "", component: MainPageComponent, canActivate: [AuthGuard] },
+  { path: "", component: DashBoardComponent, canActivate: [AuthGuard] },
   {
     path: "super",
     component: SuperAdminComponent,
@@ -64,10 +64,12 @@ I have added the name so I can search by name
     component: ErrorPageComponent,
     data: { message: "Page not found!" }
   },
-  { path: "**", redirectTo: "/not-found" }
+
+  { path: "**", redirectTo: "/not-found" },
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

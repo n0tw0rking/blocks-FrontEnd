@@ -1,37 +1,31 @@
+<h1>Balance</h1>
+
 <table class="table" style="color: rgb(59, 37, 37);">
   <thead class="thead-dark">
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">service</th>
       <th scope="col">amount</th>
       <th scope="col">Username</th>
-      <th scope="col">Subscription Id</th>
       <th scope="col">Balance</th>
+      <th scope="col">learn more</th>
+
     </tr>
   </thead>
 
   <tbody *ngFor="let user of users">
     <tr>
-      <th scope="row">{{user.subscription.user.userId }}</th>
-      <td>{{ user.subscription.user.email }}</td>
-      <div>
-        <td> - </td>
-      </div>
-      <div>
-        <td>{{ user.subscription.user.userId}}</td>
-      </div>
-      <div></div>
-      <td>{{ user.subscription.user.email}}</td>
-      <td>{{user.subscriptionId}}</td>
+      <td>{{ user.id}}</td>
+      <td>{{ user.sub }}</td>
+      <td>{{ user.email}}</td>
+      <td>{{ user.balance}}</td>
 
       <td (click)="userMoreInfo(user)"><button type="button" class="btn btn-primary btn-sm">More Info</button>
       </td>
       <!-- routerLink="/userRercords" -->
     </tr>
   </tbody>
-  <div class="text-center" *ngIf="loading" style="text-align: center;">
+  <!-- <div class="text-center" *ngIf="loading" style="text-align: center;">
     <div class="spinner-grow" style="width: 20rem; height: 20rem; text-align: center;" role="status">
       <span class="sr-only">Loading...</span>
     </div>
-
-  </div>
+  </div> -->

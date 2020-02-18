@@ -1,5 +1,6 @@
-<br>
+<h1>Balance</h1>
 
+<br>
 <h3>{{email}}</h3>
 <div>
   <ul class="list-group">
@@ -25,18 +26,18 @@
 
   <tbody *ngFor="let user of users">
     <tr>
-      <th scope="row">id</th>
-        <td>email}</td>
+      <th scope="row">{{ user.id }}</th>
+      <td></td>
       <div>
-        <td> - </td>
+        <td></td>
       </div>
       <div>
-        <td>user id</td>
+        <td>{{ user.username }}</td>
       </div>
       <div>
-         <td>sub id</td>
-      </div>   
-        <!-- <td (click)="userMoreInfo(user)" ><button type="button" class="btn btn-primary btn-sm">More Info</button>
+        <td>{{user.sub}}</td>
+      </div>
+      <!-- <td (click)="userMoreInfo(user)" ><button type="button" class="btn btn-primary btn-sm">More Info</button>
          </td>  -->
-      </tr>
-    </tbody>
+    </tr>
+  </tbody>
