@@ -87,6 +87,8 @@ export class AuthService {
     }
     console.log(this.user);
     this.isAuthed = false;
+    this.user = undefined
+    console.log(this.user);
     // this.sub.status = false;
     this.sub.sub = undefined;
     this.router.navigate(["/login"]);
