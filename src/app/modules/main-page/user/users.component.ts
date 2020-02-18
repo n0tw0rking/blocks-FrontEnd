@@ -109,7 +109,7 @@ export class UsersComponent implements OnInit {
 
     console.log(use, "this is user");
     //redirect to new page that have the user record
-    this.router.navigate(["/user/balance", use.subscription.user.userId]);
+    this.router.navigate(["/user/balance", 18]);
     // Get http record
     this.apollo.getUser(this.currentUser).subscribe(
       result => {
