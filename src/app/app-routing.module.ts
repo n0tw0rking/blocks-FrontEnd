@@ -11,17 +11,8 @@ import { DashBoardComponent } from './modules/dash-board/dash-board.component';
 import {SubscriptionComponent} from './modules/subscription/subscription.component'
 
 const routes: Routes = [
-<<<<<<< HEAD
-  { path: "", component: MainPageComponent, canActivate: [AuthGuard] },
-=======
   { path: "", component: DashBoardComponent, canActivate: [AuthGuard] },
-  {
-    path: "super",
-    component: SuperAdminComponent,
-    canActivate: [AuthGuard]
-  },
->>>>>>> e58f1d2c512415c2b050287ea4a13d3841c6a6f8
-  { path: "login", component: LoginComponent },
+   { path: "login", component: LoginComponent },
   // { path:'user', component: UserComponent,  canActivate:[AuthGuard] ,
   {
     path: "user/balance/:id",

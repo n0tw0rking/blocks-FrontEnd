@@ -9,7 +9,7 @@
     </div>
     <script>
       // init controller
-      var controller = new ScrollMagic.Controller();
+      // var controller = new ScrollMagic.Controller();
 
     </script>
   </section>
@@ -30,15 +30,15 @@
     <div class="spacer s2"></div>
     <script>
       // build scene
-      new ScrollMagic.Scene({
-          triggerElement: "#trigger2",
-          triggerHook: 0.9,
-          offset: 50, // move trigger to center of element
-          reverse: false // only do once
-        })
-        .setClassToggle("#reveal2", "visible") // add class toggle
-        .addIndicators() // add indicators (requires plugin)
-        .addTo(controller);
+      // new ScrollMagic.Scene({
+      //     triggerElement: "#trigger2",
+      //     triggerHook: 0.9,
+      //     offset: 50, // move trigger to center of element
+      //     reverse: false // only do once
+      //   })
+      //   .setClassToggle("#reveal2", "visible") // add class toggle
+      //   .addIndicators() // add indicators (requires plugin)
+      //   .addTo(controller);
 
     </script>
   </section>
@@ -119,17 +119,17 @@
 
 
       // build scene
-      new ScrollMagic.Scene({
-          triggerElement: "#gsap-trigger",
-          triggerHook: "onEnter", // show, when scrolled 10% into view
-          duration: "100%", // use full viewport
-          offset: 50 // move trigger to center of element
-        })
-        .setTween(tween)
-        .addIndicators({
-          name: "GSAP"
-        }) // add indicators (requires plugin)
-        .addTo(controller);
+      // new ScrollMagic.Scene({
+      //     triggerElement: "#gsap-trigger",
+      //     triggerHook: "onEnter", // show, when scrolled 10% into view
+      //     duration: "100%", // use full viewport
+      //     offset: 50 // move trigger to center of element
+      //   })
+      //   .setTween(tween)
+      //   .addIndicators({
+      //     name: "GSAP"
+      //   }) // add indicators (requires plugin)
+      //   .addTo(controller);
 
     </script>
   </section>
