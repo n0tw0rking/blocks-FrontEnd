@@ -1,22 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
-  selector: 'app-balance-edit',
-  templateUrl: './balance-edit.component.html',
-  styleUrls: ['./balance-edit.component.css']
+  selector: "app-balance-edit",
+  templateUrl: "./balance-edit.component.html",
+  styleUrls: ["./balance-edit.component.css"]
 })
 export class BalanceEditComponent implements OnInit {
-sub:any;
-email:string;
-  constructor( private route: ActivatedRoute) { }
+  users = [{
+    id: 1,
+    sub: "water Fall",
+    dep:+30,
+    dept:0
+  }, {
+    id: 2,
+    sub: "Monthly Maintance",
+    dep:0,
+    dept:-20
+  }, {
+    id: 3,
+    sub: "Elavator",
+    dep:+100,
+    dept:0
+  }]
+    ;
+  sub: any;
+  email: string;
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params =>{
-     this.email = params.id
-    console.log(params)
-    })
+    this.sub = this.route.params.subscribe(params => {
+      this.email = params.id;
+      console.log(params);
+    });
   }
-
 }

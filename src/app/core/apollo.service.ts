@@ -6,12 +6,12 @@ import gql from "graphql-tag";
   providedIn: "root"
 })
 export class ApolloService {
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) { }
 
-  getUser(): any {
+  getUser(currentUser): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
-        query($userId: String!) {
+        query($userId: Int!) {
           user(userId: $userId) {
             email
             phoneNumber
@@ -30,10 +30,41 @@ export class ApolloService {
       `,
       // I NEED TO UNCOMMENT THIS LATER these are the varible to send the query
       variables: {
-        userId: localStorage.getItem("currnetUser")
+        userId: currentUser
       },
       errorPolicy: "all"
     }).valueChanges;
+  }
+  getUserWithBlocks(userId): any {
+    return this.apollo.use("ASP").watchQuery<any>({
+      query: gql`
+        query($userId: Int!) {
+          userWithBlocks(userId: $userId) {
+            email
+          }
+          subscription {
+            subscriptionName
+            aServiceSubscriptions {
+              service {
+                serviceName
+              }
+            }
+            blockSubscriptions {
+              block {
+                blockName
+                blockId
+              }
+            }
+          }
+        }
+      `,
+
+      // I NEED TO UNCOMMENT THIS LATER these are the varible to send the query
+      variables: {
+        userId: userId
+      },
+      errorPolicy: "all"
+    }).valueChanges
   }
   getAllServices(): any {
     return this.apollo.use("ASP").watchQuery<any>({
@@ -65,6 +96,7 @@ export class ApolloService {
       errorPolicy: "all"
     }).valueChanges;
   }
+
   getServicebyName(service): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
@@ -136,6 +168,7 @@ export class ApolloService {
       errorPolicy: "all"
     }).valueChanges;
   }
+
   getServicesByBlockId(blockId) {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
@@ -216,80 +249,12 @@ export class ApolloService {
             }
           }
         }
-
       `,
       errorPolicy: "all"
     }).valueChanges;
   }
 
-  getUsersOfBlock(block) {
-    //get all user s inside this block(id)
-    // console.log(typeof(+block), "inside apolo")
-    return this.apollo.use("ASP").watchQuery<any>({
-      query: gql`
-        query($blockId: Int!) {
-          block(blockId: $blockId) {
-            blockSubscriptions {
-              subscriptionId
-              subscription {
-                user {
-                  email
-                  userId
-                  phoneNumber
-                }
-              }
-            }
-          }
-        }
-      `,
-      variables: {
-        blockId: +block
-      },
-       errorPolicy: "all"
-     })
-     .valueChanges
-   } 
- 
- //works
-   createNewBlock(Block) {
-      console.log(Block, 'inside newblock')
-    return this.apollo
-    .mutate<any>({
-
-      mutation: gql`
-        mutation($name: String!, $location: String!) {
-          createBlock(blockInput: { name: $name, location: $location }) {
-            _id
-            name
-            location
-          }
-        }
-      `,
-      variables: {
-        name: Block.name,
-        location: Block.location
-      },
-      errorPolicy: "all"
-    });
-  }
-
-  createNewBlockASP(Block) {
-    console.log(Block, "inside newblock");
-    return this.apollo.use("ASP").mutate<any>({
-      mutation: gql`
-        mutation($name: String!, $location: String!) {
-          createBlock(input: { blockName: $name, location: $location })
-        }
-      `,
-      variables: {
-        name: Block.name,
-        location: Block.location
-      },
-      errorPolicy: "all"
-    });
-  }
-
-  getSubscriptionBYName(subName): any {
+  getSubscription(subName): any {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
         query($aServiceName: String!) {
@@ -307,11 +272,15 @@ export class ApolloService {
     }).valueChanges;
   }
 
-  createMessageASP(msg){
+  createMessageASP(msg) {
     //mutation{createMessage(input:{content:"where is thee money for alivator", senderId:13, toList:[17]})}
     return this.apollo.use("ASP").mutate<any>({
       mutation: gql`
-      mutation{createMessage(input:{content:$content, senderId:$senderId, toList:$arr})}
+        mutation {
+          createMessage(
+            input: { content: $content, senderId: $senderId, toList: $arr }
+          )
+        }
       `,
       variables: {
         content: msg.content,
@@ -321,13 +290,39 @@ export class ApolloService {
       errorPolicy: "all"
     });
   }
-  getMessageASP(){
+  getMessageASP() {
     return this.apollo.use("ASP").watchQuery<any>({
       query: gql`
-       query{usersWithMessages{email,userMessages{message{content,sender{email}}}}}     
-       `,     
-     
+        query {
+          usersWithMessages {
+            email
+            userMessages {
+              message {
+                content
+                sender {
+                  email
+                }
+              }
+            }
+          }
+        }
+      `,
+
       errorPolicy: "all"
-    }).valueChanges
+    }).valueChanges;
+  }
+  deleteNotificationSub(userId, sub) {
+    return this.apollo.use("mute").mutate<any>({
+      mutation: gql`
+        mutation deleteNotificationSub($userId: String!, $sub: String!) {
+          deleteNotificationSub(userId: $userId, sub: $sub)
+        }
+      `,
+      variables: {
+        userId: userId,
+        sub: sub
+      },
+      errorPolicy: "all"
+    });
   }
 }

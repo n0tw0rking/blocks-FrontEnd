@@ -2,7 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../core/auth.service";
 import { Router, ActivatedRoute } from "@angular/router";
-
+import { SwUpdate, SwPush } from "@angular/service-worker";
+import { HttpService } from "../../core/http.service";
+import { ApolloService } from "../../core/apollo.service";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -10,17 +12,23 @@ import { Router, ActivatedRoute } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  errors: any = [];
+  errors: any = "";
   loading = true;
   submitted = false;
   notifyMessage = "";
   public currentUser;
+  readonly VAPID_KEY =
+    "BIDKneMUisz3eBe-_YA5eA3qm_JAPv6Uz79IIWppgjakBOjpUQYK3E6BbBfcvQaGhKsnodIJ04VYrrvpv256erY";
   constructor(
     private formbuilder: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private SwUpdate: SwUpdate,
+    private SwPush: SwPush,
+    private http: HttpService,
+    private apollo: ApolloService
+  ) { }
 
   ngOnInit() {
     this.submitted = false;
@@ -61,38 +69,58 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.isInvalidForm("email")) {
-      console.log(this.loginForm.controls["email"]);
-
       return (this.errors =
         this.loginForm.controls["email"].status === "INVALID"
           ? "Invalid Email"
           : "");
     }
     this.submitted = true;
-    console.log(this.loginForm.value);
     this.auth.login(this.loginForm.value).subscribe(
       token => {
+        this.loading = token.loading;
         if (token.errors) {
+          this.submitted = false;
           console.log(token.errors[0].message);
-          this.errors = token.errors[0].message;
+          this.errors = token.errors[0].message
         } else {
-          if (token.data.login.isSuperAdmin) {
-            console.log(" this is the superAdmin");
-            this.router.navigate(["/"]);
-          } else if (token.data.login.isAdmin) {
-            console.log(token);
-            console.log("this is the Admin");
-            this.router.navigate(["/"]);
-          } else {
-            console.log("this is the user");
-            this.router.navigate(["/login"]);
-          }
+          console.log("this is the user");
+          this.currentUser = localStorage.getItem("currentUser");
+          console.log(typeof parseInt(this.currentUser));
+          this.apollo.getUserWithBlocks(parseInt(this.currentUser)).subscribe(
+            res => {
+              //only user with the subscription can loged in so its even for the admin with subscription
+              // console.log(res.data.oneUser.userSubscription);
+              if (res.data.subscription.length === 0) {
+                this.auth.logout();
+              } else {
+                console.log(res.data);
+                this.subscribeToNotification();
+                this.router.navigate(["/dash"]);
+              }
+            },
+            err => {
+              console.log(err);
+            }
+          );
         }
       },
       errorResponse => {
-        console.log(errorResponse);
-        // this.errors = errorResponse.error.errors;
+        this.submitted = false;
+        console.log("error on the login", errorResponse);
+        this.errors = errorResponse.error;
       }
     );
+  }
+  subscribeToNotification() {
+    if (this.SwUpdate.isEnabled) {
+      this.SwPush.requestSubscription({
+        serverPublicKey: this.VAPID_KEY
+      }).then(sub => {
+        console.log(sub);
+        this.http.postSomething(sub).subscribe(res => {
+          console.log(res);
+        });
+      });
+    }
   }
 }

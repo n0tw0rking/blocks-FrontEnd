@@ -4,9 +4,11 @@ import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
-// import { ApolloService } from "./apollo.service";
+import { ApolloService } from "./apollo.service";
+import { SubscriptionService } from "../core/subscription.service";
 import { Apollo } from "apollo-angular";
 import gql from "graphql-tag";
+import { SwUpdate, SwPush } from "@angular/service-worker";
 @Injectable({
   providedIn: "root"
 })
@@ -15,12 +17,18 @@ export class AuthService {
   public isAuthed = !!localStorage.getItem("currentUser");
   public isSuperAdmin: boolean;
   public isAdmin: boolean;
+  readonly VAPID_KEY =
+    "BIDKneMUisz3eBe-_YA5eA3qm_JAPv6Uz79IIWppgjakBOjpUQYK3E6BbBfcvQaGhKsnodIJ04VYrrvpv256erY";
 
   @Output() getIsAuthed: EventEmitter<any> = new EventEmitter();
   constructor(
     private http: HttpClient,
     private router: Router,
-    private apollo: Apollo // private apollo: ApolloService
+    private apollo: Apollo, // private apollo: ApolloService
+    private apolloService: ApolloService,
+    private SwUpdate: SwUpdate,
+    private SwPush: SwPush,
+    private sub: SubscriptionService
   ) {
     console.log(this.isAuthed);
     this.getIsAuthed.emit(this.isAuthed);
@@ -29,7 +37,7 @@ export class AuthService {
     return this.apollo
       .watchQuery<any>({
         query: gql`
-          query($email: String!, $password: String!) {
+          query login($email: String!, $password: String!) {
             login(userInput: { email: $email, password: $password }) {
               token
               userId
@@ -47,24 +55,42 @@ export class AuthService {
       .valueChanges.pipe(
         map((res: any) => {
           console.log(res);
-          // this.user = res.admin;
+
           if (res.data.login) {
             this.user = res.data.login.userId;
             this.isSuperAdmin = res.data.login.isSuperAdmin;
             this.isAdmin = res.data.login.isAdmin;
-            if (this.isSuperAdmin || this.isAdmin) {
-              this.saveTokenAndCurrentUser(res.data.login.token);
-            }
+            this.saveTokenAndCurrentUser(res.data.login.token);
           }
           return res;
-          // return this.saveTokenAndCurrentUser(res.data.login.token);
         })
       );
   }
   public logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("currentUser");
+    if (this.SwUpdate.isEnabled) {
+      this.SwPush.requestSubscription({
+        serverPublicKey: this.VAPID_KEY
+      }).then(sub => {
+        this.apolloService
+          .deleteNotificationSub(this.user, sub.endpoint)
+          .subscribe(
+            res => {
+              console.log(res);
+            },
+            err => {
+              console.log(err);
+            }
+          );
+      });
+    }
+    console.log(this.user);
     this.isAuthed = false;
+    this.user = undefined
+    console.log(this.user);
+    // this.sub.status = false;
+    this.sub.sub = undefined;
     this.router.navigate(["/login"]);
     this.getIsAuthed.emit(this.isAuthed);
   }
@@ -84,7 +110,7 @@ export class AuthService {
     return this.apollo
       .watchQuery<any>({
         query: gql`
-          query {
+          query isAuth {
             isAuth
           }
         `,
@@ -107,7 +133,7 @@ export class AuthService {
   public isAuthSuperAndAdmin(): any {
     return this.apollo.watchQuery<any>({
       query: gql`
-          query {
+          query isSuperIsAdmin {
             isSuperIsAdmin(id: "${localStorage.getItem("currentUser")}") {
               isAdmin
               isSuperAdmin
