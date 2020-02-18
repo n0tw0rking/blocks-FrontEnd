@@ -2,14 +2,6 @@ import { RouteInfo } from "./sidebar.metadata";
 
 export const ROUTES: RouteInfo[] = [
   {
-    path: "/home",
-    title: "Home    ",
-    icon: "mdi mdi-home",
-    class: "",
-    extralink: false,
-    submenu: []
-  },
-  {
     path: "/dash",
     title: "My Dashboard",
     icon: "fas fa-tachometer-alt",
