@@ -17,7 +17,7 @@ import { Router } from "@angular/router";
 export class ServiceComponent implements AfterViewInit {
   loading = false;
   error;
-  constructor(private apollo: ApolloService, private _router: Router) {}
+  constructor(private apollo: ApolloService, private _router: Router) { }
   @Input() service: any;
   @Input() index: any;
 
@@ -25,7 +25,7 @@ export class ServiceComponent implements AfterViewInit {
   @Input() blockId: Number;
   @Output() ServciceEvent: EventEmitter<any> = new EventEmitter<any>();
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
   updateService(serviceid, state) {
     this.loading = true;
     if (!this.checkService(serviceid, state)) {
@@ -35,8 +35,8 @@ export class ServiceComponent implements AfterViewInit {
             this.loading = false;
             console.log(result.errors[0].message);
           } else {
-            this.loading = result.data.loading;
             this.ServciceEvent.emit(this.index);
+            this.loading = result.data.loading;
           }
         },
         errorResponse => {

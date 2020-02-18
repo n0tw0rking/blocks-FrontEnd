@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     private SwPush: SwPush,
     private http: HttpService,
     private apollo: ApolloService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.submitted = false;

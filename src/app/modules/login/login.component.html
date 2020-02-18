@@ -9,14 +9,8 @@
         <form [formGroup]="loginForm" (ngSubmit)="login()">
           <div class="form-group">
             <label for="email">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              aria-describedby="email"
-              placeholder="email@local.com"
-              formControlName="email"
-            />
+            <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="email@local.com"
+              formControlName="email" />
             <div *ngIf="isInvalidForm('email')" class="alert alert-danger">
               <div *ngIf="isRequired('email')">
                 Email is required.
@@ -28,15 +22,8 @@
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              placeholder="Password"
-              formControlName="password"
-              minlength="6"
-              required
-            />
+            <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password"
+              minlength="6" />
           </div>
           <button type="submit" class="btn btn-primary">
             login
@@ -47,14 +34,6 @@
   </div>
 </div>
 
-<div
-  class="text-center"
-  *ngIf="submitted && loading"
-  style="vertical-align: middle;"
->
-  <div
-    class="spinner-grow fast"
-    style="width: 20rem; height: 20rem;"
-    role="status"
-  ></div>
+<div class="text-center" *ngIf="submitted && loading" style="vertical-align: middle;">
+  <div class="spinner-grow fast" style="width: 20rem; height: 20rem;" role="status"></div>
 </div>

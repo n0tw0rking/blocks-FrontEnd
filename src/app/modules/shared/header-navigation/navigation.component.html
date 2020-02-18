@@ -14,20 +14,30 @@
   <!-- ============================================================== -->
   <!-- User profile and search -->
   <!-- ============================================================== -->
-  <div class="row" [hidden]="hidesearchBar">
-    <a href="" class="btn"><i class="ti-search"></i> search</a>
-    <form class="form-control-cd-10" style="padding-left:5% ;">
-      <input type="text" class="form-control text-align: center" placeholder="Search...">
-    </form>
-    <b></b>
-  </div>
+  <form class="navbar-form">
+    <div class="input-group no-border">
+      <input type="text" value="" class="form-control" placeholder="Search...">
+      <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+        <i class="material-icons">search</i>
+        <div class="ripple-container"></div>
+      </button>
+    </div>
+  </form>
+  <li class="nav-item dropdown">
+    <a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      <i class="material-icons">notifications</i>
+      <span class="notification">5</span>
+    </a>
+  </li>
   <div class="">
     <li class="nav-item" ngbDropdown placement="bottom-right">
       <a ngbDropdownToggle class="nav-link text-muted waves-effect waves-dark" href="javascript: void(0)"
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <!-- <img src="../../../../assets/images/notif.png" alt="user" class="img-circle" width="30">
        -->
-        <i class="far fa-user-circle"></i>
+        <i class="nc-icon nc-settings-gear-65"></i>
+        <i class="far fa-user-circle"></i>0
       </a>
       <div style="position: absolute ; right: 0px;" class="dropdown-menu-right user-dd animated flipInY"
         ngbDropdownMenu>
@@ -46,6 +56,6 @@
         <!-- <div class="dropdown-divider"></div> -->
       </div>
     </li>
-    <li class="nav-item"><button>contact us</button></li>
+
   </div>
 </ul>

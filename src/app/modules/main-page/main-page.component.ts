@@ -31,7 +31,6 @@ export class MainPageComponent implements OnInit {
 
   topOffset = 55;
   height: any;
-
   public innerWidth: any;
   public innerHeight: any;
   public lockSidebar = false;
