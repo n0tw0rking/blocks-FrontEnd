@@ -14,8 +14,6 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { ServicesPageComponent } from "./modules/services-page/services-page.component";
 import { ServiceComponent } from "./modules/services-page/service/service.component";
-import { BlocksPageComponent } from "./modules/blocks-page/blocks-page.component";
-import { BlockComponent } from "./modules/blocks-page/block/block.component";
 import { SidebarComponent } from "./modules/shared/sidebar/sidebar.component";
 import { DashBoardComponent } from "./modules/dash-board/dash-board.component";
 import { HomeComponent } from "./modules/home/home.component";
@@ -45,7 +43,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AuthService } from "./core/auth.service";
 import { AuthGuard } from "./core/auth.guard";
 import { ApolloService } from "./core/apollo.service";
-import { SuperAdminComponent } from "./modules/super-admin/super-admin.component";
 import { BalanceEditComponent } from "./modules/main-page/user/balance-edit/balance-edit.component";
 import { ErrorPageComponent } from "./modules/error-page/error-page.component";
 import { NotificationComponent } from "./modules/main-page/notification/notification.component";
@@ -61,12 +58,9 @@ import { environment } from '../environments/environment';
     LoginComponent,
     ServicesPageComponent,
     ServiceComponent,
-    BlocksPageComponent,
-    BlockComponent,
     SidebarComponent,
     NavigationComponent,
     BreadcrumbComponent,
-    SuperAdminComponent,
     BalanceEditComponent,
     ErrorPageComponent,
     NotificationComponent,
