@@ -53,9 +53,6 @@ export class HomeComponent implements OnInit {
     //     // envMap: textureCube 
     //   });
     //   this.cube = new THREE.Mesh(this.geometry, this.material);
-
-
-
     //   this.scene.add(this.cube);
 
   }
