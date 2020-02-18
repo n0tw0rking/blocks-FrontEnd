@@ -8,17 +8,20 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class BalanceEditComponent implements OnInit {
   users = [{
-    id: 18,
-    username: "John",
-    sub: "water Fall"
+    id: 1,
+    sub: "water Fall",
+    dep:+30,
+    dept:0
   }, {
-    id: 13,
-    username: "Ahmed",
-    sub: "Monthly Maintance"
+    id: 2,
+    sub: "Monthly Maintance",
+    dep:0,
+    dept:-20
   }, {
-    id: 18,
-    username: "Adam",
-    sub: "Elavator"
+    id: 3,
+    sub: "Elavator",
+    dep:+100,
+    dept:0
   }]
     ;
   sub: any;
