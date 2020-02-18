@@ -8,7 +8,29 @@ import { ApolloService } from "../../../core/apollo.service";
   styleUrls: ["./users.component.css"]
 })
 export class UsersComponent implements OnInit {
-  users = [];
+  users = [{
+    id: 18,
+    username: "John",
+    balance: 12,
+    email: "test@test.com",
+    subId: 20,
+    sub: "water Fall"
+  }, {
+    id: 13,
+    username: "Ahmed",
+    balance: 135,
+    email: "admiin@admiin.com",
+
+    subId: 19,
+    sub: "Monthly Maintance"
+  }, {
+    id: 18,
+    username: "Adam",
+    balance: -25,
+    email: "admiin@admiin.com",
+    subId: 13,
+    sub: "Elavator",
+  }]
   public currentUser = localStorage.getItem("currentUser");
   loading = true;
   //   {
@@ -30,7 +52,7 @@ export class UsersComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private apollo: ApolloService
-  ) {}
+  ) { }
   id = "";
   sub: any;
   userId: any;

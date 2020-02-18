@@ -72,7 +72,12 @@ export class AppComponent {
     console.log(this.router.url);
     return false;
   }
-
+  isHome() {
+    if (this.router.url == "/home") {
+      return true;
+    }
+    return false;
+  }
   isLogin() {
     if (this.router.url == "/login") {
       return true;

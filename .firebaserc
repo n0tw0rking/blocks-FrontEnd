@@ -1,9 +1,9 @@
 {
   "targets": {
-    "uniblocks-c0898": {
+    "omx-265700": {
       "hosting": {
         "angular": [
-          "uniblocks-c0898"
+          "omx-265700"
         ]
       }
     }

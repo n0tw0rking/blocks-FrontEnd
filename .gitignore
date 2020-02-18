@@ -47,4 +47,5 @@ testem.log
 Thumbs.db
  
 # firebase
-/.firebase
+.firebase
+.firebaserc

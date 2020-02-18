@@ -81,6 +81,7 @@ export class LoginComponent implements OnInit {
         if (token.errors) {
           this.submitted = false;
           console.log(token.errors[0].message);
+          this.errors = token.errors[0].message
         } else {
           console.log("this is the user");
           this.currentUser = localStorage.getItem("currentUser");
@@ -89,9 +90,7 @@ export class LoginComponent implements OnInit {
             res => {
               //only user with the subscription can loged in so its even for the admin with subscription
               // console.log(res.data.oneUser.userSubscription);
-              console.log(res, "PPPPPPPPP");
               if (res.data.subscription.length === 0) {
-                console.log("&&&&&&&&&&&&&&");
                 this.auth.logout();
               } else {
                 console.log(res.data);
