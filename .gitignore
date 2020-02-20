@@ -48,8 +48,8 @@ Thumbs.db
  
 # firebase
 /.firebase*
-*.firebaserc*
-*firebase.json*
+.firebaserc*
+firebase.json*
 
 # queryExamples
-*queryExamples.graphql
+queryExamples.graphql*
