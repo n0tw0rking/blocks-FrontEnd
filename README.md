@@ -21,6 +21,13 @@ also being aware of anything that happens in your building block.
 
 [DEMO](https://omx-265700.firebaseapp.com/)
 
+# TEAM
+
+[@mohamed-fared](https://github.com/mohamed-fared) (Product Owner)<br>
+[@OmarBara](https://github.com/OmarBara) (Scrum Master)<br>
+[@AdamMomen](https://github.com/AdamMomen)<br>
+[@psktcsharp](https://github.com/psktcsharp)
+
 # Motivation
 
 - Engaged communities
