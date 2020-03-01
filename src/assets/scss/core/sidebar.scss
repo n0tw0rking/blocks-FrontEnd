@@ -12,15 +12,13 @@ Main sidebar
   left: -200px;
   z-index: 50;
   padding-top: 0px;
-  background: $sidebar;
+  background: navy;
   box-shadow: $shadow;
   transition: 0.3s ease-in;
+
   .nav-text-box {
     padding: 13px 25px 13px 15px;
     border-bottom: 1px solid $border-color;
-  }
-  .upgrade-btn {
-    display: none;
   }
 }
 
@@ -45,11 +43,14 @@ sidebar navigation
 
 .sidebar-nav {
   padding: 15px 0 0 0px;
+
   ul {
     margin: 0px;
     padding: 0px;
+
     li {
       list-style: none;
+
       a {
         color: $sidebar-text;
         padding: 10px 15px 10px 15px;
@@ -61,9 +62,11 @@ sidebar navigation
           width: 32px;
           text-align: center;
         }
+
         &.active,
         &:hover {
           color: $themecolor;
+
           i {
             color: $themecolor;
           }
@@ -100,6 +103,7 @@ sidebar navigation
       }
     }
   }
+
   > ul > li > a {
     i {
       font-size: 16px;
@@ -113,11 +117,14 @@ sidebar navigation
       vertical-align: top;
     }
   }
+
   > ul > li {
     margin-bottom: 8px;
     margin-top: 8px;
+
     &.selected > a {
       color: $themecolor;
+
       i {
         color: $themecolor;
       }
@@ -134,7 +141,7 @@ sidebar navigation
   position: relative;
   &::after {
     position: absolute;
-    content: '';
+    content: "";
     width: 7px;
     height: 7px;
     border-width: 1px 0 0 1px;
@@ -159,7 +166,7 @@ sidebar navigation
 /*.sidebar-nav .active > .has-arrow::after,*/
 .sidebar-nav li.selected > .has-arrow::after,
 .sidebar-nav li > .has-arrow.active::after,
-.sidebar-nav .has-arrow[aria-expanded='true']::after {
+.sidebar-nav .has-arrow[aria-expanded="true"]::after {
   -webkit-transform: rotate(-135deg) translate(0, -50%);
   -ms-transform: rotate(-135deg) translate(0, -50%);
   -o-transform: rotate(-135deg) translate(0, -50%);

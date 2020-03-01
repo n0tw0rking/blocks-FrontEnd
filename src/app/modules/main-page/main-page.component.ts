@@ -2,10 +2,10 @@ import { Component, OnInit, HostListener, Inject } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { DOCUMENT } from "@angular/common";
 import { PerfectScrollbarConfigInterface } from "ngx-perfect-scrollbar";
+import { ApolloService } from "../../core/apollo.service";
+import { HttpService } from "../../core/http.service";
+import { SwUpdate, SwPush } from "@angular/service-worker";
 declare var $: any;
-import { Apollo } from "apollo-angular";
-import gql from "graphql-tag";
-
 @Component({
   selector: "app-main-page",
   templateUrl: "./main-page.component.html",
@@ -13,9 +13,16 @@ import gql from "graphql-tag";
 })
 export class MainPageComponent implements OnInit {
   snapshot;
+  messsages: any;
+  loading = true;
+  readonly VAPID_KEY =
+    "BIDKneMUisz3eBe-_YA5eA3qm_JAPv6Uz79IIWppgjakBOjpUQYK3E6BbBfcvQaGhKsnodIJ04VYrrvpv256erY";
   constructor(
     public router: Router,
-    private apollo: Apollo,
+    private apollo: ApolloService,
+    private SwUpdate: SwUpdate,
+    private SwPush: SwPush,
+    private http: HttpService,
     // private actRoute: ActivatedRoute,
     @Inject(DOCUMENT) private document: Document
   ) {}
@@ -24,7 +31,6 @@ export class MainPageComponent implements OnInit {
 
   topOffset = 55;
   height: any;
-
   public innerWidth: any;
   public innerHeight: any;
   public lockSidebar = false;
@@ -33,25 +39,31 @@ export class MainPageComponent implements OnInit {
   public hideLogoText = false;
 
   ngOnInit() {
-    this.apollo
-      .watchQuery<any>({
-        query: gql`
-          query {
-            oneUser {
-              _id
-            }
-          }
-        `,
-        errorPolicy: "all"
-      })
-      .valueChanges.subscribe(result => {
-        console.log(result);
-      });
-    // if (this.router.url === "/") {
-    //   this.router.navigate(["/"]);
-    // }
-    this.handleLayout();
-    this.snapshot = this.router.routerState.snapshot;
+    // let to:string;
+    // this.apollo.getMessageASP()
+    // .subscribe(res =>
+    //   // to = res.data.usersWithMessages.email)
+    //   // console.log(res.data.usersWithMessages))
+    //    this.messsages= res.data.usersWithMessages)
+    // // this.apollo
+    // //   .watchQuery<any>({
+    // //     query: gql`
+    // //       query {
+    // //         oneUser {
+    // //           _id
+    // //         }
+    // //       }
+    // //     `,
+    // //     errorPolicy: "all"
+    // //   })
+    // //   .valueChanges.subscribe(result => {
+    // //     console.log(result);
+    // //   });
+    // // // if (this.router.url === "/") {
+    // // //   this.router.navigate(["/"]);
+    // // // }
+    // // this.handleLayout();
+    // // this.snapshot = this.router.routerState.snapshot;
   }
 
   @HostListener("window:resize", ["$event"])
@@ -79,6 +91,18 @@ export class MainPageComponent implements OnInit {
     }
     if (this.height > this.topOffset) {
       this.height = this.height + "px";
+    }
+  }
+  subscribeToNotification() {
+    if (this.SwUpdate.isEnabled) {
+      this.SwPush.requestSubscription({
+        serverPublicKey: this.VAPID_KEY
+      }).then(sub => {
+        console.log(sub);
+        this.http.postSomething(sub).subscribe(res => {
+          console.log(res);
+        });
+      });
     }
   }
 }

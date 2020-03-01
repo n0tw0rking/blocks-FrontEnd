@@ -5,7 +5,9 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   providedIn: "root"
 })
 export class HttpService {
-  constructor(private http: HttpClient) {}
+  public notificationUrl = "https://blocks-backend.herokuapp.com/push";
+  // public notificationUrl = "http://localhost:4000/push";
+  constructor(private http: HttpClient) { }
 
   getUsers() {
     return this.http
@@ -22,21 +24,21 @@ export class HttpService {
       .subscribe(data => console.log(data));
   }
 
- 
-  getBlock(id){ //get all info of block by id 
-
+  getBlock(id) {
+    //get all info of block by id
   }
 
-  getBlocks(){ //get all blocks id s and name s
-
+  getBlocks() {
+    //get all blocks id s and name s
   }
 
-  getUsersOfBlock(id) { //get all user s inside this block(id)
-
+  getUsersOfBlock(id) {
+    //get all user s inside this block(id)
   }
 
-
-
+  postSomething(sub: any) {
+    return this.http.post(this.notificationUrl, sub);
+  }
 
   postNewBlock(Block) {
     console.log("getuser triggerde", Block);

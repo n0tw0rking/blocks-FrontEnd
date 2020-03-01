@@ -1,35 +1,65 @@
-import { Component, OnInit, Input } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  EventEmitter,
+  Output,
+  AfterViewInit
+} from "@angular/core";
 import { ApolloService } from "../../../core/apollo.service";
+import { retry } from "rxjs/operators";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-service",
   templateUrl: "./service.component.html",
   styleUrls: ["./service.component.css"]
 })
-export class ServiceComponent implements OnInit {
+export class ServiceComponent implements AfterViewInit {
   loading = false;
   error;
-  constructor(private apollo: ApolloService) {}
+  constructor(private apollo: ApolloService, private _router: Router) { }
   @Input() service: any;
+  @Input() index: any;
 
-  ngOnInit() {
-    console.log(this.service);
-  }
+  @Input() updParent: any;
+  @Input() blockId: Number;
+  @Output() ServciceEvent: EventEmitter<any> = new EventEmitter<any>();
+
+  ngAfterViewInit() { }
   updateService(serviceid, state) {
-    console.log(serviceid, state);
-    this.apollo.updateServiceById(serviceid, state).subscribe(
+    this.loading = true;
+    if (!this.checkService(serviceid, state)) {
+      this.apollo.updateServiceById(serviceid, state).subscribe(
+        result => {
+          if (result.errors) {
+            this.loading = false;
+            console.log(result.errors[0].message);
+          } else {
+            this.ServciceEvent.emit(this.index);
+            this.loading = result.data.loading;
+          }
+        },
+        errorResponse => {
+          console.log(errorResponse);
+        }
+      );
+    }
+  }
+  checkService(serviceid, state) {
+    this.apollo.getServiceById(serviceid).subscribe(
       result => {
         if (result.errors) {
-          this.loading = false;
-          console.log(result.errors[0].message);
+          return false;
         } else {
-          // this.service = result.data.services;
-          console.log(result);
-          this.loading = result.data.loading;
+          if (result.data.service.isActive === state) {
+            return true;
+          }
         }
       },
       errorResponse => {
         console.log(errorResponse);
       }
     );
+    return false;
   }
 }

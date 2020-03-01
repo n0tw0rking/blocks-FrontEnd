@@ -2,9 +2,17 @@ import { RouteInfo } from "./sidebar.metadata";
 
 export const ROUTES: RouteInfo[] = [
   {
-    path: "/",
-    title: "Main    ",
-    icon: "mdi mdi-home",
+    path: "/dash",
+    title: "My Dashboard",
+    icon: "fas fa-tachometer-alt",
+    class: "",
+    extralink: false,
+    submenu: []
+  },
+  {
+    path: "/user/balance",
+    title: "My Balance",
+    icon: "fab fa-google-wallet",
     class: "",
     extralink: false,
     submenu: []
@@ -18,45 +26,11 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: "/blocks",
-    title: "Blocks",
-    icon: "mdi mdi-bandcamp",
+    path: "/subscription",
+    title: "Subscription",
+    icon: "fas fa-th-large",
     class: "",
     extralink: false,
-    submenu: [
-      {
-        path: "/blocks/add",
-        title: "Add Block",
-        icon: "mdi mdi-bandcamp",
-        class: "",
-        extralink: false,
-        submenu: []
-      }
-    ]
-  },
-  {
-    path: "/user",
-    title: "Users",
-    icon: "ngbDropdownToggle",
-    class: "",
-    extralink: false,
-    submenu: [      
-      {
-        path: "/user/add",
-        title: "Add User",
-        icon: "mdi mdi-sort-variant",
-        class: "",
-        extralink: false,
-        submenu: []
-      },
-      {
-        path: "/user/balance",
-        title: "Balance",
-        icon: "mdi mdi-sort-variant",
-        class: "",
-        extralink: false,
-        submenu: []
-      }
-    ]
+    submenu: []
   }
 ];
