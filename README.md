@@ -22,12 +22,6 @@ also being aware of anything that happens in your building block.
 
 [DEMO](https://omx-265700.firebaseapp.com/)
 
-# TEAM
-
-[@mohamed-fared](https://github.com/mohamed-fared) (Product Owner)<br>
-[@OmarBara](https://github.com/OmarBara) (Scrum Master)<br>
-[@AdamMomen](https://github.com/AdamMomen)<br>
-[@psktcsharp](https://github.com/psktcsharp)
 
 # Motivation
 
@@ -70,16 +64,18 @@ Deployed backend using Graphql [HERO](https://github.com/n0tw0rking/blocks-backe
 [Github](https://github.com/n0tw0rking)
 
 
+# The TEAM
 
-## Created by
-
-Thanks goes to these wonderful people
+[@mohamed-fared](https://github.com/mohamed-fared) (Product Owner)<br>
+[@OmarBara](https://github.com/OmarBara) (Scrum Master)<br>
+[@AdamMomen](https://github.com/AdamMomen)<br>
+[@psktcsharp](https://github.com/psktcsharp)
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/OmarBara"><img src="https://avatars0.githubusercontent.com/u/26072723?s=400&v=4" width="100px;" alt="Omar Bara"/><br /><sub><b>Omar Bara</b></sub></a><br /><a href="" title="Code">💻</a> <a href="" title="Documentation">📖</a> <a href="" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/OmarBara"><img src="https://avatars0.githubusercontent.com/u/26072723?s=400&v=4" width="100px;" alt="Omar Bara"/><br /><sub><b>Omar Bara</b></sub></a><br /><sub><b>Scrum Master </b></sub><br /><a href="" title="Code">💻</a> <a href="" title="Documentation">📖</a> <a href="" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/mohamed-fared"><img src="https://avatars1.githubusercontent.com/u/38176894?s=400&v=4" width="100px;" alt="fared"/><br /><sub><b>mohamed</b></sub></a><br /><a href="https://github.com/mohamed-fared" title="Code">💻</a> <a href="" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/AdamMomen"><img src="https://avatars1.githubusercontent.com/u/55929982?s=400&v=4" width="100px;" alt="Adam Momen"/><br /><sub><b>Adam Momen</b></sub></a><br /><a href="https://github.com/AdamMomen" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/psktcsharp"><img src="https://avatars0.githubusercontent.com/u/23266034?s=400&v=4" width="100px;" alt="Amar"/><br /><sub><b>Amar</b></sub></a><br /><a href="https://github.com/psktcsharp" title="Bug reports">🐛</a> <a href="" title="Code">💻</a></td>   
