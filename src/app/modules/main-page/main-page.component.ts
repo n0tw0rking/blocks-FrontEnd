@@ -11,6 +11,7 @@ declare var $: any;
   templateUrl: "./main-page.component.html",
   styleUrls: ["./main-page.component.css"]
 })
+//FIXME: 
 export class MainPageComponent implements OnInit {
   snapshot;
   messsages: any;
